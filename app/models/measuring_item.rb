@@ -1,0 +1,2 @@
+class MeasuringItem < ApplicationRecord
+end
