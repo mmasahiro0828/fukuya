@@ -1,3 +1,6 @@
 class ItemColor < ApplicationRecord
-  belongs_to :item_id
+  belongs_to :item
+  has_many :skus
+  has_many :likes
+  has_many :item_images
 end

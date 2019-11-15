@@ -1,3 +1,3 @@
 class BrandRepresentative < ApplicationRecord
-  belongs_to :brand_id
+  belongs_to :brand
 end

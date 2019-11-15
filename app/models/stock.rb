@@ -1,3 +1,3 @@
 class Stock < ApplicationRecord
-  belongs_to :sku_id
+  has_one :sku
 end

@@ -1,4 +1,4 @@
 class CartItem < ApplicationRecord
-  belongs_to :user_id
-  belongs_to :sku_code
+  belongs_to :user
+  belongs_to :sku
 end
