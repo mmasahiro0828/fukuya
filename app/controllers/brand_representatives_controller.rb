@@ -1,0 +1,2 @@
+class BrandRepresentativesController < ApplicationController
+end
