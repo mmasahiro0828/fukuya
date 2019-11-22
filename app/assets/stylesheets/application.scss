@@ -1,1 +1,505 @@
 @import "bootstrap";
+
+
+//---------------home#top-----------------------
+
+//-----------------基本設定----------------------
+
+.container {
+    font-size: 15px;
+}
+
+.container h1 {
+    font-size: 30px;
+}
+
+.container h2 {
+    font-size: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        font-size: 13.5px;
+    }
+    
+    .container h1 {
+        font-size: 18px;
+    } 
+
+    .container h2 {
+        font-size: 15px;
+    }
+
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.appear990 {
+    display: none;
+}
+
+@media screen and (max-width: 990px) {
+    .disappear990 {
+        display: none;
+    }
+
+    .appear990 {
+        display: block;
+    } 
+}
+
+//---------------ロゴ--------------------------
+
+.main-title {
+    text-align: center;
+    padding: 15rem 0;
+}
+
+@media screen and (max-width: 768px) {
+    .main-title {
+        padding: 8rem 0;
+    }       
+}
+
+//---------------about---------------------
+
+.about-shop {
+    background-color: tomato;
+    text-align: center;
+}
+
+.description-for-shop {
+    width: 55%;
+    margin: 0 auto;
+    padding: 10rem 0;
+}
+
+@media screen and (max-width: 768px) {
+    .description-for-shop {
+        width: 60%;
+        padding: 6rem 0;
+    }       
+}
+
+//-----------------navi-----------------------
+
+.navi-bar {
+    background-color: green;
+    height: 2rem;
+}
+
+.navi-list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navi-item {
+    margin-right: 2rem;
+    line-height: 2rem;
+}
+
+.logo-mark {
+    margin-right: auto;
+}
+
+.only-guest {
+    display: none;
+}
+
+.login-user {
+    display: block;
+}
+
+.navi-for-mobile {
+    display: none;
+}
+
+@media screen and (max-width: 1200px) {
+    .navi-for-pc .navi-item {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navi-for-mobile {
+        display: block;
+    } 
+
+    .navi-for-pc {
+        display: none;
+    }
+}
+
+//--------------main-all-----------------------------
+.main-wrapper {
+    margin-top: 3em;
+    margin-bottom: 8em;
+
+}
+
+@media screen and (max-width: 990px) {
+    .main-wrapper {
+        flex-flow: column;
+    }
+}
+
+
+
+//--------------main-left--------------------
+.left-wrapper {
+    order: 0;
+}
+
+.left-wrapper ul {
+    margin-bottom: 2.5em;
+}
+
+.left-wrapper li:first-child {
+    margin-top: 0.4em;
+}
+
+//---------------main-center----------------------
+.center-wrapper {
+    order: 1;
+}
+
+.center-wrapper .item-card {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.item-card img {
+    width: 100%;
+    height: auto;
+}
+
+.item-card p {
+    padding-bottom: 0.2em;
+    font-size: 0.9em;
+}
+
+.item-card .price {
+    font-weight: lighter;
+    font-size: 0.75em;
+}
+
+.item-card:last-child {
+    margin-bottom: 6em
+}
+
+//---------------main-right---------------------
+.right-wrapper {
+    order: 2;
+    width: 17%;
+}
+
+.topics-cards-wrapper {
+    display: flex;
+    flex-flow: column;
+    ;
+}
+
+.topics-card {
+    width: 95%;
+    max-width: 150px;
+    text-align: center;
+    margin-bottom: 2em;
+    margin-left: auto;
+}
+
+@media screen and (max-width: 990px) {
+    .right-wrapper {
+        order: 0;
+        width: 100%;
+    }
+
+    .topics-cards-wrapper {
+        flex-flow: row;
+        overflow: scroll;
+    }
+
+    .topics-card {
+        width: 25%;
+        min-width: 25%;
+        margin-right: 2em;
+        margin-left: 0;
+    }
+}
+
+.topics-card img { 
+    width: 80%;
+    height: auto; 
+}
+
+.topics-card .topics-name {
+    padding-bottom: 0.2em;
+    font-size: 0.8em;
+}
+
+.topics-card .topics-date {
+    font-weight: lighter;
+    font-size: 0.65em;
+}
+
+.topics-card:last-child {
+    margin-bottom: 4em
+}
+
+
+//-------------footer----------------------
+
+footer {
+    height: 6em;
+    background-color: navy;
+    color: white;
+}
+
+
+//-------------商品ページ用main-center------------
+
+//-------------画像パート-----------------------
+
+.item-images-wrapper {
+    width: 100%;
+    position: relative;
+}
+
+.item-images-wrapper:before {
+    content: "";
+    display: block;
+    padding-top: 67%;
+}
+
+.wrapper-to-fix-aspect {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    text-align: center;
+}
+
+
+.main-image-part {
+    width: 70%;
+}
+
+.main-image-part img {
+    width: 80%;
+}
+
+.sub-images-part {
+    width: 30%;
+    overflow: scroll;
+}
+
+.images-box {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    margin: 0 auto;
+}
+
+.images-box img {
+    width: 50%;
+    height: auto;
+}
+
+@media screen and (max-width: 768px) {
+    
+    .item-images-wrapper:before {
+        content: "";
+        display: block;
+        padding-top: 115%;
+    }
+    
+    .wrapper-to-fix-aspect {
+        flex-direction: column;
+    }
+    .main-image-part {
+        width: 95%;
+        margin: 0 auto 0.5em auto;
+    }
+
+    .sub-images-part {
+        width: 100%;
+    }
+    .images-box {
+        width: 100%;
+        flex-wrap: nowrap;
+    }
+
+    .images-box img {
+        width: 18%;
+        height: auto;
+    }
+}
+
+//--------------------商品名、価格--------------------
+.item-name-wrapper {
+    text-align: center;
+    margin: 1.5em 0;
+}
+
+//--------------------カラー展開、選択----------------------
+.color-select-wrapper {
+    text-align: center;
+    margin: 0.5em 0;
+}
+
+.color-select-inner {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.color-blocks {
+    display:flex;
+    justify-content: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.color-block {
+    font-weight: bold;
+    border: solid 0.05px black;
+    width: 20%;
+    background-color: gray;
+    padding: 0.3em 0;
+}
+
+@media screen and (max-width: 768px) {  
+    .color-block {
+        width: 50%;
+    }
+}
+
+//------------------アイテムサイズ、説明-----------------
+
+.item-detail-wrapper {
+    margin-top: 2em;
+    text-align: center;
+}
+
+.item-description {
+    width: 80%;
+    background-color: rgba(206, 166, 58, 0.4);
+    margin: 2em auto 0 auto;
+}
+
+.description-inner {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1.5em 0 2.5em 0;
+}
+
+//----------------サイズ表---------------------------
+.size-detail-wrapper {
+    margin-top: 2.5em;
+    text-align: center;
+}
+
+.table-wrapper {
+    width: 80%;
+    margin: 0.2em auto 0 auto;
+    overflow: scroll;
+    font-size: 0.75em;
+}
+
+thead th {
+    background-color:rgba(59, 55, 42, 0.4);
+}
+
+thead th:first-child {
+    width: 18%;
+}
+
+tbody td:first-child {
+    background-color:rgba(189, 176, 134, 0.4);
+}
+
+//----------------在庫表---------------------------
+.stock-detail-wrapper {
+    margin-top: 2.5em;
+    text-align: center;
+}
+
+//---------------関連アイテム---------------------
+
+.related-item-wrapper {
+    margin-top: 3em;
+}
+
+//---------------関連トピックス---------------------
+
+.related-topics-cards-wrapper {
+    display: flex;
+    flex-flow: row;
+    overflow: scroll;
+}
+
+.related-topics-cards-wrapper .topics-card {
+    width: 25%;
+    min-width: 25%;
+    text-align: center;
+    margin-right: 2em;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+
+.related-topics-cards-wrapper .topics-card img { 
+    width: 80%;
+    height: auto; 
+}
+
+.related-topics-cards-wrapper .topics-card .topics-name {
+    padding-bottom: 0.2em;
+    font-size: 0.8em;
+}
+
+.related-topics-cards-wrapper .topics-card .topics-date {
+    font-weight: lighter;
+    font-size: 0.65em;
+}
+
+//---------------関連アイテム---------------------
+.related-item-cards-wrapper {
+    display: flex;
+    flex-flow: row;
+    overflow: scroll;
+}
+
+.related-item-cards-wrapper .item-card {
+    width: 25%;
+    min-width: 25%;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+
+.related-item-cards-wrapper .item-card img { 
+    width: 80%;
+    height: auto; 
+}
+
+.related-item-cards-wrapper .item-card p {
+    padding-bottom: 0.2em;
+    font-size: 0.8em;
+}
+
+.related-item-cards-wrapper .item-card .price {
+    font-weight: lighter;
+    font-size: 0.65em;
+}
