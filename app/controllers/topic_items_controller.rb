@@ -1,0 +1,2 @@
+class TopicItemsController < ApplicationController
+end

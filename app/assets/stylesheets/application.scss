@@ -1,0 +1,168 @@
+
+
+//===========================基本設定=================================
+
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Sacramento&display=swap');
+
+
+.container {
+    font-size: 15px;
+}
+
+.container h1 {
+    font-size: 50px;
+}
+
+.container h2 {
+    font-size: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        font-size: 13.5px;
+    }
+    
+    .container h1 {
+        font-size: 30px;
+    } 
+
+    .container h2 {
+        font-size: 15px;
+    }
+
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.appear990 {
+    display: none;
+}
+
+@media screen and (max-width: 990px) {
+    .disappear990 {
+        display: none;
+    }
+
+    .appear990 {
+        display: block;
+    } 
+}
+
+
+
+//=========================[navigation_bar]===============================
+
+.navi-bar {
+    background: linear-gradient(135deg, rgba(229,193,103,1) 0%,rgba(229,212,169,1) 44%,rgba(200,154,16,1) 100%); //color-pattern 1
+    height: 2.2em;
+}
+
+.navi-bar:after {
+    content:"";
+    display: block;
+    height: 0.35em;
+    background: linear-gradient(135deg,rgba(203,169,83,1) 0%,rgba(144,111,12,1) 100%); //color-pattern 2
+}
+
+.navi-list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navi-item {
+    margin-right: 2em;
+}
+
+
+.logo-mark {
+    margin-right: auto;
+    font-family: 'Sacramento', cursive;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: navy;
+}
+
+.only-guest {
+    display: none;
+}
+
+.login-user {
+    display: block;
+}
+
+.navi-for-mobile {
+    display: none;
+}
+
+.navi-for-mobile .navi-list {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navi-for-mobile .logo-mark {
+    margin: 0;
+}
+
+
+
+@media screen and (max-width: 1200px) {
+    .navi-item {
+        font-size: 0.8rem;
+    }
+
+    .logo-mark {
+        font-size: 1.3rem;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .navi-for-mobile {
+        display: block;
+    } 
+
+    .navi-for-pc {
+        display: none;
+    }
+}
+
+//====================[HOME]=========================================
+
+@import "home";
+
+
+
+//====================[ITEMS]=========================================
+
+@import "items";
+
+
+//====================[ITEM_COLORS]===================================
+
+@import "item_colors";
+
+
+//====================[ITEM_COLORS]===================================
+
+@import "topics";
+
+
+//====================footer===========================================
+
+footer {
+    height: 6em;
+    background-color: navy;
+    color: white;
+}
+

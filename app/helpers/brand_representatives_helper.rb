@@ -1,0 +1,2 @@
+module BrandRepresentativesHelper
+end

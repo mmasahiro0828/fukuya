@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title
+      | Fukuya
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+  body
+    = yield
+  
+    footer
+      | footer
+      a href="../" トップ
+      a href="../items/show" 商品ページ
