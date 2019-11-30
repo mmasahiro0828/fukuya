@@ -1,149 +1,16 @@
+
 .container
+    p.test jqueryテスト
     .main-title
-        h1.logo fukuya
+        h1.logo Fukuya.
 
 .about-shop
     .container
-        .description-for-shop
-            | こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。
+        .about-shop-inner
+            p.description-for-shop
+                | こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。こんなお店です。
 
-.navi-bar.navi-for-pc
-    .container.navi-container
-        ul.navi-list
-            li.navi-item.logo-mark ロゴ
-            li.navi-item 検索窓
-            li.navi-item カテゴリー一覧
-            li.navi-item ブランド一覧
-            li.navi-item.login-user お気に入り
-            li.navi-item カート
-            li.navi-item.login-user ユーザーアイコン
-            li.navi-item.only-guest ログイン/新規登録
+= render partial: "navigation_bar"
 
-.navi-bar.navi-for-mobile
-    .container
-        ul.navi-list
-            li.navi-item.logo-mark ロゴ
-            li.navi-item 商品を探す
-            li.navi-item.login-user お気に入り
-            li.navi-item カート
-            li.navi-item.login-user ユーザーアイコン
-            li.navi-item.only-guest ログイン/新規登録
+= render partial: "main_outer", locals: { main_contents: "item_index_for_top"}
 
-.main-part
-    .container
-        .row.main-wrapper
-            .left-wrapper.col-2.disappear990
-                ul.brands
-                    | ブランド一覧 ▼
-                    li.brand nike
-                    li.brand adidas
-                    li.brand new balance
-                    li.brand reebok
-                    li.brand vans
-                ul.categories
-                    | カテゴリー一覧 ▼
-                    li.category トップス
-                    li.category ジャケット/アウター
-                    li.category ボトムス
-                    li.category シューズ
-                    li.category OTHERS
-                p.all-items
-                    | ALL ITEMS ▼
-            
-
-            .center-wrapper.col
-                p.type-of-cards.pb-3
-                    | PICK UP ▼
-                .container.pick-up-items
-                    .row
-                        .item-card.col-4.col-xl-3
-                            img src="assets/default_images/no_image.jpg" 
-                            p.brand-name ブランド名
-                            p.item-name アイテム名
-                            p.price 価格
-                        .item-card.col-4.col-xl-3
-                            img src="assets/default_images/no_image.jpg"
-                            p.brand-name ブランド名
-                            p.item-name アイテム名
-                            p.price 価格
-                        .item-card.col-4.col-xl-3
-                            img src="assets/default_images/no_image.jpg"
-                            p.brand-name ブランド名
-                            p.item-name アイテム名
-                            p.price 価格
-                        .item-card.col-4.col-xl-3
-                            img src="assets/default_images/no_image.jpg"
-                            p.brand-name ブランド名
-                            p.item-name アイテム名
-                            p.price 価格
-                        .item-card.col-4.col-xl-3
-                            img src="assets/default_images/no_image.jpg"
-                            p.brand-name ブランド名
-                            p.item-name アイテム名
-                            p.price 価格
-                            
-                p.type-of-cards.pb-3
-                    | NEW ARRIVALS ▼
-                .container.new-arrival-items
-                    .row
-                        .item-card.col-4.col-xl-3
-                            img src="assets/default_images/no_image.jpg" 
-                            p.brand-name ブランド名
-                            p.item-name アイテム名
-                            p.price 価格
-                        .item-card.col-4.col-xl-3
-                            img src="assets/default_images/no_image.jpg"
-                            p.brand-name ブランド名
-                            p.item-name アイテム名
-                            p.price 価格
-                        .item-card.col-4.col-xl-3
-                            img src="assets/default_images/no_image.jpg"
-                            p.brand-name ブランド名
-                            p.item-name アイテム名
-                            p.price 価格
-                        .item-card.col-4.col-xl-3
-                            img src="assets/default_images/no_image.jpg"
-                            p.brand-name ブランド名
-                            p.item-name アイテム名
-                            p.price 価格
-                        .item-card.col-4.col-xl-3
-                            img src="assets/default_images/no_image.jpg"
-                            p.brand-name ブランド名
-                            p.item-name アイテム名
-                            p.price 価格
-                            
-                p.type-of-cards.appear990
-                    | ALL ITEMS ▼
-
-            .right-wrapper
-                p.pb-3
-                    | TOPICS ▼
-                .topics-cards-wrapper
-                    .topics-card
-                        img src="assets/default_images/no_image.jpg"
-                        p.topics-name トピックス名
-                        p.topics-date アップ日
-                    .topics-card
-                        img src="assets/default_images/no_image.jpg"
-                        p.topics-name トピックス名
-                        p.topics-date アップ日
-                    .topics-card
-                        img src="assets/default_images/no_image.jpg"
-                        p.topics-name トピックス名
-                        p.topics-date アップ日
-                    .topics-card
-                        img src="assets/default_images/no_image.jpg"
-                        p.topics-name トピックス名
-                        p.topics-date アップ日
-                    .topics-card
-                        img src="assets/default_images/no_image.jpg"
-                        p.topics-name トピックス名
-                        p.topics-date アップ日
-                    .topics-card
-                        img src="assets/default_images/no_image.jpg"
-                        p.topics-name トピックス名
-                        p.topics-date アップ日
-
-footer
-    | footer
-    a href="/items/show" 商品ページ

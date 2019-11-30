@@ -1,3 +1,73 @@
 // Place all the styles related to the Topics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+//==================================[topics_cards]===================================
+
+//-------------------[topics_card_a]---------------------------
+
+.topics-card-a {
+    width: 95%;
+    max-width: 150px;
+    text-align: center;
+    margin-bottom: 2em;
+    margin-left: auto;
+}
+
+@media screen and (max-width: 990px) {
+
+    .topics-card-a {
+        width: 25%;
+        min-width: 25%;
+        margin-right: 2em;
+        margin-left: 0;
+    }
+}
+
+.topics-card-a img { 
+    width: 80%;
+    height: auto; 
+}
+
+.topics-card-a .topics-name {
+    padding-bottom: 0.2em;
+    font-size: 0.8em;
+}
+
+.topics-card-a .topics-date {
+    font-weight: lighter;
+    font-size: 0.65em;
+}
+
+.topics-card-a:last-child {
+    margin-bottom: 4em
+}
+
+
+//-------------------[topics_card_b]---------------------------
+
+.topics-card-b {
+    width: 25%;
+    min-width: 25%;
+    text-align: center;
+    margin-right: 2em;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+
+.topics-card-b img { 
+    width: 80%;
+    height: auto; 
+}
+
+ .topics-card-b .topics-name {
+    padding-bottom: 0.2em;
+    font-size: 0.8em;
+}
+
+ .topics-card-b .topics-date {
+    font-weight: lighter;
+    font-size: 0.65em;
+}
