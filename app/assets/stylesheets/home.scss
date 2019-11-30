@@ -1,0 +1,131 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+//========================[ロゴ]============================================
+
+.main-title {
+    text-align: center;
+    padding: 15rem 0;
+    font-family: 'Sacramento', cursive;
+}
+
+@media screen and (max-width: 768px) {
+    .main-title {
+        padding: 8rem 0;
+    }       
+}
+
+//======================[about]============================================
+
+.about-shop {
+    background-image: url(./default_images/topimage.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    text-align: center;
+}
+
+.about-shop-inner {
+    width: 55%;
+    margin: 0 auto;
+    padding: 8em 0;
+}
+
+.description-for-shop {
+    width: 100%;
+    padding: 3em 1.5em;
+    color: white;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.6) 0%,rgba(100,110,112,0.6) 100%);
+}
+
+@media screen and (max-width: 768px) {
+    .about-shop-inner {
+        width: 65%;
+        padding: 6em 0;
+    }
+
+    .description-for-shop {
+        padding: 1.3em 0.6em;
+    }
+    
+       
+}
+
+//========================[main-outer]============================================
+
+//---------基本設定-----------------------------------------------------------
+
+
+.main-wrapper {
+    margin-top: 3em;
+    margin-bottom: 8em;
+
+}
+
+@media screen and (max-width: 990px) {
+    .main-wrapper {
+        flex-flow: column;
+    }
+}
+
+.title-with-underline:after {
+    content: "";
+    display: block;
+    height: 0.2em;
+    background: linear-gradient(135deg, rgba(176,135,30,1) 0%,rgba(189,157,77,1) 22%,rgba(124,95,10,1) 56%);
+    margin-bottom: 1em;
+}
+
+
+//--------------left-part--------------------
+.left-wrapper {
+    order: 0;
+}
+
+.left-wrapper ul {
+    margin-bottom: 2.5em;
+}
+
+//--------------center-part----------------------
+
+.center-wrapper {
+    order: 1;
+}
+
+
+//-------------right-part------------------------
+
+.right-wrapper {
+    order: 2;
+    width: 17%;
+}
+
+.topics-cards-wrapper {
+    display: flex;
+    flex-flow: column;
+    ;
+}
+
+
+@media screen and (max-width: 990px) {
+    .right-wrapper {
+        order: 0;
+        width: 100%;
+    }
+
+    .topics-cards-wrapper {
+        flex-flow: row;
+        overflow: scroll;
+    }
+}
+
+
+//=========================[item_index_for_top]=====================================
+
+
+
+
+

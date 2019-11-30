@@ -1,3 +1,66 @@
 // Place all the styles related to the ItemColors controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+//===============================[item_cards]=======================================
+
+//-------------------[item_cards_a]-----------------------
+
+.item-card-a {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.item-card-a img {
+    width: 100%;
+    height: auto;
+}
+
+.item-card-a p {
+    padding-bottom: 0.2em;
+    font-size: 0.9em;
+}
+
+.item-card-a .price {
+    font-weight: lighter;
+    font-size: 0.75em;
+}
+
+.item-card-a:last-child {
+    margin-bottom: 6em
+}
+
+
+//-----------------[item_cards_b]---------------------
+
+.item-card-b {
+    width: 24%;
+    min-width: 24%;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+
+.item-card-b img { 
+    width: 80%;
+    height: auto; 
+}
+
+.item-card-b p {
+    padding-bottom: 0.2em;
+    font-size: 0.8em;
+}
+
+.item-card-b .price {
+    font-weight: lighter;
+    font-size: 0.65em;
+}
+
+@media screen and (max-width: 768px) {
+    .item-card-b {
+        width: 30%;
+        min-width: 30%;
+    }
+}

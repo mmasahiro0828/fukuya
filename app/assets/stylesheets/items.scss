@@ -1,3 +1,223 @@
 // Place all the styles related to the Items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+//======================[基本設定]======================================
+
+//------main-outerのトピックスを非表示にする---------------
+
+@media screen and (max-width: 990px) {
+    .item-page .right-wrapper {
+        display: none;
+    }
+}
+
+
+
+//======================[item_pictures]==================================
+
+.item-images-wrapper {
+    width: 100%;
+    position: relative;
+}
+
+.item-images-wrapper:before {
+    content: "";
+    display: block;
+    padding-top: 67%;
+}
+
+.wrapper-to-fix-aspect {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    text-align: center;
+}
+
+
+.main-image-part {
+    width: 70%;
+}
+
+.main-image-part img {
+    width: 80%;
+}
+
+.sub-images-part {
+    width: 30%;
+    overflow: scroll;
+}
+
+.images-box {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    margin: 0 auto;
+}
+
+.images-box img {
+    width: 50%;
+    height: auto;
+}
+
+@media screen and (max-width: 768px) {
+    
+    .item-images-wrapper:before {
+        content: "";
+        display: block;
+        padding-top: 115%;
+    }
+    
+    .wrapper-to-fix-aspect {
+        flex-direction: column;
+    }
+    .main-image-part {
+        width: 95%;
+        margin: 0 auto 0.5em auto;
+    }
+
+    .sub-images-part {
+        width: 100%;
+    }
+    .images-box {
+        width: 100%;
+        flex-wrap: nowrap;
+    }
+
+    .images-box img {
+        width: 18%;
+        height: auto;
+    }
+}
+
+
+//=============================[item_details]================================
+
+//--------------------商品名、価格--------------------
+.item-name-wrapper {
+    text-align: center;
+    margin: 1.5em 0;
+}
+
+
+
+//--------------------カラー展開、選択----------------------
+.color-select-wrapper {
+    text-align: center;
+    margin: 0.5em 0;
+}
+
+.color-select-inner {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.color-blocks {
+    display:flex;
+    justify-content: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.color-block {
+    font-weight: bold;
+    border: solid 0.05px black;
+    width: 20%;
+    background-color: gray;
+    padding: 0.3em 0;
+}
+
+@media screen and (max-width: 768px) {  
+    .color-block {
+        width: 50%;
+    }
+}
+
+
+
+//------------------アイテムサイズ、説明-----------------
+
+.item-detail-wrapper {
+    margin-top: 2em;
+    text-align: center;
+}
+
+.item-description {
+    width: 80%;
+    background-color: rgba(206, 166, 58, 0.4);
+    margin: 2em auto 0 auto;
+}
+
+.description-inner {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1.5em 0 2.5em 0;
+}
+
+
+
+//----------------サイズ表---------------------------
+.size-detail-wrapper {
+    margin-top: 2.5em;
+    text-align: center;
+}
+
+.table-wrapper {
+    width: 80%;
+    margin: 0.2em auto 0 auto;
+    overflow: scroll;
+    font-size: 0.75em;
+}
+
+thead th {
+    background-color:rgba(59, 55, 42, 0.4);
+}
+
+thead th:first-child {
+    width: 18%;
+}
+
+tbody td:first-child {
+    background-color:rgba(189, 176, 134, 0.4);
+}
+
+
+
+//----------------在庫表---------------------------
+.stock-detail-wrapper {
+    margin-top: 2.5em;
+    text-align: center;
+}
+
+
+
+//---------------関連topics and items---------------------
+
+.related-items-and-topics-wrapper {
+    margin-top: 3em;
+}
+
+
+
+//---------------関連トピックス---------------------
+
+.related-topics-cards-wrapper {
+    display: flex;
+    flex-flow: row;
+    overflow: scroll;
+}
+
+
+//---------------関連アイテム---------------------
+.related-item-cards-wrapper {
+    display: flex;
+    flex-flow: row;
+    overflow: scroll;
+}
+
+

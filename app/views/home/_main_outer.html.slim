@@ -1,0 +1,30 @@
+.main-part
+    .container
+        .row.main-wrapper
+            .left-wrapper.col-2.disappear990
+                ul.brands
+                    span.title-with-underline ブランド一覧 ▼
+                    li.brand nike
+                    li.brand adidas
+                    li.brand new balance
+                    li.brand reebok
+                    li.brand vans
+                ul.categories
+                    span.title-with-underline カテゴリー一覧 ▼
+                    li.category トップス
+                    li.category ジャケット/アウター
+                    li.category ボトムス
+                    li.category シューズ
+                    li.category OTHERS
+                p.all-items
+                    span.title-with-underline ALL ITEMS ▼
+            
+            .center-wrapper.col
+                =render partial: "#{main_contents}"
+
+            .right-wrapper.col-lg-2
+                p
+                    span.title-with-underline TOPICS ▼
+                .topics-cards-wrapper
+                    
+                    = render partial: "topics/topics_cards_a", locals: { repeat_number: 6}
