@@ -1,0 +1,15 @@
+.container
+    .main-title-for-payment
+        h1.logo Fukuya.
+
+    
+
+    .cart-items-wrapper.for_parchase_history
+        p
+            span.title-with-underline YOUR PARCHASE HISTORY ▼
+        
+        = render partial: "item_colors/item_cards_c", locals: { repeat_number: 4}
+
+
+    .cart-btn-wrapper
+        .btn.go-payment ▶︎ TOPに戻る

@@ -1,0 +1,70 @@
+.container
+
+    .main-title-for-payment
+        h1.logo Fukuya.
+
+    .breadcrumb-for-payment-wrapper
+        ul.breadcrumb-for-payment
+            li 
+                p カート
+            li
+                p 
+                    | お客様情報<br>入力
+            li
+                p 決済方法
+            li
+                p 確認
+            li
+                p 完了
+
+    .info-input-box.for-confirmation1
+        p.title お客様情報
+        .main-box
+            .info-record
+                .label-part 名前
+                .input-part 宮口 正弘
+                        
+            .info-record
+                .label-part 住所
+                .input-part
+                    | 
+                        594-1105<br>
+                        東京都〇〇区〇〇1-11-111<br>
+                        メゾンハピネス 103
+                        
+            .info-record
+                .label-part メールアドレス
+                .input-part mmmmmmmmmmmmmmm@mmm.co.jp
+
+            .info-record
+                .label-part 電話番号
+                .input-part 090-0000-9999
+
+    .payment-box.for-confirmation2
+        p.title 決済方法
+        .main-box クレジットカード
+
+    .shipping-box.for-confirmation2
+        p.title 配送希望日
+        .main-box 12月13日 午前中
+
+    .cart-item-box.
+        p.title アイテム
+        .main-box
+            = render partial: "item_colors/item_cards_c", locals: { repeat_number: 2}
+        .price-box
+            .price-record
+                .title-part 商品合計
+                .price-part 24,000
+            .price-record
+                .title-part 手数料
+                .price-part 380
+            .price-record
+                .title-part 割引
+                .price-part 0
+            .price-record
+                .title-part 支払い合計
+                .price-part 24,380
+
+    .go-next-button                    
+        button.btn.btn-sm.blue-btn 注文を確定する

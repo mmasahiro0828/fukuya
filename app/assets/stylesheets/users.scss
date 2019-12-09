@@ -1,3 +1,55 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+//===================================[ログイン画面]=========================================
+
+.for_new_user {
+    text-align: center;
+    padding-bottom: 7em;
+    width: 60%;
+    margin: 0 auto;
+}
+
+
+
+//====================================[新規登録画面]========================================
+
+//====================================[情報確認画面]========================================
+
+
+.for-confirmation3 {
+    font-size: 1em;
+    margin-top: 2em;
+    
+    .info-record .input-part {
+        display: flex;
+        align-items: center;
+
+        p {
+            margin-right: auto;
+        }
+
+        button {
+            margin: 0;
+        }
+    }
+
+}
+
+//====================================[編集画面]========================================
+
+.disapper {
+    display: none !important;
+}
+
+
+//====================================[購入履歴]========================================
+
+.for_parchase_history {
+
+.delete-btn {
+    display: none;
+    }
+}
