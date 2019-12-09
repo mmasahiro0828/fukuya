@@ -1,3 +1,210 @@
 // Place all the styles related to the CartItems controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//===========================[outer]===============================
+
+//-----------------[logo-part]-----------------------
+.main-title-for-payment {
+    text-align: center;
+    padding: 2em 0;
+    font-family: 'Sacramento', cursive;
+}
+
+//-----------------[breadcrumb]-----------------------
+
+$height_for_bc: 3.5em;
+
+.breadcrumb-for-payment-wrapper {
+    margin-bottom: 2em;
+}
+
+.breadcrumb-for-payment {
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    height: $height_for_bc;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+
+.breadcrumb-for-payment li {
+    position: relative;
+    width: 20%;
+    color: white;
+
+    p {
+        position: absolute;
+        top: 50%;
+        left: 60%;
+        transform: translateX(-50%) translateY(-50%);
+        width: 80%;
+        text-align: center;
+    }
+}
+
+
+
+.breadcrumb-for-payment li:first-child {
+    border-radius: 5px 0 0 5px;
+
+    p {
+        left: 55%;
+    }
+}
+
+
+.breadcrumb-for-payment li:last-child {
+    border-radius: 0 5px 5px 0;
+
+    p {
+        left: 55%;
+    }
+}
+
+.breadcrumb-for-payment li:before {
+    content: "";
+    position: absolute;
+    top: -32%;
+    left: 100%;
+    display: block;
+    z-index: 2;
+    border-left: 1.2em solid black;
+    border-top: $height_for_bc/1.2 solid transparent;
+    border-bottom: $height_for_bc/1.2 solid transparent;
+}
+
+.breadcrumb-for-payment li:after {
+    content: "";
+    position: absolute;
+    top: -32%;
+    left: 102%;
+    display: block;
+    z-index: 1;
+    border-left: 1.2em solid white;
+    border-top: $height_for_bc/1.2 solid transparent;
+    border-bottom: $height_for_bc/1.2 solid transparent;
+}
+
+.breadcrumb-for-payment {
+
+    //パンくずリストのカラー
+    $bc_color1: rgb(223, 191, 111);
+    $bc_color2: rgb(203, 171, 91);
+    $bc_color3: rgb(183, 151, 71);
+    $bc_color4: rgb(163, 131, 51);
+    $bc_color5: rgb(143, 111, 31);
+    $bc_color_pick: rgb(216, 92, 92);
+
+
+    //1つめのブロックのカラー
+    li:nth-child(1) {
+        background: $bc_color1;
+    }
+    li:nth-child(1):before {
+        border-left: 1.2em solid $bc_color1;
+    }
+
+    //2つめのブロックのカラー
+    li:nth-child(2) {
+        background: $bc_color2;
+    }
+    li:nth-child(2):before {
+        border-left: 1.2em solid $bc_color2;
+    }
+
+    //3つめのブロックのカラー
+    li:nth-child(3) {
+        background: $bc_color3;
+    }
+    li:nth-child(3):before {
+        border-left: 1.2em solid $bc_color3;
+    }
+
+    //4つめのブロックのカラー
+    li:nth-child(4) {
+        background: $bc_color4;
+    }
+    li:nth-child(4):before {
+        border-left: 1.2em solid $bc_color4;
+    }
+
+    //5つめのブロックのカラー
+    li:nth-child(5) {
+        background: $bc_color5;
+    }
+    
+    //pick中のブロックのカラー
+    li:nth-child(2) {
+        background: $bc_color_pick;
+        color: black;
+    }
+    li:nth-child(2):before {
+        border-left: 1.2em solid $bc_color_pick;
+    }
+}
+
+
+//======================[cart_items]=============================
+
+//---------------[合計金額]-------------------
+
+.cart-items-wrapper .price-box .price-record {
+    display: flex;
+    border-top: 2px solid rgb(143, 111, 31);
+    border-bottom: 4px solid rgb(143, 111, 31);
+    text-align: right;
+
+    .title-part {
+        width: 80%;
+        padding: 0.4em 1em;
+        background: rgb(57, 104, 143);
+        color: white;
+    }
+
+    .price-part {
+        width: 20%;
+        padding: 0.4em 1em;
+    }
+}
+
+//-----------------[ボタン]-----------------
+
+.cart-btn-wrapper {
+    margin: 4em auto;
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+
+    .btn {
+        position: relative;
+        display: inline-block;
+        font-weight: bold;
+        padding: 0.25em 0.5em;
+        text-decoration: none;
+        border-bottom: solid 4px rgb(143, 111, 31);
+        color: rgb(57, 104, 143);
+        transition: .4s;
+      }
+
+      .still-shop {
+        border-right: solid 4px rgb(143, 111, 31);
+      }
+
+      .still-shop:hover {
+        padding-left: 0.1em;
+        padding-right: 0.9em;
+      }
+
+      .go-payment {
+        border-left: solid 4px rgb(143, 111, 31);
+      }
+      
+      .go-payment:hover {
+        padding-left: 0.9em;
+        padding-right: 0.1em;
+      }
+}
+    

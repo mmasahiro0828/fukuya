@@ -1,0 +1,63 @@
+.container
+
+    .main-title-for-payment
+        h1.logo Fukuya.
+
+    .breadcrumb-for-payment-wrapper
+        ul.breadcrumb-for-payment
+            li 
+                p カート
+            li
+                p 
+                    | お客様情報<br>入力
+            li
+                p 決済方法
+            li
+                p 確認
+            li
+                p 完了
+
+    .payment-box
+        p.title 決済方法
+        .main-box
+            .form-check 
+                    input.form-check-input.checked type="radio" name="radio2" id="radio2a"
+                    label.form-check-label for="radio2a" クレジットカード
+
+            .card-info-input-part
+                .inner
+                    p カード情報入力、アコーディオン
+
+            .form-check 
+                    input.form-check-input.checked type="radio" name="radio2" id="radio2b"
+                    label.form-check-label for="radio2b" 代引き
+            
+            p.attention ※ 代引き手数料340円がかかります。
+
+    .shipping-box
+        p.title 配送希望日
+        .main-box
+            .form-group
+                    label for="select1a" 希望日を選択
+                    select.form-control id="select1a"
+                        option 指定なし
+                        option 12月12日
+                        option 12月13日
+                        option 12月14日
+            .form-group
+                    label for="select1b" 希望時間を選択
+                    select.form-control id="select1b"
+                        option 午前中
+                        option 14時〜16時
+                        option 16時〜18時
+                        option 18時〜20時
+
+    .coupon-box
+        p.title クーポン
+        .main-box
+            .form-group
+                    .label クーポンコードをお持ちの方はこちらに入力してください
+                    .input.form-control
+
+    .go-next-button                    
+        button.btn.btn-sm.blue-btn 確認画面へ進む

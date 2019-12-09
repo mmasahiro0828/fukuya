@@ -5,6 +5,7 @@
 @import "bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Sacramento&display=swap');
 
+$gold_gradation: linear-gradient(135deg, rgba(229,193,103,1) 0%,rgba(229,212,169,1) 44%,rgba(200,154,16,1) 100%);
 
 .container {
     font-size: 15px;
@@ -63,7 +64,7 @@ p {
 //=========================[navigation_bar]===============================
 
 .navi-bar {
-    background: linear-gradient(135deg, rgba(229,193,103,1) 0%,rgba(229,212,169,1) 44%,rgba(200,154,16,1) 100%); //color-pattern 1
+    background: $gold_gradation;
     height: 2.2em;
 }
 
@@ -90,7 +91,7 @@ p {
     font-family: 'Sacramento', cursive;
     font-size: 1.4rem;
     font-weight: bold;
-    color: navy;
+    color: rgb(57, 104, 143);
 }
 
 .only-guest {
@@ -137,28 +138,63 @@ p {
     }
 }
 
+.blue-btn {
+    border-radius: 5px;
+    border: 1.2px solid rgb(57, 104, 143);
+    color: rgb(57, 104, 143);
+    margin: 0 auto 1em auto;
+    transition: .4s;
+}
+
+.blue-btn:hover {
+    background: rgb(57, 104, 143);
+    color: white;
+}
+
+.dark-btn {
+    border-radius: 5px;
+    border: 1.2px solid rgb(3, 15, 26);
+    color: rgb(3, 15, 26);
+    margin: 0 auto 1em auto;
+    transition: .4s;
+}
+
+.dark-btn:hover {
+    background: rgb(3, 15, 26);
+    color: white;
+}
+
+
 //====================[HOME]=========================================
 
 @import "home";
-
-
 
 //====================[ITEMS]=========================================
 
 @import "items";
 
-
 //====================[ITEM_COLORS]===================================
 
 @import "item_colors";
-
 
 //====================[ITEM_COLORS]===================================
 
 @import "topics";
 
+//====================[CART用]===================================
+
+@import "cart_items";
+
+//====================[購入時、情報入力画面]===================================
+
+@import "sales";
+
+//====================[USERS]===========================================
+
+@import "users";
 
 //====================footer===========================================
+
 
 footer {
     height: 6em;

@@ -1,0 +1,38 @@
+.container
+    .main-title-for-payment
+        h1.logo Fukuya.
+
+    .breadcrumb-for-payment-wrapper
+        ul.breadcrumb-for-payment
+            li 
+                p カート
+            li
+                p 
+                    | お客様情報<br>入力
+            li
+                p 決済方法
+            li
+                p 確認
+            li
+                p 完了
+
+    .cart-items-wrapper
+        p
+            span.title-with-underline YOUR CART ▼
+        
+        = render partial: "item_colors/item_cards_c", locals: { repeat_number: 2}
+
+        .price-box
+            .price-record
+                .title-part 商品合計
+                .price-part 24,000
+
+    .cart-btn-wrapper
+        .btn.still-shop 買い物を続ける ◀︎
+        .btn.go-payment ▶︎ レジへ進む
+
+                
+
+        
+
+        
