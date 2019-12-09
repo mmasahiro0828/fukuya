@@ -64,3 +64,62 @@
         min-width: 30%;
     }
 }
+
+//-----------------[item_cards_c]---------------------
+
+.cart-items-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.item-card-c {
+    display: flex;
+    position: relative;
+    background: rgb(223, 191, 111);
+    border-top: 2px solid rgb(143, 111, 31);
+}
+
+.item-card-c .image-part {
+    width: 32%;
+    position: relative;
+    
+    img {
+        display: block;
+        width: 90%;
+        margin: 1em auto;
+    }
+}
+
+.info-part {
+    height: auto;
+    width: 68%;
+}
+
+.info-part .info-record {
+    display: flex;
+    height: (100% / 6);
+    box-sizing: border-box;
+    padding-top: 0.3em;
+    
+    .title {
+        width: 22%;
+        text-align: right;
+    }
+
+    .value {
+        width: 78%;
+        padding-left: 1em;
+    }
+}
+
+.delete-btn {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    transform: translateX(-100%);
+    background: rgba(0,0,0,0.4);
+    width: 1.8em;
+    height: 1.8em;
+    line-height: 1.8em;
+    text-align: center;
+}
