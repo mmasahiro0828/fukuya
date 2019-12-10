@@ -19,20 +19,28 @@
 //====================================[情報確認画面]========================================
 
 
-.for-confirmation3 {
+.info-input-box.for-confirmation3 {
     font-size: 1em;
     margin-top: 2em;
     
-    .info-record .input-part {
-        display: flex;
-        align-items: center;
-
-        p {
-            margin-right: auto;
-        }
-
-        button {
+    .main-box .info-record {   
+    
+        .input-part {
+            display: flex;
+            align-items: center;
             margin: 0;
+
+            p {
+                width: 80%;
+                max-width: 80%;
+                margin: 1em 2em;
+                padding: 0;
+            }
+
+            button {
+                width: 20%;
+                margin: 0;
+            }
         }
     }
 

@@ -9,6 +9,7 @@ $gold_gradation: linear-gradient(135deg, rgba(229,193,103,1) 0%,rgba(229,212,169
 
 .container {
     font-size: 15px;
+    word-break: break-all;
 }
 
 .container h1 {
@@ -30,6 +31,14 @@ $gold_gradation: linear-gradient(135deg, rgba(229,193,103,1) 0%,rgba(229,212,169
 
     .container h2 {
         font-size: 15px;
+    }
+
+    .smaller-font {
+        font-size: 8px;
+    }
+
+    .smaller-font-more {
+        font-size: 1.8em;
     }
 
 }
