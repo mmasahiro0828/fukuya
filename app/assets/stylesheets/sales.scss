@@ -64,7 +64,7 @@
     
     .info-record {
         display: flex;
-        border-bottom: 1px solid rgb(143, 111, 31);
+        border-bottom: 2px solid rgb(143, 111, 31);
 
         .label-part {
             width: 20%;
@@ -96,7 +96,7 @@
 
     .for-resistration-part {
         background: white;
-        border: 1px solid rgb(223, 191, 111);
+        border: 1.5px solid rgb(223, 191, 111);
 
         .inner {
             width: 80%;
@@ -139,7 +139,7 @@
 
     .card-info-input-part {
         background: white;
-        border: 1px solid rgb(223, 191, 111);
+        border: 1.5px solid rgb(223, 191, 111);
 
         .inner {
             width: 80%;
@@ -247,7 +247,7 @@
 
 .cart-item-box .price-box .price-record {
     display: flex;
-    border-bottom: 1px solid rgb(143, 111, 31);
+    border-bottom: 2px solid rgb(143, 111, 31);
     text-align: right;
 
     .title-part {
