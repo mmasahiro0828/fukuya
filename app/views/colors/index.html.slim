@@ -3,7 +3,7 @@
     - if flash.notice.present?
       .alert.alert-success =flash.notice
 
-    h1.mt-2.mb-2 カラー(品番単位)一覧
+    h1.mt-2.mb-2 カラー一覧
 
     table.table.table-sm.table-hover.smaller-font-for-table.mb-5 style = " width: 400px"
         thead.thead-dark
@@ -30,3 +30,4 @@
 
         li.pt-2 = link_to colors_delete_all_path, data: { confirm: "データをリセットすると、関連する商品情報も全てリセットします。よろしいですか？"} do
             button.btn.btn-sm.dark-btn カラーマップをリセットする
+

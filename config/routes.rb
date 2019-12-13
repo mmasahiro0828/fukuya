@@ -32,7 +32,12 @@ Rails.application.routes.draw do
   get "colors/delete_all", to: "colors#destroy_all"
   resources :colors
 
+  get "sizes/create_size_map", to: "sizes#create_size_map"
+  get "sizes/delete_all", to: "sizes#destroy_all"
   resources :sizes
+
+  get "measuring_items/create_measuring_items_map", to: "measuring_items#create_measuring_items_map"
+  get "measuring_items/delete_all", to: "measuring_items#destroy_all"
   resources :measuring_items
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
