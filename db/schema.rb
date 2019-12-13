@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_172948) do
+ActiveRecord::Schema.define(version: 2019_12_13_094733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,13 +50,21 @@ ActiveRecord::Schema.define(version: 2019_11_14_172948) do
     t.index ["user_id"], name: "index_cart_items_on_user_id"
   end
 
+  create_table "colors", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "item_colors", id: :string, force: :cascade do |t|
     t.bigint "item_id"
     t.string "color_name", null: false
-    t.string "color_code", null: false
     t.boolean "public", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "color_id"
+    t.index ["color_id"], name: "index_item_colors_on_color_id"
     t.index ["item_id"], name: "index_item_colors_on_item_id"
   end
 
@@ -78,7 +86,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_172948) do
     t.string "category", null: false
     t.integer "price", null: false
     t.integer "wholesale_price"
-    t.integer "sele_price"
+    t.integer "sale_price"
     t.boolean "public", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -213,6 +221,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_172948) do
   add_foreign_key "brand_representatives", "brands"
   add_foreign_key "cart_items", "skus"
   add_foreign_key "cart_items", "users"
+  add_foreign_key "item_colors", "colors"
   add_foreign_key "item_colors", "items"
   add_foreign_key "item_images", "item_colors"
   add_foreign_key "item_images", "items"
