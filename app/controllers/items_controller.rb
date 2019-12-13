@@ -120,7 +120,7 @@ class ItemsController < ApplicationController
             category: item_category,
             price: rand_price,
             wholesale_price: (rand_price * selected_brand.rate_of_retail_price) / 100,
-            sele_price: rand_price,
+            sale_price: rand_price,
             public: "false"
         )
 
