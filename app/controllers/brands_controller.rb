@@ -31,7 +31,7 @@ class BrandsController < ApplicationController
         redirect_to brands_url, notice: "ブランドデータをリセットしました。"
     end
 
-    private
+    #テスト用メソッド↓
 
     def create_sample_data
         if Brand.all.empty?

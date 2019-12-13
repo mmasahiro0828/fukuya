@@ -1,0 +1,59 @@
+.container
+
+    - if flash.notice.present?
+      .alert.alert-success =flash.notice
+
+    h1.mt-2.mb-2 アイテム(品番単位)一覧
+
+    table.table.table-sm.table-hover.smaller-font-for-table.mb-5
+        thead.thead-dark
+            tr
+                th style="width: 5%" id
+                th アイテム名
+                th ブランドid
+                th ブランド名
+                th 説明①
+                th 説明②
+                th カテゴリ
+                th 上代
+                th 下代
+                th セール価格
+                th 公開
+                th
+
+            - unless @items.empty?
+                - @items.each do |item|
+
+                    tr
+                        td =item.id
+                        td =item.name
+                        td =item.brand_id
+                        td =item.brand.name
+                        td =item.description_1
+                        td =item.description_2
+                        td =item.category
+                        td =item.price 
+                        td =item.wholesale_price
+                        td =item.price
+                        td =item.public
+                        td
+                            = link_to item, method: :delete do
+                                button.btn.btn-sm.dark-btn 削除
+
+            - else
+                tr
+                    td colspan="13" アイテムが登録されていません。
+
+    ul
+        li.pt-2 = link_to new_item_path do
+            button.btn.btn-sm.blue-btn サンプル品番を登録する
+            a.ml-2 ※ブランドをランダムに選択し、そのブランドに対して登録
+
+        li.pt-2
+            = link_to items_create_10_data_for_each_brand_path do
+                button.btn.btn-sm.blue-btn 全ブランドに対して、サンプル品番10型を登録する
+
+        li.pt-2 = link_to items_delete_all_path, data: { confirm: "データをリセットすると、関連する商品情報も全てリセットします。よろしいですか？"} do
+            button.btn.btn-sm.dark-btn itemデータをリセットする
+
+    

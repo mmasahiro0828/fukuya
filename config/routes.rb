@@ -15,11 +15,17 @@ Rails.application.routes.draw do
   get "/users/purchase_history", to: "users#purchase_history"
   get "/items/new_test", to: "items#new_test"
   get "/items/new_test2", to: "items#new_test2"
+  get "/home/back_office", to: "home#back_office_top"
+
 
   #テスト用2↓
   get "brands/create_10_data", to: "brands#create_10_data"
   get "brands/delete_all", to: "brands#destroy_all"
   resources :brands
+
+  get "items/create_10_data_for_each_brand", to: "items#create_10_data_for_each_brand"
+  get "items/delete_all", to: "items#destroy_all"
+  resources :items
   
   
 
