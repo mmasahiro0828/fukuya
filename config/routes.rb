@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'colors/index'
   root to: 'home#top'
 
   #テスト用↓
@@ -26,9 +27,13 @@ Rails.application.routes.draw do
   get "items/create_10_data_for_each_brand", to: "items#create_10_data_for_each_brand"
   get "items/delete_all", to: "items#destroy_all"
   resources :items
-  
-  
 
+  get "colors/create_color_map", to: "colors#create_color_map"
+  get "colors/delete_all", to: "colors#destroy_all"
+  resources :colors
+
+  resources :sizes
+  resources :measuring_items
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

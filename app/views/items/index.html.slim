@@ -21,7 +21,7 @@
                 th 公開
                 th
 
-            - unless @items.empty?
+            - if @items.present?
                 - @items.each do |item|
 
                     tr
