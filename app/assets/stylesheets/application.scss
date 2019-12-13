@@ -20,6 +20,10 @@ $gold_gradation: linear-gradient(135deg, rgba(229,193,103,1) 0%,rgba(229,212,169
     font-size: 20px;
 }
 
+.smaller-font-for-table {
+    font-size: 0.6em;
+}
+
 @media screen and (max-width: 768px) {
     .container {
         font-size: 13.5px;

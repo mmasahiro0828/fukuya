@@ -3,4 +3,5 @@ class ItemColor < ApplicationRecord
   has_many :skus
   has_many :likes
   has_many :item_images
+  has_many :colors
 end
