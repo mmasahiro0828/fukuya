@@ -2,7 +2,7 @@ class SkusController < ApplicationController
     
     
     def register_sizes_to_each_sample_item
-        items_without_sizes = Item.where(number_of_sizes: 0)
+        items_without_sizes = Item.where(number_of_sizes: 0).order(:id)
         
         items_without_sizes.each do |item|
 
@@ -42,10 +42,27 @@ class SkusController < ApplicationController
                         item_color_id: i_c.id,
                         size_name: size.name,
                         size_id: size.id,
-                        public: "false"
+                        public: "true"
                     )
-
                     sku.save
+                    
+                    if Stock.all.empty?
+                        last_stock_id = 0
+                    else
+                        last_stock_id = Stock.last.id
+                    end
+
+                    quantity = rand(1..3)
+
+                    stock = Stock.new(
+                        id: last_stock_id + 1,
+                        sku_id: sku.id,
+                        all_quantity: quantity,
+                        quantity_in_cart: 0,
+                        quantity_on_display: quantity,
+                        quantity_in_by: 0
+                    )
+                    stock.save
 
                     if register_size_details
 
@@ -67,13 +84,15 @@ class SkusController < ApplicationController
                             
                             measuring_value.save
                         end
+
                     end
-                    
 
                 end
+
+                i_c.update(public: "true")
             end
 
-            item.update(number_of_sizes: register_sizes.length)
+            item.update(number_of_sizes: register_sizes.length, public: "true")
         end
 
         redirect_to items_url, notice: "各アイテムにサイズを登録しました。"
