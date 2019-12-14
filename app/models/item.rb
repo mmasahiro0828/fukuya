@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :brand
-  has_many :item_colors
+  has_many :item_colors, dependent: :destroy
     has_many :item_images, through: :item_colors
     has_many :skus, through: :item_colors
       has_many :stocks, through: :skus

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_13_094733) do
+ActiveRecord::Schema.define(version: 2019_12_13_161150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,8 @@ ActiveRecord::Schema.define(version: 2019_12_13_094733) do
     t.boolean "public", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "number_of_colors", default: 0
+    t.integer "number_of_sizes", default: 0
     t.index ["brand_id"], name: "index_items_on_brand_id"
   end
 

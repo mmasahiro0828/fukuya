@@ -40,5 +40,13 @@ Rails.application.routes.draw do
   get "measuring_items/delete_all", to: "measuring_items#destroy_all"
   resources :measuring_items
 
+  get "item_colors/register_colors_to_each_sample_item", to: "item_colors#register_colors_to_each_sample_item"
+  get "item_colors/delete_all", to: "item_colors#destroy_all"
+
+  get "skus/register_sizes_to_each_sample_item", to: "skus#register_sizes_to_each_sample_item"
+  get "skus/delete_all", to: "skus#destroy_all"
+  
+  resources :stocks
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

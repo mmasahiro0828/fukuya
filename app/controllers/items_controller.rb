@@ -18,18 +18,14 @@ class ItemsController < ApplicationController
 
 
     def index
-        @items = Item.all
+        @items = Item.all.order(:id)
     end
 
 
 
     def new
-
-
-        brand = Brand.order("RANDOM()").first
-
+        brand = Brand.all.sample
         create_sample_data(brand)
-
         redirect_to items_url, notice: "「#{@sample_item.name}」を作成しました。"
     end
 
