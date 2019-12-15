@@ -32,7 +32,7 @@ class SkusController < ApplicationController
                 register_size_details = nil
             end
 
-            register_sizes = Size.where(id: register_sizes_id)
+            register_sizes = Size.where(id: register_sizes_id).order(:id)
 
             item.item_colors.each do |i_c|
                 register_sizes.each_with_index do |size, index|

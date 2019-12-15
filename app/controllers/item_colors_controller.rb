@@ -15,9 +15,7 @@ class ItemColorsController < ApplicationController
         items_without_colors.each do |item|
             
             number_of_set_colors = rand(1..5)
-            set_colors = Color.all.sample(number_of_set_colors)
-
-            set_colors.order(:id)
+            set_colors = Color.all.sample(number_of_set_colors).sort_by(&:id)
 
             set_colors.each do |color|
                 item_color = ItemColor.new(
