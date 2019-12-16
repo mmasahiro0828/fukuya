@@ -48,5 +48,14 @@ Rails.application.routes.draw do
   
   resources :stocks
 
+  get "topics/create_topic_with_random_items", to: "topics#create_topic_with_random_items"
+  get "topics/delete_all", to: "topics#destroy_all"
+  resources :topics
+
+  get "users/create_10_sample_users", to: "users#create_10_sample_users"
+  get "users/delete_all", to: "users#destroy_all"
+  resources :users
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

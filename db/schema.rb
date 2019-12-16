@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_13_161150) do
+ActiveRecord::Schema.define(version: 2019_12_16_091903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -197,7 +197,7 @@ ActiveRecord::Schema.define(version: 2019_12_13_161150) do
 
   create_table "topics", force: :cascade do |t|
     t.string "name", default: "未定"
-    t.string "type", null: false
+    t.string "category", null: false
     t.string "description"
     t.string "sum_image_name", default: "no_image.jpg"
     t.string "main_image_name", default: "no_image.jpg"
@@ -213,7 +213,7 @@ ActiveRecord::Schema.define(version: 2019_12_13_161150) do
     t.integer "postal_code"
     t.string "adress"
     t.string "cond_n_room"
-    t.integer "phonenumber", null: false
+    t.string "phonenumber", null: false
     t.string "password_digest", null: false
     t.boolean "mail_magazine", default: true
     t.datetime "created_at", null: false
