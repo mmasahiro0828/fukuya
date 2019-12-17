@@ -14,8 +14,131 @@
 }
 
 
+//===============================[item_cards]=======================================
 
-//======================[item_pictures]==================================
+//-------------------[item_cards_a]-----------------------
+
+.item-card-a {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.item-card-a img {
+    width: 100%;
+    height: auto;
+}
+
+.item-card-a p {
+    padding-bottom: 0.2em;
+    font-size: 0.9em;
+}
+
+.item-card-a .price {
+    font-weight: lighter;
+    font-size: 0.75em;
+}
+
+.item-card-a:last-child {
+    margin-bottom: 6em
+}
+
+
+//-----------------[item_cards_b]---------------------
+
+.item-card-b {
+    width: 24%;
+    min-width: 24%;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+
+.item-card-b img { 
+    width: 80%;
+    height: auto; 
+}
+
+.item-card-b p {
+    padding-bottom: 0.2em;
+    font-size: 0.8em;
+}
+
+.item-card-b .price {
+    font-weight: lighter;
+    font-size: 0.65em;
+}
+
+@media screen and (max-width: 768px) {
+    .item-card-b {
+        width: 30%;
+        min-width: 30%;
+    }
+}
+
+//-----------------[item_cards_c]---------------------
+
+.cart-items-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.item-card-c {
+    display: flex;
+    position: relative;
+    background: rgb(223, 191, 111);
+    border-top: 2px solid rgb(143, 111, 31);
+}
+
+.item-card-c .image-part {
+    width: 32%;
+    position: relative;
+    
+    img {
+        display: block;
+        width: 90%;
+        margin: 1em auto;
+    }
+}
+
+.info-part {
+    height: auto;
+    width: 68%;
+}
+
+.info-part .info-record {
+    display: flex;
+    height: (100% / 6);
+    box-sizing: border-box;
+    padding-top: 0.3em;
+    
+    .title {
+        width: 22%;
+        text-align: right;
+    }
+
+    .value {
+        width: 78%;
+        padding-left: 1em;
+    }
+}
+
+.delete-btn {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    transform: translateX(-100%);
+    background: rgba(0,0,0,0.4);
+    width: 1.8em;
+    height: 1.8em;
+    line-height: 1.8em;
+    text-align: center;
+}
+
+
+
+//======================[item_page]==================================
+
+//--------------------画像パート--------------------
 
 .item-images-wrapper {
     width: 100%;
@@ -96,8 +219,6 @@
 }
 
 
-//=============================[item_details]================================
-
 //--------------------商品名、価格--------------------
 .item-name-wrapper {
     text-align: center;
@@ -119,7 +240,7 @@
 
 .color-blocks {
     display:flex;
-    justify-content: flex-start;
+    justify-content: center;
     width: 100%;
     flex-wrap: wrap;
 }
@@ -210,6 +331,33 @@ tbody td:first-child {
     display: flex;
     flex-flow: row;
     overflow: scroll;
+}
+
+//-------------------[topics_card_b]---------------------------
+
+.topics-card-b {
+    width: 25%;
+    min-width: 25%;
+    text-align: center;
+    margin-right: 2em;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+
+.topics-card-b img { 
+    width: 80%;
+    height: auto; 
+}
+
+ .topics-card-b .topics-name {
+    padding-bottom: 0.2em;
+    font-size: 0.8em;
+}
+
+ .topics-card-b .topics-date {
+    font-weight: lighter;
+    font-size: 0.65em;
 }
 
 

@@ -1,0 +1,30 @@
+.container
+
+    - if flash.notice.present?
+      .alert.alert-success =flash.notice
+
+    h1.mt-2.mb-2 採寸項目一覧
+
+    table.table.table-sm.table-hover.smaller-font-for-table.mb-5 style = " width: 300px"
+        thead.thead-dark
+            tr
+                th id
+                th 採寸項目名
+                
+            - if @measuring_items.present?
+                - @measuring_items.each do |mi|
+
+                    tr
+                        td =mi.id
+                        td =mi.name
+                        
+            - else
+                tr
+                    td colspan="2" 採寸項目が登録されていません。
+
+    ul
+        li.pt-2 = link_to admin_measuring_items_create_measuring_items_map_path do
+            button.btn.btn-sm.blue-btn デフォルトの採寸項目マップを登録する
+
+        li.pt-2 = link_to admin_measuring_items_delete_all_path, data: { confirm: "データをリセットすると、関連する商品情報も全てリセットします。よろしいですか？"} do
+            button.btn.btn-sm.dark-btn 採寸項目マップをリセットする

@@ -1,0 +1,52 @@
+.container
+
+    - if flash.notice.present?
+      .alert.alert-success =flash.notice
+
+    h1.mt-2.mb-2 トピックス一覧
+
+    table.table.table-sm.table-hover.smaller-font-for-table.mb-5
+        thead.thead-dark
+            tr
+                th style="width: 5%" id
+                th トピックス名
+                th タイプ
+                th 説明
+                th 登録アイテム数
+                th サムネイル画像
+                th トピックスメイン画像
+                th 公開
+
+            - if @topics.present?
+                - @topics.each do |topic|
+
+                    tr
+                        td =topic.id
+                        td =topic.name
+                        td =topic.category
+                        td =topic.description
+                        td
+                            -unless topic.topic_items.present?
+                                span style="color: red" アイテム登録なし
+                            -else
+                                =topic.topic_items.length
+                                
+                        td =topic.sum_image_name
+                        td =topic.main_image_name
+                        td =topic.public
+
+            - else
+                tr
+                    td colspan="8" トピックが登録されていません。
+
+    ul  
+        -unless @topics.present?
+            li.pt-2
+                = link_to admin_topics_create_topic_with_random_items_path do
+                    button.btn.btn-sm.blue-btn サンプルトピックス作成
+                    a.ml-2 ※アイテムはランダムに選択
+
+        -else
+            li.pt-2 = link_to admin_topics_delete_all_path, data: { confirm: "データをリセットすると、関連する商品情報も全てリセットします。よろしいですか？"} do
+                button.btn.btn-sm.dark-btn topicsデータをリセットする
+

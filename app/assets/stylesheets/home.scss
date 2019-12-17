@@ -122,6 +122,45 @@
     }
 }
 
+//-------------------[topics_card_a]---------------------------
+
+.topics-card-a {
+    width: 95%;
+    max-width: 150px;
+    text-align: center;
+    margin-bottom: 2em;
+    margin-left: auto;
+}
+
+@media screen and (max-width: 990px) {
+
+    .topics-card-a {
+        width: 25%;
+        min-width: 25%;
+        margin-right: 2em;
+        margin-left: 0;
+    }
+}
+
+.topics-card-a img { 
+    width: 80%;
+    height: auto; 
+}
+
+.topics-card-a .topics-name {
+    padding-bottom: 0.2em;
+    font-size: 0.8em;
+}
+
+.topics-card-a .topics-date {
+    font-weight: lighter;
+    font-size: 0.65em;
+}
+
+.topics-card-a:last-child {
+    margin-bottom: 4em
+}
+
 
 //=========================[item_index_for_top]=====================================
 
