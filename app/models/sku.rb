@@ -4,5 +4,7 @@ class Sku < ApplicationRecord
   belongs_to :size
   has_many :sales
   has_many :cart_items
-  has_one :stock
+  has_many :measuring_values, dependent: :destroy
+  has_one :stock, dependent: :destroy
+
 end

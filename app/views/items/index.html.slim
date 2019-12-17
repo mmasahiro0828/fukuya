@@ -12,6 +12,10 @@
                 th アイテム名
                 th ブランドid
                 th ブランド名
+                th カラー数
+                th カラー展開
+                th サイズ数
+                th サイズ展開
                 th 説明①
                 th 説明②
                 th カテゴリ
@@ -21,7 +25,7 @@
                 th 公開
                 th
 
-            - unless @items.empty?
+            - if @items.present?
                 - @items.each do |item|
 
                     tr
@@ -29,6 +33,26 @@
                         td =item.name
                         td =item.brand_id
                         td =item.brand.name
+                        td =item.number_of_colors
+                        td
+                            -if item.number_of_colors == 0
+                                span style="color: red" カラー登録なし
+                            -else
+                                -item.item_colors.each_with_index do |ic, i|
+                                    -unless i == item.number_of_colors - 1
+                                        ="#{ic.color.code} / "
+                                    -else
+                                        =ic.color.code
+                        td =item.number_of_sizes
+                        td
+                            -if item.number_of_sizes == 0
+                                span style="color: red" サイズ登録なし
+                            -else
+                                -item.item_colors.first.skus.each_with_index do |sku, i|
+                                    -unless i == item.number_of_sizes - 1
+                                        ="#{sku.size.name} / "
+                                    -else
+                                        =sku.size.name
                         td =item.description_1
                         td =item.description_2
                         td =item.category
@@ -42,7 +66,7 @@
 
             - else
                 tr
-                    td colspan="13" アイテムが登録されていません。
+                    td colspan="17" アイテムが登録されていません。
 
     ul
         li.pt-2 = link_to new_item_path do
@@ -56,4 +80,28 @@
         li.pt-2 = link_to items_delete_all_path, data: { confirm: "データをリセットすると、関連する商品情報も全てリセットします。よろしいですか？"} do
             button.btn.btn-sm.dark-btn itemデータをリセットする
 
-    
+
+
+
+    h1.mt-5.mb-2 カラー登録
+
+    ul
+        li.pt-2 = link_to item_colors_register_colors_to_each_sample_item_path do
+            button.btn.btn-sm.blue-btn 各サンプル品番にカラーを登録する
+            a.ml-2 ※カラー・カラー数はランダムに決定、すでにカラー登録済みの品番は無視
+
+        li.pt-2 = link_to item_colors_delete_all_path, data: { confirm: "データをリセットすると、関連する商品情報も全てリセットします。よろしいですか？"} do
+            button.btn.btn-sm.dark-btn 各アイテムの登録カラーをリセットする
+
+
+
+
+    h1.mt-5.mb-2 サイズ登録
+
+    ul
+        li.pt-2 = link_to skus_register_sizes_to_each_sample_item_path do
+            button.btn.btn-sm.blue-btn 各サンプル品番にサイズを登録する
+            a.ml-2 ※すでにサイズ登録済みの品番は無視
+
+        li.pt-2 = link_to skus_delete_all_path, data: { confirm: "データをリセットすると、関連する商品情報も全てリセットします。よろしいですか？"} do
+            button.btn.btn-sm.dark-btn 各アイテムの登録サイズをリセットする

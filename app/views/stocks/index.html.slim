@@ -1,0 +1,45 @@
+.container
+
+    - if flash.notice.present?
+      .alert.alert-success =flash.notice
+
+    h1.mt-2.mb-2 在庫一覧
+
+    table.table.table-sm.table-hover.smaller-font-for-table.mb-5
+        thead.thead-dark
+            tr
+                th id
+                th アイテム名
+                th ブランド名
+                th カラー
+                th サイズ
+                th 公開
+                th style="color:pink" 総庫数
+                th style="color:pink" 表示在庫数
+                th
+                th
+                
+
+            - if @skus.present?
+                - @skus.each do |sku|
+
+                    tr
+                        td =sku.id
+                        td =sku.item.name
+                        td =sku.item.brand.name
+                        td =sku.item_color.color_name
+                        td =sku.size_name
+                        td =sku.public
+                        td style="background:pink" =sku.stock.all_quantity
+                        td style="background:pink" =sku.stock.quantity_on_display
+                        td
+                            =link_to stock_path(sku.stock, add_num: 1), method: :put do
+                                '＋
+                        td
+                            -unless sku.stock.all_quantity == 0
+                                =link_to stock_path(sku.stock, add_num: -1), method: :put do
+                                    '−
+
+            - else
+                tr
+                    td colspan="11" SKUが登録されていません。

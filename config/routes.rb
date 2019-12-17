@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'colors/index'
   root to: 'home#top'
 
   #テスト用↓
@@ -26,8 +27,34 @@ Rails.application.routes.draw do
   get "items/create_10_data_for_each_brand", to: "items#create_10_data_for_each_brand"
   get "items/delete_all", to: "items#destroy_all"
   resources :items
+
+  get "colors/create_color_map", to: "colors#create_color_map"
+  get "colors/delete_all", to: "colors#destroy_all"
+  resources :colors
+
+  get "sizes/create_size_map", to: "sizes#create_size_map"
+  get "sizes/delete_all", to: "sizes#destroy_all"
+  resources :sizes
+
+  get "measuring_items/create_measuring_items_map", to: "measuring_items#create_measuring_items_map"
+  get "measuring_items/delete_all", to: "measuring_items#destroy_all"
+  resources :measuring_items
+
+  get "item_colors/register_colors_to_each_sample_item", to: "item_colors#register_colors_to_each_sample_item"
+  get "item_colors/delete_all", to: "item_colors#destroy_all"
+
+  get "skus/register_sizes_to_each_sample_item", to: "skus#register_sizes_to_each_sample_item"
+  get "skus/delete_all", to: "skus#destroy_all"
   
-  
+  resources :stocks
+
+  get "topics/create_topic_with_random_items", to: "topics#create_topic_with_random_items"
+  get "topics/delete_all", to: "topics#destroy_all"
+  resources :topics
+
+  get "users/create_10_sample_users", to: "users#create_10_sample_users"
+  get "users/delete_all", to: "users#destroy_all"
+  resources :users
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
