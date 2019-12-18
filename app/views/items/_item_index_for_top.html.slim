@@ -1,0 +1,19 @@
+
+p.type-of-cards
+    span.title-with-underline PICK UP ▼
+.container.pick-up-items
+    .row
+        -@pickup_items.each do |item|
+            = render partial: "items/item_cards_a", locals: {item: item, representative_item_color: item.item_colors.order(:color_id).first}
+        
+            
+p.type-of-cards
+    span.title-with-underline NEW ARRIVALS ▼
+.container.new-arrival-items
+    .row
+        -@new_arrival_items.each do |item|
+            = render partial: "items/item_cards_a", locals: {item: item, representative_item_color: item.item_colors.order(:color_id).first}
+            
+p.type-of-cards.appear990
+    span.title-with-underline ALL ITEMS ▼
+    =link_to "全アイテムを表示する", items_path(search_type: "ALL", searched_by: "ALL")

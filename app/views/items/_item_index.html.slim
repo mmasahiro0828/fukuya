@@ -1,0 +1,14 @@
+
+
+p.type-of-cards
+    span.title-with-underline
+        -if @group_title == "ALL"
+            'ALL ITEMS ▼
+        -else
+            =link_to "ALL ITEMS", items_path(searched_by: "ALL")
+            =" > #{@group_title} ▼"
+
+.container.pick-up-items
+    .row
+        -@group_items.each do |item|
+            = render partial: "items/item_cards_a", locals: {item: item, representative_item_color: item.item_colors.order(:color_id).first}
