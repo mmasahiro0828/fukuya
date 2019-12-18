@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'colors/index'
+  
   root to: 'home#top'
 
   #テスト用↓

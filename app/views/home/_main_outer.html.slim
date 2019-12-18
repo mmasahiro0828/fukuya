@@ -11,16 +11,16 @@
                     
                 ul.categories
                     span.title-with-underline カテゴリー一覧 ▼
-                    li.category アウター
-                    li.category トップス
-                    li.category ボトムス
-                    li.category シューズ
-                    li.category バッグ
-                    li.category アクセサリー
-                    li.category OTHERS
+                    li.category =link_to "アウター", items_path(searched_by: "アウター")
+                    li.category =link_to "トップス", items_path(searched_by: "トップス")
+                    li.category =link_to "ボトムス", items_path(searched_by: "ボトムス")
+                    li.category =link_to "シューズ", items_path(searched_by: "シューズ")
+                    li.category =link_to "バッグ", items_path(searched_by: "バッグ")
+                    li.category =link_to "アクセサリー", items_path(searched_by: "アクセサリー")
+                    li.category =link_to "その他", items_path(searched_by: "その他")
                 p.all-items
                     span.title-with-underline ALL ITEMS ▼
-                    a 全アイテムを表示する
+                    =link_to "全アイテムを表示する", items_path(searched_by: "ALL")
             
             .center-wrapper.col
                 =render partial: "#{main_contents}"
