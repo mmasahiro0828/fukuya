@@ -28,19 +28,19 @@
 .color-select-wrapper
     .color-select-inner
         ul.color-blocks
-            -@colors.each do |color|
+            -@item_colors.each do |i_color|
                 li.color-block 
-                    =link_to "#{color.color_name}", item_path(color.item, color_name: color.color_name)
+                    =link_to "#{i_color.color_name}", item_path(@item, color_name: i_color.color_name)
                 
 
 .item-detail-wrapper
     p.size-patterns サイズ展開:
     a
-        -@item.item_colors.first.skus.order(:created_at).each_with_index do |sku, i|
-            -unless i == @item.number_of_sizes - 1
-                ="#{sku.size.name} / "
+        -@skus.each_with_index do |sku, i|
+            -unless i == @skus.length - 1
+                ="#{sku.size_name} / "
             -else
-                =sku.size.name
+                =sku.size_name
     .item-description
         .description-inner
             = @item.description_1
@@ -48,7 +48,7 @@
         .description-inner
             = @item.description_2
 
--if @skus.first.measuring_values.present?
+-if @skus.first.measuring_items.present?
     .size-detail-wrapper
         p サイズ詳細
         .table-wrapper
@@ -56,14 +56,14 @@
                 thead
                     tr
                         th サイズ
-                        -@measuring_item_names.each do |name|
-                            th =name
+                        -@measuring_items.each do |mi|   
+                            th =mi.name
                 tbody
                     -@skus.each do |sku|
                         tr
                             td =sku.size_name
-                            -sku.measuring_values.order(:id).each do |mv|
-                                td =mv.value
+                            -@measuring_items.each do |mi|
+                                td = @measuring_values.where(sku_id: sku.id).find_by(measuring_item_id: mi.id).value
 
 
 .stock-detail-wrapper
@@ -81,7 +81,7 @@
                         td =sku.size_name
                         td
                             -if sku.stock.quantity_on_display > 2
-                                '◯
+                                '在庫あり
                             -elsif sku.stock.quantity_on_display > 0
                                 span style="color: red" ="残り#{sku.stock.quantity_on_display}点"
                             -else
