@@ -31,10 +31,12 @@
             -@item_colors.each do |i_color|
                 -if i_color.color_name == @item_color.color_name
                     li.color-block.picked-block
-                        =i_color.color_name
+                        .inner =i_color.color_name
+                        
                 -else
-                    li.color-block 
-                        =link_to "#{i_color.color_name}", item_path(@item, color_name: i_color.color_name)
+                    li.color-block
+                        =link_to item_path(@item, color_name: i_color.color_name) do
+                            .inner =i_color.color_name
 
 .item-detail-wrapper
     p.size-patterns サイズ展開:

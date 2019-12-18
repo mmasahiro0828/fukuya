@@ -289,9 +289,12 @@
     .color-block {
         font-weight: bold;
         border: solid 3px white;
-        width: 20%;
+        width: 25%;
         background-color: $main-color1;
-        padding: 0.3em 0;
+
+        .inner {
+            padding: 0.3em 0;  
+        }
 
         a {
             color: white;
@@ -301,6 +304,7 @@
             color: $main-color2;
             translate: .3s;
         }
+        
     }
 
     .color-block.picked-block {
@@ -315,7 +319,7 @@
 
 @media screen and (max-width: 768px) {  
     .color-block {
-        width: 50%;
+        min-width: 50%;
     }
 }
 
