@@ -52,7 +52,7 @@
     font-size: 0.8em;
     
     .title {
-        background: rgb(143, 111, 31);
+        background: $main-color2;
         padding: 0.2em 0;
         color: white;
         text-align: center;
@@ -64,11 +64,11 @@
     
     .info-record {
         display: flex;
-        border-bottom: 2px solid rgb(143, 111, 31);
+        border-bottom: 2px solid $main-color2;
 
         .label-part {
             width: 20%;
-            background: rgb(223, 191, 111);
+            background: $main-color1;
             text-align: right;
             padding: 0.2em 0.5em 1em 0;
             min-height: 4em;
@@ -85,7 +85,7 @@
 
 .for-registration-box {
     max-width: 500px;
-    background: rgb(223, 191, 111);
+    background: $main-color1;
     padding: 1.5em 0;
     margin: 0 auto 12em auto;
     font-size: 0.8em;
@@ -96,7 +96,7 @@
 
     .for-resistration-part {
         background: white;
-        border: 1.5px solid rgb(223, 191, 111);
+        border: 1.5px solid $main-color1;
 
         .inner {
             width: 80%;
@@ -118,11 +118,11 @@
 
 .payment-box {
     max-width: 500px;
-    background: rgb(223, 191, 111);
+    background: $main-color1;
     margin: 5em auto 0 auto;
 
     .title {
-        background: rgb(143, 111, 31);
+        background: $main-color2;
         padding: 0.2em 0;
         color: white;
         font-size: 0.8em;
@@ -139,7 +139,7 @@
 
     .card-info-input-part {
         background: white;
-        border: 1.5px solid rgb(223, 191, 111);
+        border: 1.5px solid $main-color1;
 
         .inner {
             width: 80%;
@@ -158,11 +158,11 @@
 
 .shipping-box {
     max-width: 500px;
-    background: rgb(223, 191, 111);
+    background: $main-color1;
     margin: 5em auto 0 auto;
 
     .title {
-        background: rgb(143, 111, 31);
+        background: $main-color2;
         padding: 0.2em 0;
         color: white;
         font-size: 0.8em;
@@ -182,11 +182,11 @@
 
 .coupon-box {
     max-width: 500px;
-    background: rgb(223, 191, 111);
+    background: $main-color1;
     margin: 5em auto 0 auto;
 
     .title {
-        background: rgb(143, 111, 31);
+        background: $main-color2;
         padding: 0.2em 0;
         color: white;
         font-size: 0.8em;
@@ -231,7 +231,7 @@
     margin: 3em auto 1em auto;
     
     p.title {
-        background: rgb(143, 111, 31);
+        background: $main-color2;
         padding: 0.2em 0;
         color: white;
         text-align: center;
@@ -247,13 +247,13 @@
 
 .cart-item-box .price-box .price-record {
     display: flex;
-    border-bottom: 2px solid rgb(143, 111, 31);
+    border-bottom: 2px solid $main-color2;
     text-align: right;
 
     .title-part {
         width: 80%;
         padding: 0.4em 1em;
-        background: rgb(223, 191, 111);
+        background: $main-color1;
     }
 
     .price-part {
@@ -264,14 +264,14 @@
 }
 
 .cart-item-box .price-box .price-record:first-child {
-    border-top: 2px solid rgb(143, 111, 31);
+    border-top: 2px solid $main-color2;
 }
 
 .cart-item-box .price-box .price-record:last-child {
-    border-bottom: 4px solid rgb(143, 111, 31);
+    border-bottom: 4px solid $main-color2;
 
     .title-part {
-        background: rgb(57, 104, 143);
+        background: $main-color3;
         color: white;
     }
 }
@@ -286,7 +286,7 @@
 
     p {
         font-size: 6em;
-        color:  rgb(57, 104, 143);
+        color:  $main-color3;
         font-weight: bold;
         font-family: 'Pacifico', cursive;
     }
@@ -295,12 +295,12 @@
 
 .order-number-box {
     max-width: 500px;
-    background: rgb(223, 191, 111);
+    background: $main-color1;
     margin: 3em auto 20em auto;
     text-align: center;
 
     .title {
-        background: rgb(143, 111, 31);
+        background: $main-color2;
         padding: 0.2em 0;
         color: white;
         font-size: 0.8em;

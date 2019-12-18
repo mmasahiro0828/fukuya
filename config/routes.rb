@@ -13,8 +13,6 @@ Rails.application.routes.draw do
   get "/users/confirmation", to: "users#confirmation"
   get "/users/edit", to: "users#edit"
   get "/users/purchase_history", to: "users#purchase_history"
-  get "/items/new_test", to: "items#new_test"
-  get "/items/new_test2", to: "items#new_test2"
   
 
 

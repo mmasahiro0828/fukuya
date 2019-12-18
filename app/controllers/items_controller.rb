@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
         @same_category_items =Item.where(category: @item.category).where.not(id: @item.id).limit(8)
     end
 
+    
     def index
         @brands = Brand.all
         @topics = Topic.where.not(category:["PICK UP", "NEW ARRIVALS"])

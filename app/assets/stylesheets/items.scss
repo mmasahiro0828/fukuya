@@ -86,8 +86,8 @@
 .item-card-c {
     display: flex;
     position: relative;
-    background: rgb(223, 191, 111);
-    border-top: 2px solid rgb(143, 111, 31);
+    background: $main-color1;
+    border-top: 2px solid $main-color2;
 }
 
 .item-card-c .image-part {
@@ -162,7 +162,7 @@
         width: 30%;
         min-width: 450px;
         margin: 0 auto;
-        padding: 4em 0;
+        padding: 2em 0;
 
         .description-box {
             width: 100%;
@@ -285,15 +285,33 @@
     justify-content: center;
     width: 100%;
     flex-wrap: wrap;
+
+    .color-block {
+        font-weight: bold;
+        border: solid 3px white;
+        width: 20%;
+        background-color: $main-color1;
+        padding: 0.3em 0;
+
+        a {
+            color: white;
+        }
+
+        a:hover {
+            color: $main-color2;
+            translate: .3s;
+        }
+    }
+
+    .color-block.picked-block {
+        color: black;
+        border: solid 3px $main-color2;
+        background-color: rgb(216, 92, 92);
+    }
 }
 
-.color-block {
-    font-weight: bold;
-    border: solid 0.05px black;
-    width: 20%;
-    background-color: gray;
-    padding: 0.3em 0;
-}
+
+
 
 @media screen and (max-width: 768px) {  
     .color-block {
@@ -312,14 +330,14 @@
 
 .item-description {
     width: 80%;
-    background-color: rgba(206, 166, 58, 0.4);
+    background-color: rgba(223, 191, 111, 0.4);
     margin: 2em auto 0 auto;
 }
 
 .description-inner {
     width: 80%;
     margin: 0 auto;
-    padding: 1.5em 0 2.5em 0;
+    padding: 1.5em 0;
 }
 
 
