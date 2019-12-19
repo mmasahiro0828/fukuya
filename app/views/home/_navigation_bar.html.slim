@@ -10,7 +10,8 @@
                 li.navi-item カート
                 li.navi-item.login-user
                     i class="fas fa-user-circle fa-2x"
-                li.navi-item.only-guest =link_to "ログイン/新規登録", users_login_path
+                li.navi-item.login-user =link_to "ログアウト", users_logout_path, data: { confirm: "ログアウトしてもよろしいですか？"}
+                li.navi-item.only-guest =link_to "ログイン/新規登録", users_login_form_path
 
     .navi-bar.navi-for-mobile
         .container

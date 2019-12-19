@@ -12,6 +12,11 @@ html
   body
     =link_to "フロント画面　", root_path
     =link_to "管理者画面(仮)", admin_root_path 
+    p style="margin-left: 3em"
+      -if session[:user_id]
+        ="user_id:#{session[:user_id]}でログイン中"
+      -else
+        'no one logged in
 
     = yield
   

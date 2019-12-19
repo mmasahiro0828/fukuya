@@ -1,0 +1,29 @@
+.container.smaller-font
+
+    .main-title-for-payment
+        h1.logo Fukuya.
+
+
+    -if flash.alert.present?
+        .alert.alert-danger =flash.alert
+
+    .login-box
+        p.title ログイン
+        .main-box
+            =form_with scope: :session, url: users_login_path, local: true do |f|
+                .form-part
+                    .form-group
+                        =f.label :email, "メールアドレス:"
+                        =f.email_field :email, class:"form-control"
+                    .form-group
+                        =f.label :password, "パスワード:"
+                        =f.password_field :password, class:"form-control"
+                =f.submit "LOGIN", class:"btn btn-sm blue-btn"
+
+    .cart-btn-wrapper
+        =link_to new_user_path do
+            .btn.go-payment ▶︎ 新規登録する
+    
+    .for_new_user
+        p ※ 新規登録のメリット。新規登録のメリット。新規登録のメリット。新規登録のメリット。新規登録のメリット。新規登録のメリット。新規登録のメリット。新規登録のメリット。
+    

@@ -23,7 +23,9 @@ Rails.application.routes.draw do
 
   resources :topics, only: :show
 
-  get "/users/login", to: "users#login"
+  get "/users/login_form", to: "users#login_form"
+  post "/users/login", to: "users#login"
+  get "/users/logout", to: "users#logout"
   resources :users
 
 
