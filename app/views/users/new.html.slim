@@ -3,72 +3,88 @@
     .main-title-for-payment
         h1.logo Fukuya.
 
-    .info-input-box
-        p.title お客様情報入力
-        .main-box
-            .info-record
-                .label-part 名前
-                .input-part
-                    .row
-                        .form-group.col-6
-                            .label 性:
-                            .input.form-control
-                        .form-group.col-6
-                            .label 名:
-                            .text_field.form-control
-                        
-            .info-record
-                .label-part 郵便番号
-                .input-part
-                    .row
-                        .form-group.col-10
-                            .label 例) 1234567　　　※ハイフンなし
-                            .input.form-control
-            .info-record
-                .label-part 住所
-                .input-part
-                    .form-group
-                        .label 例) 東京都〇〇区〇〇1-11-111
-                        .input.form-control
-            .info-record
-                .label-part 建物名,etc...
-                .input-part
-                    .form-group
-                        .label 例) メゾンハピネス 103
-                        .input.form-control
-            .info-record
-                .label-part メールアドレス
-                .input-part
-                    .form-group
-                        .label メールアドレスを入力
-                        .input.form-control
-                    .form-group
-                        .label ※確認用
-                        .input.form-control
+    -if @user.errors.present?
+        ul.error_explanation
+            -@user.errors.full_messages.each do |message|
+                li =message
 
-            .info-record
-                .label-part 電話番号
-                .input-part
+
+    =form_with model: @user, local: true do |f|
+        .info-input-box
+            p.title お客様情報入力
+            .main-box
+                .info-record
+                    .label-part
+                        '名前
+                        br
+                        span style="color:red" ※必須
+                    .input-part
+                        .row
+                            .form-group.col-6
+                                =f.label :family_name, "性:"
+                                =f.text_field :family_name, class:"form-control"
+                            .form-group.col-6
+                                =f.label :first_name, "名:"
+                                =f.text_field :first_name, class:"form-control"
+                                
+                .info-record
+                    .label-part 郵便番号
+                    .input-part
+                        .row
+                            .form-group.col-10
+                                '例) 1234567　　　※ハイフンなし
+                                =f.text_field :postal_code, class:"form-control"
+                .info-record
+                    .label-part 住所
+                    .input-part
+                        .form-group
+                            '例) 〇〇県〇〇市〇〇1-11-111
+                            =f.text_field :adress, class:"form-control"
+                .info-record
+                    .label-part 建物名,etc...
+                    .input-part
+                        .form-group
+                            '例) メゾンフクヤ 208
+                            =f.text_field :cond_n_room, class:"form-control"
+                .info-record
+                    .label-part
+                        'メールアドレス
+                        br
+                        span style="color:red" ※必須
+                    .input-part
+                        .form-group
+                            =f.label :email, "メールアドレスを入力"
+                            =f.email_field :email, class:"form-control"
+                        .form-group
+                            =f.label :email_confirmation, "※確認用"
+                            =f.email_field :email_confirmation, class:"form-control"
+
+                .info-record
+                    .label-part
+                        '電話番号
+                        br
+                        span style="color:red" ※必須
+                    .input-part
+                        .form-group
+                            '例) 02012345678　　※ハイフンなし
+                            =f.text_field :phonenumber, class:"form-control"
+
+        .for-registration-box
+            .for-resistration-part
+                .inner
                     .form-group
-                            .label 例) 02012345678　　※ハイフンなし
-                            .input.form-control
+                        =f.label :password, "パスワードを設定"
+                        =f.password_field :password, class:"form-control"
+                    .form-group
+                        =f.label :password_confirmation, "パスワードを設定  ※確認用"
+                        =f.password_field :password_confirmation, class:"form-control"
+                    .form-check 
+                        =f.radio_button :mail_magazine, "true"
+                        =f.label :mail_magazine, "メルマガ配信を希望する", class:"ml-2"
+                        br
+                        =f.radio_button :mail_magazine, "false"
+                        =f.label :mail_magazine, "メルマガ配信を希望しない", class:"ml-2"
+                
 
-    .for-registration-box
-        .for-resistration-part
-            .inner
-                .form-group
-                    .label パスワードを設定
-                    .input.form-control
-                .form-group
-                    .label パスワードを設定  ※確認用
-                    .input.form-control
-                .form-check 
-                    input.form-check-input.checked type="radio" name="radio1" id="radio1a"
-                    label.form-check-label for="radio1a" メルマガ配信を希望する
-                    
-                .form-check
-                    input.form-check-input type="radio" name="radio1" id="radio1b"
-                    label.form-check-label for="radio1b" メルマガ配信を希望しない
-
-    .go-next-button                    
-        button.btn.btn-sm.blue-btn 入力した情報で会員登録する
+        .go-next-button                    
+            =f.submit "入力した情報で会員登録する", class:"btn btn-sm blue-btn"

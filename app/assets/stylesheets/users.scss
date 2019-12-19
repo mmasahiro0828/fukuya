@@ -16,6 +16,20 @@
 
 //====================================[新規登録画面]========================================
 
+.error_explanation {
+    max-width: 800px;
+    margin: 0 auto;
+    background: pink;
+    border: 1px solid red;
+    padding: 0.5em 0 0 2em;
+    list-style: disc;
+
+    li {
+        padding-bottom: 0.5em;
+        color: red;
+    }
+}
+
 //====================================[情報確認画面]========================================
 
 
