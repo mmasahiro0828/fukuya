@@ -1,11 +1,42 @@
 class UsersController < ApplicationController
 
+    def login_form
+        @user = User.new  
+    end
+
+
+
     def login
+        @user = User.find_by(email: session_params[:email])
+    
+        if @user&.authenticate(session_params[:password])
+            session[:user_id] = @user.id
+            redirect_to root_url, notice: "ログインしました。"
+        else
+            if @user == nil
+                flash[:alert] = "登録されていないメールアドレスです"
+            else
+                flash[:alert] = "パスワードが違います"
+            end
+
+            render :login_form
+        end
+    end
+
+
+
+    def logout
+        reset_session
+        redirect_to root_url, notice: "ログアウトしました"
     end
     
+
+
     def new
         @user = User.new
     end
+
+
 
     def create
         
@@ -52,6 +83,10 @@ class UsersController < ApplicationController
             :password_confirmation,
             :mail_magazine
             )
+    end
+
+    def session_params
+        params.require(:session).permit(:email, :password)
     end
 
 
