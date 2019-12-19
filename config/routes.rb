@@ -8,13 +8,9 @@ Rails.application.routes.draw do
   get "/sales/new_for_payment", to: "sales#new_for_payment"
   get "/sales/new_for_confirmation", to: "sales#new_for_confirmation"
   get "/sales/thank_you", to: "sales#thank_you"
-  get "/users/login", to: "users#login"
-  get "/users/new", to: "users#new"
   get "/users/confirmation", to: "users#confirmation"
   get "/users/edit", to: "users#edit"
   get "/users/purchase_history", to: "users#purchase_history"
-  get "/items/new_test", to: "items#new_test"
-  get "/items/new_test2", to: "items#new_test2"
   
 
 
@@ -27,6 +23,7 @@ Rails.application.routes.draw do
 
   resources :topics, only: :show
 
+  get "/users/login", to: "users#login"
   resources :users
 
 

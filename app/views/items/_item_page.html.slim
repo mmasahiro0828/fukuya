@@ -23,15 +23,20 @@
 
 .item-name-wrapper
     h2.item-and-brand-name #{@item.brand.name} "#{@item.name}"
-    p.item-price #{@item.price} +tax #{@item_color}
+    p.item-price #{@item.price} +tax
 
 .color-select-wrapper
     .color-select-inner
         ul.color-blocks
             -@item_colors.each do |i_color|
-                li.color-block 
-                    =link_to "#{i_color.color_name}", item_path(@item, color_name: i_color.color_name)
-                
+                -if i_color.color_name == @item_color.color_name
+                    li.color-block.picked-block
+                        .inner =i_color.color_name
+                        
+                -else
+                    li.color-block
+                        =link_to item_path(@item, color_name: i_color.color_name) do
+                            .inner =i_color.color_name
 
 .item-detail-wrapper
     p.size-patterns サイズ展開:

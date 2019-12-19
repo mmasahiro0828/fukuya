@@ -91,11 +91,11 @@ $height_for_bc: 3.5em;
 .breadcrumb-for-payment {
 
     //パンくずリストのカラー
-    $bc_color1: rgb(223, 191, 111);
-    $bc_color2: rgb(203, 171, 91);
-    $bc_color3: rgb(183, 151, 71);
-    $bc_color4: rgb(163, 131, 51);
-    $bc_color5: rgb(143, 111, 31);
+    $bc_color1: $main-color1;
+    $bc_color2: $bc_color1 - rgb(20, 20, 20);
+    $bc_color3: $bc_color2 - rgb(20, 20, 20);
+    $bc_color4: $bc_color3 - rgb(20, 20, 20);
+    $bc_color5: $main-color2;
     $bc_color_pick: rgb(216, 92, 92);
 
 
@@ -153,14 +153,14 @@ $height_for_bc: 3.5em;
 
 .cart-items-wrapper .price-box .price-record {
     display: flex;
-    border-top: 2px solid rgb(143, 111, 31);
-    border-bottom: 4px solid rgb(143, 111, 31);
+    border-top: 2px solid $main-color2;
+    border-bottom: 4px solid $main-color2;
     text-align: right;
 
     .title-part {
         width: 80%;
         padding: 0.4em 1em;
-        background: rgb(57, 104, 143);
+        background: $main-color3;
         color: white;
     }
 
@@ -184,13 +184,13 @@ $height_for_bc: 3.5em;
         font-weight: bold;
         padding: 0.25em 0.5em;
         text-decoration: none;
-        border-bottom: solid 4px rgb(143, 111, 31);
+        border-bottom: solid 4px $main-color2;
         color: rgb(57, 104, 143);
         transition: .4s;
       }
 
       .still-shop {
-        border-right: solid 4px rgb(143, 111, 31);
+        border-right: solid 4px $main-color2;
       }
 
       .still-shop:hover {
@@ -199,7 +199,7 @@ $height_for_bc: 3.5em;
       }
 
       .go-payment {
-        border-left: solid 4px rgb(143, 111, 31);
+        border-left: solid 4px $main-color2;
       }
       
       .go-payment:hover {

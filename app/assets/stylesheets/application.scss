@@ -6,6 +6,9 @@
 @import url('https://fonts.googleapis.com/css?family=Sacramento&display=swap');
 
 $gold_gradation: linear-gradient(135deg, rgba(229,193,103,1) 0%,rgba(229,212,169,1) 44%,rgba(200,154,16,1) 100%);
+$main-color1: rgb(223, 191, 111);
+$main-color2: rgb(143, 111, 31);
+$main-color3: rgb(57, 104, 143);
 
 .container {
     font-size: 15px;
@@ -60,6 +63,13 @@ p {
 
 a {
     text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: $main-color2;
+    transition: color .3s;
 }
 
 .appear990 {
@@ -108,15 +118,15 @@ a {
     font-family: 'Sacramento', cursive;
     font-size: 1.4rem;
     font-weight: bold;
-    color: rgb(57, 104, 143);
+    color: $main-color3;
 }
 
 .only-guest {
-    display: none;
+    display: block;
 }
 
 .login-user {
-    display: block;
+    display: none;
 }
 
 .navi-for-mobile {
@@ -157,14 +167,14 @@ a {
 
 .blue-btn {
     border-radius: 5px;
-    border: 1.2px solid rgb(57, 104, 143);
-    color: rgb(57, 104, 143);
+    border: 1.2px solid $main-color3;
+    color: $main-color3;
     margin: 0 auto 1em auto;
     transition: .4s;
 }
 
 .blue-btn:hover {
-    background: rgb(57, 104, 143);
+    background: $main-color3;
     color: white;
 }
 
@@ -211,7 +221,7 @@ a {
 
 footer {
     height: 6em;
-    background-color: navy;
+    background-color: $main-color3;
     color: white;
 }
 

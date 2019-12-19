@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
         @topics = Topic.where.not(category:["PICK UP", "NEW ARRIVALS"])
 
         @item = Item.find(params[:id])
-        @item_colors = @item.item_colors
+        @item_colors = @item.item_colors.order(:color_id)
         @item_color = @item.item_colors.find_by(color_name: params[:color_name])
         @skus = @item_color.skus.order(:created_at)
 
@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
         @same_category_items =Item.where(category: @item.category).where.not(id: @item.id).limit(8)
     end
 
+    
     def index
         @brands = Brand.all
         @topics = Topic.where.not(category:["PICK UP", "NEW ARRIVALS"])
