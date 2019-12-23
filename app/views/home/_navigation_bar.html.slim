@@ -2,27 +2,34 @@
     .navi-bar.navi-for-pc
         .container
             ul.navi-list
-                li.navi-item.logo-mark Fukuya.
+                li.navi-item.logo-mark =link_to "Fukuya.", root_path
                 li.navi-item ※検索窓※
                 li.navi-item カテゴリー一覧
                 li.navi-item ブランド一覧
-                li.navi-item.login-user お気に入り
-                li.navi-item カート
-                li.navi-item.login-user
-                    i class="fas fa-user-circle fa-2x"
-                li.navi-item.login-user =link_to "ログアウト", users_logout_path, data: { confirm: "ログアウトしてもよろしいですか？"}
-                li.navi-item.only-guest =link_to "ログイン/新規登録", users_login_form_path
+                li.navi-item =link_to "カート", cart_items_path
+
+                -if current_user
+                    li.navi-item お気に入り
+                    li.navi-item
+                        i class="fas fa-user-circle fa-2x"
+                    li.navi-item =link_to "ログアウト", users_logout_path, data: { confirm: "ログアウトしてもよろしいですか？"}
+                -else
+                    li.navi-item =link_to "ログイン/新規登録", users_login_form_path
 
     .navi-bar.navi-for-mobile
         .container
             ul.navi-list
-                li.navi-item.logo-mark Fukuya.
+                li.navi-item.logo-mark =link_to "Fukuya.", root_path
                 li.navi-item
                     i class="fas fa-search fa-lg"
-                li.navi-item.login-user
-                    i class="fas fa-heart fa-lg"
-                li.navi-item
+                li.navi-item =link_to cart_items_path do
                     i class="fas fa-shopping-cart fa-lg"
-                li.navi-item.login-user
-                    i class="fas fa-user-circle fa-2x"
-                li.navi-item.only-guest ログイン/新規登録
+
+                -if current_user
+                    li.navi-item
+                        i class="fas fa-heart fa-lg"
+                    li.navi-item
+                        i class="fas fa-user-circle fa-2x"
+                    li.navi-item =link_to "ログアウト", users_logout_path, data: { confirm: "ログアウトしてもよろしいですか？"}
+                -else
+                    li.navi-item =link_to "ログイン/新規登録", users_login_form_path

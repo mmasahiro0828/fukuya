@@ -1,10 +1,14 @@
+= render partial: "home/navigation_bar"
+-if flash.notice.present?
+    .alert.alert-success =flash.notice
+
 .container
     .main-title-for-payment
         h1.logo Fukuya.
 
     .breadcrumb-for-payment-wrapper.smaller-font
         ul.breadcrumb-for-payment
-            li 
+            li.picked 
                 p カート
             li
                 p 
@@ -20,7 +24,8 @@
         p
             span.title-with-underline YOUR CART ▼
         
-        = render partial: "item_colors/item_cards_c", locals: { repeat_number: 2}
+        -@cart_items.each do |cart_item|
+            =render partial: "items/item_cards_c", locals: { cart_item: cart_item}
 
         .price-box
             .price-record
