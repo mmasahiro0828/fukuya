@@ -1,6 +1,10 @@
 = render partial: "home/navigation_bar"
+
 -if flash.notice.present?
     .alert.alert-success =flash.notice
+-if flash.alert.present?
+    .alert.alert-danger =flash.alert
+
 
 .container
     .main-title-for-payment
@@ -24,17 +28,21 @@
         p
             span.title-with-underline YOUR CART ▼
         
-        -@cart_items.each do |cart_item|
-            =render partial: "items/item_cards_c", locals: { cart_item: cart_item}
+        -unless @total_price_of_cart_items == 0
+            -@cart_items.each do |cart_item|
+                =render partial: "items/item_cards_c", locals: { cart_item: cart_item}
 
-        .price-box
-            .price-record
-                .title-part 商品合計
-                .price-part 24,000
-
+            .price-box
+                .price-record
+                    .title-part 商品合計
+                    .price-part =@total_price_of_cart_items
+        -else
+            p カートにアイテムが入っていません
+    
     .cart-btn-wrapper.smaller-font
-        .btn.still-shop 買い物を続ける ◀︎
-        .btn.go-payment ▶︎ レジへ進む
+        .btn.still-shop =link_to "買い物を続ける ◀︎", root_path
+        -if @cart_items.present?
+            .btn.go-payment =link_to "▶︎ レジへ進む", new_order_path
 
                 
 

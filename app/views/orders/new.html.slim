@@ -1,0 +1,133 @@
+.container.smaller-font
+
+    .main-title-for-payment
+        h1.logo Fukuya.
+
+    .breadcrumb-for-payment-wrapper
+        ul.breadcrumb-for-payment
+            li 
+                p カート
+            li.picked
+                p 
+                    | お客様情報<br>入力
+            li
+                p 決済方法
+            li
+                p 確認
+            li
+                p 完了
+
+    -if @order.errors.present?
+        ul.error_explanation
+            -@order.errors.full_messages.each do |message|
+                li =message
+
+    -unless current_user
+        .login-box
+            p.title 会員の方
+            .main-box
+                p ログインすると、お客様情報が自動で入力されます。
+
+                .form-part
+                    .form-group
+                        .label メールアドレス:
+                        .text_field.form-control
+                    .form-group
+                        .label パスワード:
+                        .password_field.form-control
+                button.btn.btn-sm.blue-btn login
+
+
+    =form_with model: current_user, url: "/orders/new_for_payment", method: :post, local: true do |f|
+        .info-input-box
+            p.title お客様情報入力
+            .main-box
+                .info-record
+                    .label-part
+                        '名前
+                        br
+                        span style="color:red" ※必須
+                    .input-part
+                        .row
+                            .form-group.col-6
+                                =f.label :family_name, "性:"
+                                =f.text_field :family_name, class:"form-control"
+                            .form-group.col-6
+                                =f.label :first_name, "名:"
+                                =f.text_field :first_name, class:"form-control"
+                                
+                .info-record
+                    .label-part 郵便番号
+                    .input-part
+                        .row
+                            .form-group.col-10
+                                '例) 1234567　　　※ハイフンなし
+                                =f.text_field :postal_code, class:"form-control"
+                .info-record
+                    .label-part 住所
+                    .input-part
+                        .form-group
+                            '例) 〇〇県〇〇市〇〇1-11-111
+                            =f.text_field :adress, class:"form-control"
+                .info-record
+                    .label-part 建物名,etc...
+                    .input-part
+                        .form-group
+                            '例) メゾンフクヤ 208
+                            =f.text_field :cond_n_room, class:"form-control"
+                .info-record
+                    .label-part
+                        'メールアドレス
+                        br
+                        span style="color:red" ※必須
+                    .input-part
+                        .form-group
+                            =f.label :email, "メールアドレスを入力"
+                            =f.email_field :email, class:"form-control"
+                        .form-group
+                            =f.label :email_confirmation, "※確認用"
+                            =f.email_field :email_confirmation, class:"form-control", value: current_user.email
+
+                .info-record
+                    .label-part
+                        '電話番号
+                        br
+                        span style="color:red" ※必須
+                    .input-part
+                        .form-group
+                            '例) 02012345678　　※ハイフンなし
+                            =f.text_field :phonenumber, class:"form-control"
+
+        -if current_user
+            .cart-btn-wrapper
+                =f.submit "▶︎ 次に進む", class:"btn go-payment smaller-font-more"
+        -else
+            .cart-btn-wrapper
+                .btn.still-shop.smaller-font-more 会員登録して進む ◀︎
+                .btn.go-payment.smaller-font-more ▶︎ 会員登録せず進む
+
+            .for-registration-box
+                p ※ 会員登録のメリット。会員登録のメリット。会員登録のメリット。会員登録のメリット。会員登録のメリット。会員登録のメリット。
+                .for-resistration-part
+                    .inner
+                        .form-group
+                            .label パスワードを設定
+                            .input.form-control
+                        .form-group
+                            .label パスワードを設定  ※確認用
+                            .input.form-control
+                        .form-check 
+                            input.form-check-input.checked type="radio" name="radio1" id="radio1a"
+                            label.form-check-label for="radio1a" メルマガ配信を希望する
+                            
+                        .form-check
+                            input.form-check-input type="radio" name="radio1" id="radio1b"
+                            label.form-check-label for="radio1b" メルマガ配信を希望しない
+                            
+                    .btn-part                     
+                        button.btn.btn-sm.blue-btn 入力した情報で会員登録する
+
+            
+        
+
+

@@ -12,7 +12,7 @@
                     | お客様情報<br>入力
             li
                 p 決済方法
-            li
+            li.picked
                 p 確認
             li
                 p 完了
@@ -22,36 +22,39 @@
         .main-box
             .info-record
                 .label-part 名前
-                .input-part 宮口 正弘
+                .input-part =@order.user_name
                         
             .info-record
                 .label-part 住所
                 .input-part
-                    | 
-                        594-1105<br>
-                        東京都〇〇区〇〇1-11-111<br>
-                        メゾンハピネス 103
+                        p =@order.shipping_postal_code
+                        p =@order.shipping_adress
+                        p =@order.shipping_cond_n_room
                         
             .info-record
                 .label-part メールアドレス
-                .input-part mmmmmmmmmmmmmmm@mmm.co.jp
+                .input-part =@order.user_email
 
             .info-record
                 .label-part 電話番号
-                .input-part 090-0000-9999
+                .input-part =@order.user_phonenumber
 
     .payment-box.for-confirmation2
         p.title 決済方法
-        .main-box クレジットカード
+        -if @order.method_of_payment == "credit_card"
+            .main-box クレジットカード
+        -else
+            .main-box 代引き
 
     .shipping-box.for-confirmation2
         p.title 配送希望日
-        .main-box 12月13日 午前中
+        .main-box =@order.shipping_date
 
     .cart-item-box.
         p.title アイテム
         .main-box
-            = render partial: "item_colors/item_cards_c", locals: { repeat_number: 2}
+            -@cart_items.each do |cart_item|
+                =render partial: "items/item_cards_c", locals: { cart_item: cart_item}
         .price-box
             .price-record
                 .title-part 商品合計

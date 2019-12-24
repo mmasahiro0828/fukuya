@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_19_084445) do
+ActiveRecord::Schema.define(version: 2019_12_23_132618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,10 +131,10 @@ ActiveRecord::Schema.define(version: 2019_12_19_084445) do
     t.string "method_of_payment", null: false
     t.string "user_name", null: false
     t.string "user_email", null: false
-    t.integer "shipping_postal_code", null: false
+    t.string "shipping_postal_code", null: false
     t.string "shipping_adress", null: false
     t.string "shipping_cond_n_room"
-    t.integer "user_phonenumber", null: false
+    t.string "user_phonenumber", null: false
     t.string "shipping_date", default: "指定なし"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -209,15 +209,16 @@ ActiveRecord::Schema.define(version: 2019_12_19_084445) do
   create_table "users", force: :cascade do |t|
     t.string "family_name", null: false
     t.string "first_name", null: false
-    t.string "email", null: false
+    t.string "email", default: "", null: false
     t.string "postal_code"
     t.string "adress"
     t.string "cond_n_room"
     t.string "phonenumber", null: false
-    t.string "password_digest", null: false
     t.boolean "mail_magazine", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "brand_representatives", "brands"

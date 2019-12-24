@@ -1,3 +1,312 @@
 // Place all the styles related to the Orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//==========================[購入時の情報入力画面]================================
+
+//----------------[基本設定]---------------------------
+
+
+
+//------------------[ログイン用のブロック]------------------------
+
+.login-box {
+    width: 80%;
+    max-width: 500px;
+    margin: 7em auto;
+    text-align: center;
+    font-size: 0.8em;
+    
+    .title {
+        background: rgb(143, 111, 31);
+        padding: 0.2em 0;
+        color: white;
+    }
+
+    .main-box {
+        background: rgb(223, 191, 111);
+
+        p {
+            padding: 0.5em 0;
+        }
+
+        .form-part {
+            width: 80%;
+            margin: 0 auto;
+            text-align: left;
+            font-size: 0.9em;
+            padding-left: 0.5em; 
+            padding-top: 2em;
+        }
+
+        
+    }
+
+}
+
+//-----------------------[情報入力part]------------------------
+.info-input-box {
+    width: 100%;
+    max-width: 800px;
+    margin: 7em auto;
+    font-size: 0.8em;
+    
+    .title {
+        background: $main-color2;
+        padding: 0.2em 0;
+        color: white;
+        text-align: center;
+    }
+
+}
+
+.info-input-box .main-box {
+    
+    .info-record {
+        display: flex;
+        border-bottom: 2px solid $main-color2;
+
+        .label-part {
+            width: 20%;
+            background: $main-color1;
+            text-align: right;
+            padding: 0.2em 0.5em 1em 0;
+            min-height: 4em;
+        }
+
+        .input-part {
+            width: 80%;
+            margin: 1em 2em;
+        }
+    }
+}
+
+//--------------------[会員登録する場合のセクション]------------------------
+
+.for-registration-box {
+    max-width: 500px;
+    background: $main-color1;
+    padding: 1.5em 0;
+    margin: 0 auto 12em auto;
+    font-size: 0.8em;
+
+    p {
+        padding: 0 2.5em 1em 2.5em;
+    }
+
+    .for-resistration-part {
+        background: white;
+        border: 1.5px solid $main-color1;
+
+        .inner {
+            width: 80%;
+            margin: 1em auto;
+        }
+
+        .btn-part {
+            text-align: center;
+        }
+    }
+}
+
+
+
+//=====================================[決済方法選択画面]=============================================
+
+//--------------------[決済方法選択パート]------------------------
+
+
+.payment-box {
+    max-width: 500px;
+    background: $main-color1;
+    margin: 5em auto 0 auto;
+
+    .title {
+        background: $main-color2;
+        padding: 0.2em 0;
+        color: white;
+        font-size: 0.8em;
+        text-align: center;
+    }
+    
+}
+
+.payment-box .main-box {
+
+    .form-check {
+        padding: 0.5em 0 0.5em 2.5em;
+    }
+
+    .card-info-input-part {
+        background: white;
+        border: 1.5px solid $main-color1;
+
+        .inner {
+            width: 80%;
+            margin: 1em auto;
+            height: 6em;
+        }
+    }
+
+    p.attention {
+        font-size: 0.8em;
+        padding: 0 0 2em 3em;
+    }
+}
+
+//--------------------[配送希望選択パート]------------------------
+
+.shipping-box {
+    max-width: 500px;
+    background: $main-color1;
+    margin: 5em auto 0 auto;
+
+    .title {
+        background: $main-color2;
+        padding: 0.2em 0;
+        color: white;
+        font-size: 0.8em;
+        text-align: center;
+    }
+
+    .main-box {
+        padding: 1.5em 0;
+    }
+    .form-group {
+        padding: 0 2.5em 1em 2.5em;
+    }
+}
+
+
+//--------------------[クーポンコードパート]------------------------
+
+.coupon-box {
+    max-width: 500px;
+    background: $main-color1;
+    margin: 5em auto 0 auto;
+
+    .title {
+        background: $main-color2;
+        padding: 0.2em 0;
+        color: white;
+        font-size: 0.8em;
+        text-align: center;
+    }
+
+    .main-box {
+        padding: 1.5em 0;
+    }
+    .form-group {
+        padding: 0 2.5em;
+    }
+}
+
+//--------------------[ボタンパート]------------------------
+
+.go-next-button {
+    margin: 6em auto 8em auto;
+    text-align: center;
+}
+
+
+//=====================================[確認画面]=============================================
+//---------------[基本設定]-----------------------
+.for-confirmation1 {
+    margin-bottom: 1em;
+}
+
+.for-confirmation2 {
+    margin-top: 3em;
+    margin-bottom: 1em;
+    
+    .main-box {
+        padding: 0.8em 2em;
+        font-size: 0.8em;
+    }
+}
+
+//---------------[アイテム表示パート]-----------------------
+.cart-item-box {
+    max-width: 800px;
+    margin: 3em auto 1em auto;
+    
+    p.title {
+        background: $main-color2;
+        padding: 0.2em 0;
+        color: white;
+        text-align: center;
+        font-size: 0.8em;
+    }
+
+    .delete-btn {
+        display: none;
+    }
+}
+
+//-------------[金額表示部分]--------------------------
+
+.cart-item-box .price-box .price-record {
+    display: flex;
+    border-bottom: 2px solid $main-color2;
+    text-align: right;
+
+    .title-part {
+        width: 80%;
+        padding: 0.4em 1em;
+        background: $main-color1;
+    }
+
+    .price-part {
+        width: 20%;
+        padding: 0.4em 1em;
+    }
+
+}
+
+.cart-item-box .price-box .price-record:first-child {
+    border-top: 2px solid $main-color2;
+}
+
+.cart-item-box .price-box .price-record:last-child {
+    border-bottom: 4px solid $main-color2;
+
+    .title-part {
+        background: $main-color3;
+        color: white;
+    }
+}
+
+
+//=====================================[thank you画面]=============================================
+
+
+.thankyou-box {
+    padding: 5em 0;
+    text-align: center;
+
+    p {
+        font-size: 6em;
+        color:  $main-color3;
+        font-weight: bold;
+        font-family: 'Pacifico', cursive;
+    }
+}
+
+
+.order-number-box {
+    max-width: 500px;
+    background: $main-color1;
+    margin: 3em auto 20em auto;
+    text-align: center;
+
+    .title {
+        background: $main-color2;
+        padding: 0.2em 0;
+        color: white;
+        font-size: 0.8em;
+    }
+
+    .main-box {
+        padding: 0.8em 2em;
+    }
+}

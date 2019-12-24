@@ -3,10 +3,7 @@ Rails.application.routes.draw do
   root to: 'home#top'
 
   #テスト用↓
-  get "/sales/new", to: "sales#new"
-  get "/sales/new_for_payment", to: "sales#new_for_payment"
-  get "/sales/new_for_confirmation", to: "sales#new_for_confirmation"
-  get "/sales/thank_you", to: "sales#thank_you"
+  get "/orders/thank_you", to: "orders#thank_you"
   get "/users/confirmation", to: "users#confirmation"
   get "/users/edit", to: "users#edit"
   get "/users/purchase_history", to: "users#purchase_history"
@@ -31,6 +28,11 @@ Rails.application.routes.draw do
   post "/cart_items/create", to: "cart_items#create" #これresourcesのままcreateでとばせない、、
   post "/cart_items/delete_1", to: "cart_items#delete_1"
   resources :cart_items
+
+  post "/orders/new_for_payment", to: "orders#new_for_payment"
+  post "/orders/confirmation", to: "orders#confirmation"
+  resources :orders
+  resources :sales, only: [:new, :index, :create]
 
 
   #管理者用↓

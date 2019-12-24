@@ -2,6 +2,7 @@ class CartItemsController < ApplicationController
     
     def index
         @cart_items = current_user.cart_items
+        @total_price_of_cart_items = @cart_items.sum(:price_w_tax)
     end
 
 
@@ -33,7 +34,7 @@ class CartItemsController < ApplicationController
                 price_w_tax: cart_item.sku.item.price * (cart_item.quantity + 1) * 1.1
                 )
 
-            redirect_to cart_items_url, notite: "「#{sku.item.name}」をカートに入れました。"
+            redirect_to cart_items_url, notice: "「#{sku.item.name}」をカートに入れました。"
         else
             cart_item = current_user.cart_items.new(
                 id: last_cart_item_id + 1,
@@ -45,7 +46,7 @@ class CartItemsController < ApplicationController
             )
             
             if cart_item.save
-                redirect_to cart_items_url, notite: "「#{sku.item.name}」をカートに入れました。"
+                redirect_to cart_items_url, notice: "「#{sku.item.name}」をカートに入れました。"
             else
                 render "items/show/#{params[:format]}"
             end
