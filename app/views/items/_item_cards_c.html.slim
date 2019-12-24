@@ -1,0 +1,37 @@
+
+.item-card-c
+    .image-part
+        img src="/assets/default_images/no_image.jpg"
+    
+    .info-part
+        .info-record
+            .title アイテム：
+            .value #{cart_item.sku.item.brand.name} "#{cart_item.sku.item.name}"
+        .info-record
+            .title カラー：
+            .value =cart_item.sku.item_color.color_name
+        .info-record
+            .title サイズ：
+            .value =cart_item.sku.size_name
+        .info-record
+            .title 販売価格：
+            .value =cart_item.sku.item.price * 1.1
+        .info-record
+            .title 数量：
+            .value 
+                span =cart_item.quantity
+                -if cart_item.sku.stock.quantity_on_display > 0
+                    =link_to cart_items_create_path(cart_item.sku), method: :post do
+                        span.btn-up.ml-5 +
+                -else
+                    span.ml-5 style="color:red" （※注文可能最大数）
+
+                -if cart_item.quantity > 1
+                    =link_to cart_items_delete_1_path(cart_item), method: :post do
+                        span.btn-down.ml-4 -
+        .info-record
+            .title 小計：
+            .value =(cart_item.sku.item.price * 1.1) * cart_item.quantity
+
+    =link_to cart_item, method: :delete do
+        .delete-btn ×

@@ -36,7 +36,7 @@ class Admin::SkusController < ApplicationController
             item.item_colors.each do |i_c|
                 register_sizes.each_with_index do |size, index|
                     sku = Sku.new(
-                        id: "#{i_c.id}-#{size.name}",
+                        id: "#{i_c.id}-#{size.id}",
                         item_id: item.id,
                         item_color_id: i_c.id,
                         size_name: size.name,

@@ -1,0 +1,88 @@
+.container.smaller-font
+
+    .main-title-for-payment
+        h1.logo Fukuya.
+
+    .breadcrumb-for-payment-wrapper
+        ul.breadcrumb-for-payment
+            li 
+                p カート
+            li
+                p 
+                    | お客様情報<br>入力
+            li.picked
+                p 決済方法
+            li
+                p 確認
+            li
+                p 完了
+
+    -if @order.errors.present?
+        ul.error_explanation
+            -@order.errors.full_messages.each do |message|
+                li =message
+
+    =form_with model: @order, url: "/orders/confirmation", method: :post, local: true do |f|
+    
+        .payment-box
+            p.title 決済方法
+            .main-box
+                .form-check 
+                        =f.radio_button :method_of_payment, "credit_card"
+                        =f.label :method_of_payment, "クレジットカード", class:"ml-2"
+
+                .card-info-input-part
+                    .inner
+                        p カード情報入力、アコーディオン
+
+                .form-check 
+                        =f.radio_button :method_of_payment, "cash_on_delivery"
+                        =f.label :method_of_payment, "代引き", class:"ml-2"
+                
+                p.attention ※ 代引き手数料340円がかかります。
+
+        .shipping-box
+            p.title 配送希望日
+            .main-box
+                .form-group
+                        =f.label :shipping_date_1, "希望日を選択"
+                        <br>
+                        =f.select :shipping_date_1, class:"form-control"
+                            -@date_selection.each do |select|
+                                option =select
+                            
+                .form-group
+                        =f.label :shipping_date_2, "希望時間を選択"
+                        <br>
+                        =f.select :shipping_date_2, class:"form-control"
+                            option 指定なし
+                            option 午前中
+                            option 14時〜16時
+                            option 16時〜18時
+                            option 18時〜20時
+
+        .coupon-box
+            p.title クーポン
+            .main-box
+                .form-group
+                        =f.label :coupon_code, "クーポンコードをお持ちの方はこちらに入力してください"
+                        =f.text_field :coupon_code, class:"form-control"
+
+        .hidden-box
+            =f.hidden_field :id
+            =f.hidden_field :user_id
+            =f.hidden_field :total_item_price
+            =f.hidden_field :discount
+            =f.hidden_field :fee
+            =f.hidden_field :final_price
+            =f.hidden_field :user_name
+            =f.hidden_field :user_email
+            =f.hidden_field :user_email_confirmation
+            =f.hidden_field :shipping_postal_code
+            =f.hidden_field :shipping_adress
+            =f.hidden_field :shipping_cond_n_room
+            =f.hidden_field :user_phonenumber
+
+
+        .go-next-button                    
+            =f.submit "確認画面へ進む", class:"btn btn-sm blue-btn"
