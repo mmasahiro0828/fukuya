@@ -44,17 +44,10 @@ class Admin::SkusController < ApplicationController
                         public: "true"
                     )
                     sku.save
-                    
-                    if Stock.all.empty?
-                        last_stock_id = 0
-                    else
-                        last_stock_id = Stock.last.id
-                    end
 
                     quantity = rand(1..3)
 
                     stock = Stock.new(
-                        id: last_stock_id + 1,
                         sku_id: sku.id,
                         all_quantity: quantity,
                         quantity_in_cart: 0,
@@ -66,15 +59,8 @@ class Admin::SkusController < ApplicationController
                     if register_size_details
 
                         register_size_details.each do |sd|
-                            
-                            if MeasuringValue.all.empty?
-                                last_mv_id = 0
-                            else
-                                last_mv_id = MeasuringValue.last.id
-                            end
 
                             measuring_value = MeasuringValue.new(
-                                id: last_mv_id + 1,
                                 sku_id: sku.id,
                                 measuring_item_id: sd[:mi_id],
                                 measuring_item_name: MeasuringItem.find(sd[:mi_id]).name,

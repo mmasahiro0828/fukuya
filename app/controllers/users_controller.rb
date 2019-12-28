@@ -39,15 +39,8 @@ class UsersController < ApplicationController
 
 
     def create
-        
-        if User.all.empty?
-            last_user_id = 0
-        else
-            last_user_id = Item.last.id
-        end
 
         @user = User.new(user_params)
-        @user.id = last_user_id
 
         if @user.save
             redirect_to root_url, notice: "ユーザー「#{@user.first_name}」を登録しました"

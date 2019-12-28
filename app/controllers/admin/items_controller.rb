@@ -93,12 +93,6 @@ class Admin::ItemsController < ApplicationController
 
     def create_sample_data(selected_brand)
         
-        if Item.all.empty?
-            last_item_id = 0
-        else
-            last_item_id = Item.last.id
-        end
-
         item_category_and_example = get_item_category_and_example(rand(1..7))
         item_category = item_category_and_example[:category_name]
         item_example = item_category_and_example[:example_item]
@@ -106,8 +100,6 @@ class Admin::ItemsController < ApplicationController
         rand_price = rand(6..15) * 1000
 
         @sample_item = Item.new(
-            id: last_item_id + 1,
-            name: "#{item_example} 0#{last_item_id + 1}",
             brand_id: selected_brand.id,
             description_1: "#{selected_brand.name}の#{item_example}です。",
             description_2: "素材:◯◯、◯◯",
@@ -117,8 +109,14 @@ class Admin::ItemsController < ApplicationController
             sale_price: rand_price,
             public: "false"
         )
-
         @sample_item.save
+
+        @sample_item.update(
+            name: "#{item_example} 0#{@sample_item.id}"
+        )
+
+
+        
 
     end
 

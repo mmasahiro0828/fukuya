@@ -27,40 +27,28 @@ class Admin::TopicsController < ApplicationController
 
             repeat_number.times do
 
-                if Topic.all.empty?
-                    last_topic_id = 0
-                else
-                    last_topic_id = Topic.last.id
-                end
-
                 topic = Topic.new(
-                    id: last_topic_id + 1,
-                    name: "#{topic_cagtegory}[#{last_topic_id + 1}]",
                     category: topic_cagtegory,
                     description: "#{topic_cagtegory}です。",
                     sum_image_name: "sample_topics_sum.jpg",
                     main_image_name: "sample_topics_img.jpg",
                     public: "true"
                 )
-
                 topic.save
 
+                topic.update(
+                    name: "#{topic_cagtegory}[#{topic.id}]"
+                )
+
+                
                 register_items = Item.all.sample(number_of_register_items).sort_by(&:id)
 
                 register_items.each do |item|
 
-                    if TopicItem.all.empty?
-                        last_topic_item_id = 0
-                    else
-                        last_topic_item_id = TopicItem.last.id
-                    end
-
                     topic_item = TopicItem.new(
-                        id: last_topic_item_id + 1,
                         topic_id: topic.id,
                         item_id: item.id
                     )
-
                     topic_item.save
                 end
             end
@@ -75,7 +63,7 @@ class Admin::TopicsController < ApplicationController
         topics = Topic.all
         topics.destroy_all
 
-        redirect_to admin_topics_url, notice: "skuデータをリセットしました。"
+        redirect_to admin_topics_url, notice: "topicsデータをリセットしました。"
     end
 
 

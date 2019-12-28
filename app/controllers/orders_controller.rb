@@ -9,17 +9,10 @@ class OrdersController < ApplicationController
     
     def new_for_payment
 
-        if Order.all.empty?
-            last_order_id = 0
-        else
-            last_order_id = Order.last.id
-        end
-
         user = current_user
         /ゲストユーザーで変更する/
 
         @order = Order.new(
-            id: last_order_id + 1,
             user_id: user.id,
             total_item_price: user.cart_items.sum(:price_w_tax),
             discount: 0,
