@@ -17,6 +17,13 @@ html
         ="user_id:#{session[:user_id]}でログイン中"
       -else
         'no one logged in
+    p style="margin-left: 3em"
+      -if current_cart
+        p ="cart_id:#{session[:cart_id]}のカートを保持中"
+        p =link_to "カートを消す", carts_destroy_path
+      -else
+        'having no cart
+
 
     = yield
   

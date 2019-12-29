@@ -21,6 +21,14 @@
         ul.error_explanation
             -@order.errors.full_messages.each do |message|
                 li =message
+    
+    -if @user.errors.present?
+        ul.error_explanation
+            -@order.errors.full_messages.each do |message|
+                li =message
+                
+    -if flash.notice.present?
+        .alert.alert-success =flash.notice
 
     -unless current_user
         .login-box
@@ -28,17 +36,18 @@
             .main-box
                 p ログインすると、お客様情報が自動で入力されます。
 
-                .form-part
-                    .form-group
-                        .label メールアドレス:
-                        .text_field.form-control
-                    .form-group
-                        .label パスワード:
-                        .password_field.form-control
-                button.btn.btn-sm.blue-btn login
+                =form_with scope: :session, url: users_login_during_shopping_path, local: true do |f|
+                    .form-part
+                        .form-group
+                            =f.label :email, "メールアドレス:"
+                            =f.email_field :email, class:"form-control"
+                        .form-group
+                            =f.label :password, "パスワード:"
+                            =f.password_field :password, class:"form-control"
+                    =f.submit "LOGIN", class:"btn btn-sm blue-btn"
 
 
-    =form_with model: current_user, url: "/orders/new_for_payment", method: :post, local: true do |f|
+    =form_with model: @order, url: "/orders/new_for_payment", method: :post, local: true do |f|
         .info-input-box
             p.title お客様情報入力
             .main-box
@@ -51,10 +60,10 @@
                         .row
                             .form-group.col-6
                                 =f.label :family_name, "性:"
-                                =f.text_field :family_name, class:"form-control"
+                                =f.text_field :family_name, class:"form-control", value: current_user&.family_name
                             .form-group.col-6
                                 =f.label :first_name, "名:"
-                                =f.text_field :first_name, class:"form-control"
+                                =f.text_field :first_name, class:"form-control", value: current_user&.first_name
                                 
                 .info-record
                     .label-part 郵便番号
@@ -62,19 +71,19 @@
                         .row
                             .form-group.col-10
                                 '例) 1234567　　　※ハイフンなし
-                                =f.text_field :postal_code, class:"form-control"
+                                =f.text_field :postal_code, class:"form-control", value: current_user&.postal_code
                 .info-record
                     .label-part 住所
                     .input-part
                         .form-group
                             '例) 〇〇県〇〇市〇〇1-11-111
-                            =f.text_field :adress, class:"form-control"
+                            =f.text_field :adress, class:"form-control", value: current_user&.adress
                 .info-record
                     .label-part 建物名,etc...
                     .input-part
                         .form-group
                             '例) メゾンフクヤ 208
-                            =f.text_field :cond_n_room, class:"form-control"
+                            =f.text_field :cond_n_room, class:"form-control", value: current_user&.cond_n_room
                 .info-record
                     .label-part
                         'メールアドレス
@@ -83,10 +92,10 @@
                     .input-part
                         .form-group
                             =f.label :email, "メールアドレスを入力"
-                            =f.email_field :email, class:"form-control"
+                            =f.email_field :email, class:"form-control", value: current_user&.email
                         .form-group
                             =f.label :email_confirmation, "※確認用"
-                            =f.email_field :email_confirmation, class:"form-control", value: current_user.email
+                            =f.email_field :email_confirmation, class:"form-control", value: current_user&.email
 
                 .info-record
                     .label-part
@@ -96,7 +105,7 @@
                     .input-part
                         .form-group
                             '例) 02012345678　　※ハイフンなし
-                            =f.text_field :phonenumber, class:"form-control"
+                            =f.text_field :phonenumber, class:"form-control", value: current_user&.phonenumber
 
         -if current_user
             .cart-btn-wrapper
@@ -104,28 +113,29 @@
         -else
             .cart-btn-wrapper
                 .btn.still-shop.smaller-font-more 会員登録して進む ◀︎
-                .btn.go-payment.smaller-font-more ▶︎ 会員登録せず進む
+                =f.submit "▶︎ 会員登録せず進む", class:"btn go-payment smaller-font-more"
 
+/JQでボタンで開くようにし、さらに、飛ばす先をusers_create_guring_shoppingに変える
             .for-registration-box
                 p ※ 会員登録のメリット。会員登録のメリット。会員登録のメリット。会員登録のメリット。会員登録のメリット。会員登録のメリット。
                 .for-resistration-part
                     .inner
                         .form-group
-                            .label パスワードを設定
-                            .input.form-control
+                            =f.label :password, "パスワードを設定"
+                            =f.password_field :password, class:"form-control", checked: true
                         .form-group
-                            .label パスワードを設定  ※確認用
-                            .input.form-control
+                            =f.label :password_confirmation, "パスワードを設定  ※確認用"
+                            =f.password_field :password_confirmation, class:"form-control"
                         .form-check 
-                            input.form-check-input.checked type="radio" name="radio1" id="radio1a"
-                            label.form-check-label for="radio1a" メルマガ配信を希望する
-                            
-                        .form-check
-                            input.form-check-input type="radio" name="radio1" id="radio1b"
-                            label.form-check-label for="radio1b" メルマガ配信を希望しない
-                            
-                    .btn-part                     
-                        button.btn.btn-sm.blue-btn 入力した情報で会員登録する
+                            =f.radio_button :mail_magazine, "true"
+                            =f.label :mail_magazine, "メルマガ配信を希望する", class:"ml-2"
+                            br
+                            =f.radio_button :mail_magazine, "false"
+                            =f.label :mail_magazine, "メルマガ配信を希望しない", class:"ml-2"
+                
+
+                    .go-next-button                    
+                        =f.submit "入力した情報で会員登録する", class:"btn btn-sm blue-btn"
 
             
         

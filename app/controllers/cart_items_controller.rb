@@ -1,13 +1,15 @@
 class CartItemsController < ApplicationController
     
     def index
-        @cart_items = current_user.cart_items
-        @total_price_of_cart_items = @cart_items.sum(:price_w_tax)
+        @cart_items = current_cart&.cart_items
+        @total_price_of_cart_items = @cart_items&.sum(:price_w_tax)
     end
 
 
     
     def create
+
+        /在庫check/
         sku = Sku.find_by(id: params[:format])
 
         if sku.stock.quantity_on_display > 0
@@ -18,9 +20,23 @@ class CartItemsController < ApplicationController
         else
             render "items/show/#{params[:format]}", alert: "希望した商品の在庫がございません。"
         end
-        
-        cart_item = CartItem.where(user_id: current_user.id).find_by(sku_id: sku.id)
 
+        /すでにcartを持っているかcheck/
+        if session[:cart_id]
+            cart = Cart.find(session[:cart_id])
+        else
+            if current_user
+                cart = Cart.new(user_id: current_user.id)
+            else
+                cart = Cart.new
+            end
+
+            cart.save
+            session[:cart_id] = cart.id
+        end
+        
+        cart_item = cart.cart_items.find_by(sku_id: sku.id)
+        
         if cart_item
             cart_item.update(
                 quantity: cart_item.quantity + 1,
@@ -30,7 +46,7 @@ class CartItemsController < ApplicationController
 
             redirect_to cart_items_url, notice: "「#{sku.item.name}」をカートに入れました。"
         else
-            cart_item = current_user.cart_items.new(
+            cart_item = cart.cart_items.new(
                 sku_id: sku.id,
                 quantity: 1,
                 total_item_price: sku.item.price,

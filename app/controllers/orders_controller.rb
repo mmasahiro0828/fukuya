@@ -1,21 +1,22 @@
 class OrdersController < ApplicationController
     def new
         @order = Order.new
+        @user = User.new
     end
 
 
 
     def new_for_payment
-
-        user = current_user
+        
+        cart = current_cart
         /ゲストユーザーで変更する/
 
         @order = Order.new(
-            user_id: user.id,
-            total_item_price: user.cart_items.sum(:price_w_tax),
+            user_id: cart.user_id,
+            total_item_price: cart.cart_items.sum(:price_w_tax),
             discount: 0,
             fee: 0,
-            final_price: user.cart_items.sum(:price_w_tax),
+            final_price: cart.cart_items.sum(:price_w_tax),
             method_of_payment: "yet",
             user_name: "#{order_params_1[:family_name]} #{order_params_1[:first_name]}",
             user_email: order_params_1[:email],
@@ -55,7 +56,7 @@ class OrdersController < ApplicationController
 
         @order.shipping_date = "日: #{order_params_3[:shipping_date_1]} / 時間: #{order_params_3[:shipping_date_2]}"
 
-        @cart_items = User.find(@order.user_id).cart_items
+        @cart_items = current_cart.cart_items
     end
     
 
@@ -63,11 +64,11 @@ class OrdersController < ApplicationController
         order = Order.new(order_params_4)
         order.save
 
-        cart_items = User.find(order.user_id).cart_items
+        cart_items = current_cart.cart_items
         
         cart_items.each do |cart_item|
             sale = order.sales.new(
-                user_id: cart_item.user_id,
+                user_id: cart_item.cart.user_id,
                 sku_id: cart_item.sku_id,
                 quantity: cart_item.quantity,
                 total_item_price: cart_item.total_item_price,
@@ -81,9 +82,11 @@ class OrdersController < ApplicationController
                 all_quantity: cart_item.sku.stock.all_quantity - cart_item.quantity,
                 quantity_in_cart: cart_item.sku.stock.quantity_in_cart - cart_item.quantity
             )
-            
             cart_item.destroy
         end
+
+        current_cart.destroy
+        session[:cart_id] = nil
 
         redirect_to orders_thank_you_path(id: order.id)
 
@@ -97,7 +100,7 @@ class OrdersController < ApplicationController
     private
 
     def order_params_1
-        params.require(:user).permit(
+        params.require(:order).permit(
             :family_name,
             :first_name,
             :postal_code,

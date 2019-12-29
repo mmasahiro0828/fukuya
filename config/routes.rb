@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "/users/confirmation", to: "users#confirmation"
   get "/users/edit", to: "users#edit"
   get "/users/purchase_history", to: "users#purchase_history"
-  
+  get "/carts/destroy", to: "carts#destroy"
 
 
   #テスト用2↓
@@ -20,7 +20,9 @@ Rails.application.routes.draw do
   resources :topics, only: :show
 
   get "/users/login_form", to: "users#login_form"
-  post "/users/login", to: "users#login"
+  post "/users/login_before_shopping", to: "users#login_before_shopping"
+  post "/users/login_during_shopping", to: "users#login_during_shopping"
+  post "/users/create_during_shopping", to: "users#create_during_shopping"
   get "/users/logout", to: "users#logout"
   resources :users
 

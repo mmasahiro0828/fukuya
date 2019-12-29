@@ -10,7 +10,7 @@
     .login-box
         p.title ログイン
         .main-box
-            =form_with scope: :session, url: users_login_path, local: true do |f|
+            =form_with scope: :session, url: users_login_before_shopping_path, local: true do |f|
                 .form-part
                     .form-group
                         =f.label :email, "メールアドレス:"
