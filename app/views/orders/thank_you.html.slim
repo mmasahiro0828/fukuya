@@ -14,7 +14,7 @@
                 p 決済方法
             li
                 p 確認
-            li
+            li.picked
                 p 完了
 
     .thankyou-box
@@ -22,7 +22,8 @@
 
     .order-number-box
         p.title 注文番号
-        .main-box 1111-1111
+        .main-box =params[:id]
 
     .cart-btn-wrapper
-        .btn.go-payment ▶︎ TOPに戻る
+        =link_to root_path do
+            .btn.go-payment ▶︎ TOPに戻る

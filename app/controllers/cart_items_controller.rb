@@ -18,13 +18,7 @@ class CartItemsController < ApplicationController
         else
             render "items/show/#{params[:format]}", alert: "希望した商品の在庫がございません。"
         end
-
-        if CartItem.all.empty?
-            last_cart_item_id = 0
-        else
-            last_cart_item_id = CartItem.last.id
-        end
-
+        
         cart_item = CartItem.where(user_id: current_user.id).find_by(sku_id: sku.id)
 
         if cart_item
@@ -37,7 +31,6 @@ class CartItemsController < ApplicationController
             redirect_to cart_items_url, notice: "「#{sku.item.name}」をカートに入れました。"
         else
             cart_item = current_user.cart_items.new(
-                id: last_cart_item_id + 1,
                 sku_id: sku.id,
                 quantity: 1,
                 total_item_price: sku.item.price,

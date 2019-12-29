@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_23_132618) do
+ActiveRecord::Schema.define(version: 2019_12_29_070545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 2019_12_23_132618) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.bigint "user_id"
     t.string "sku_id", null: false
     t.integer "quantity", null: false
     t.integer "total_item_price"
@@ -46,8 +45,16 @@ ActiveRecord::Schema.define(version: 2019_12_23_132618) do
     t.integer "price_w_tax"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "cart_id"
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["sku_id"], name: "index_cart_items_on_sku_id"
-    t.index ["user_id"], name: "index_cart_items_on_user_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "colors", force: :cascade do |t|
@@ -222,8 +229,9 @@ ActiveRecord::Schema.define(version: 2019_12_23_132618) do
   end
 
   add_foreign_key "brand_representatives", "brands"
+  add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "skus"
-  add_foreign_key "cart_items", "users"
+  add_foreign_key "carts", "users"
   add_foreign_key "item_colors", "colors"
   add_foreign_key "item_colors", "items"
   add_foreign_key "item_images", "item_colors"

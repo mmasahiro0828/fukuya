@@ -1,7 +1,8 @@
 class User < ApplicationRecord
-    has_many :cart_items
+    has_many :cart_items, through: :carts
     has_many :sales
     has_many :orders
+    has_one :cart
 
     validates :family_name, presence: true
     validates :first_name, presence: true

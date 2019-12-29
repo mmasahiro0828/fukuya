@@ -4,9 +4,7 @@ class OrdersController < ApplicationController
     end
 
 
-    def create
-    end
-    
+
     def new_for_payment
 
         user = current_user
@@ -39,7 +37,6 @@ class OrdersController < ApplicationController
 
 
 
-
     def confirmation
         @order = Order.new(order_params_2)
         @date_selection = date_selection
@@ -48,18 +45,52 @@ class OrdersController < ApplicationController
             render :new_for_payment
         end
 
-        @order.shipping_date = "#{order_params_3[:shipping_date_1]} #{order_params_3[:shipping_date_2]}"
+        if @order.method_of_payment == "代引き"
+            @order.fee = 380
+        end
+
+        /discount処理/
+
+        @order.final_price = @order.total_item_price + @order.fee - @order.discount
+
+        @order.shipping_date = "日: #{order_params_3[:shipping_date_1]} / 時間: #{order_params_3[:shipping_date_2]}"
 
         @cart_items = User.find(@order.user_id).cart_items
+    end
+    
 
-        /cart情報をviewに反映/
-        /@order情報をviewにform_withで反映/
-        /やり直す場合、情報入力からやり直すボタン/
-        /submitでオーダーのcreate、同じタイミングでsalesもcreateし、cartの削除/
-        /create後はthankyouに飛ばす/
+    def create
+        order = Order.new(order_params_4)
+        order.save
+
+        cart_items = User.find(order.user_id).cart_items
+        
+        cart_items.each do |cart_item|
+            sale = order.sales.new(
+                user_id: cart_item.user_id,
+                sku_id: cart_item.sku_id,
+                quantity: cart_item.quantity,
+                total_item_price: cart_item.total_item_price,
+                discount: cart_item.discount,
+                price_w_tax: cart_item.price_w_tax
+            )
+
+            sale.save
+
+            cart_item.sku.stock.update(
+                all_quantity: cart_item.sku.stock.all_quantity - cart_item.quantity,
+                quantity_in_cart: cart_item.sku.stock.quantity_in_cart - cart_item.quantity
+            )
+            
+            cart_item.destroy
+        end
+
+        redirect_to orders_thank_you_path(id: order.id)
 
     end
     
+
+
     def thank_you
     end
 
@@ -77,6 +108,7 @@ class OrdersController < ApplicationController
             :phonenumber,
         )
     end
+
 
     def order_params_2
         params.require(:order).permit(
@@ -97,11 +129,33 @@ class OrdersController < ApplicationController
         )
     end
 
+
     def order_params_3
         params.require(:order).permit(
             :shipping_date_1,
             :shipping_date_2,
             :coupon_code,
+        )
+    end
+
+
+    def order_params_4
+        params.require(:order).permit(
+            :id,
+            :user_id,
+            :total_item_price,
+            :discount,
+            :fee,
+            :final_price,
+            :user_name,
+            :user_email,
+            :user_email_confirmation,
+            :shipping_postal_code,
+            :shipping_adress,
+            :shipping_cond_n_room,
+            :user_phonenumber,
+            :method_of_payment,
+            :shipping_date
         )
     end
 
@@ -118,8 +172,12 @@ class OrdersController < ApplicationController
         return date_selection
     end
 
+
+
     def date_for_display(date)
         "#{date.month}月#{date.day}"
     end
     
+
+
 end

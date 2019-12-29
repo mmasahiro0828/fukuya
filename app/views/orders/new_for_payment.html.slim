@@ -28,7 +28,7 @@
             p.title 決済方法
             .main-box
                 .form-check 
-                        =f.radio_button :method_of_payment, "credit_card"
+                        =f.radio_button :method_of_payment, "クレジットカード"
                         =f.label :method_of_payment, "クレジットカード", class:"ml-2"
 
                 .card-info-input-part
@@ -36,10 +36,10 @@
                         p カード情報入力、アコーディオン
 
                 .form-check 
-                        =f.radio_button :method_of_payment, "cash_on_delivery"
+                        =f.radio_button :method_of_payment, "代引き"
                         =f.label :method_of_payment, "代引き", class:"ml-2"
                 
-                p.attention ※ 代引き手数料340円がかかります。
+                p.attention ※ 代引き手数料380円がかかります。
 
         .shipping-box
             p.title 配送希望日
