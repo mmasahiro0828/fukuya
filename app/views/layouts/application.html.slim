@@ -23,18 +23,14 @@ html
         p =link_to "カートを消す", carts_destroy_path
       -else
         'having no cart
+    p =session[:cart_id]
 
 
     = yield
   
     footer
       | footer
-      a href="../orders/new_for_payment" 決済方法　
-      a href="../orders/new_for_confirmation" 確認画面　
-      a href="../orders/thank_you" ありがとう画面　　
-      a href="../users/confirmation" 登録情報確認と変更　
-      a href="../users/edit" 編集　
-      a href="../users/purchase_history" 購入履歴
+      
       
 
 

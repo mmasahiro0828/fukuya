@@ -2,7 +2,7 @@ class User < ApplicationRecord
     has_many :cart_items, through: :carts
     has_many :sales
     has_many :orders
-    has_one :cart
+    has_one :cart, dependent: :destroy
 
     validates :family_name, presence: true
     validates :first_name, presence: true

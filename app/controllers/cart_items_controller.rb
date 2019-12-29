@@ -12,13 +12,14 @@ class CartItemsController < ApplicationController
         /在庫check/
         sku = Sku.find_by(id: params[:format])
 
+        /renderをうまくとばせない/
         if sku.stock.quantity_on_display > 0
             sku.stock.update(
                 quantity_in_cart: sku.stock.quantity_in_cart + 1,
                 quantity_on_display: sku.stock.quantity_on_display - 1
             )
         else
-            render "items/show/#{params[:format]}", alert: "希望した商品の在庫がございません。"
+            render "items/show", alert: "希望した商品の在庫がございません。"
         end
 
         /すでにcartを持っているかcheck/
@@ -74,6 +75,11 @@ class CartItemsController < ApplicationController
         )
 
         cart_item.destroy
+
+        unless cart_item.cart.cart_items.present?
+            cart_item.cart.destroy
+            session[:cart_id] = nil
+        end
 
         redirect_to cart_items_url
     end

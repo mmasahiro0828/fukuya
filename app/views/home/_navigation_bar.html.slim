@@ -12,6 +12,8 @@
                     li.navi-item お気に入り
                     li.navi-item
                         i class="fas fa-user-circle fa-2x"
+                    li.navi-item =link_to "登録情報確認", user_path(current_user)
+                    li.navi-item =link_to "購入履歴", users_purchase_history_path
                     li.navi-item =link_to "ログアウト", users_logout_path, data: { confirm: "ログアウトしてもよろしいですか？"}
                 -else
                     li.navi-item =link_to "ログイン/新規登録", users_login_form_path

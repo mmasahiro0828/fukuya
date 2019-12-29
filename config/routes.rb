@@ -4,8 +4,6 @@ Rails.application.routes.draw do
 
   #テスト用↓
   
-  get "/users/confirmation", to: "users#confirmation"
-  get "/users/edit", to: "users#edit"
   get "/users/purchase_history", to: "users#purchase_history"
   get "/carts/destroy", to: "carts#destroy"
 

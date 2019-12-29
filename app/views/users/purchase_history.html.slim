@@ -1,15 +1,15 @@
-.container.smaller-font
-    .main-title-for-payment
-        h1.logo Fukuya.
+= render partial: "/home/navigation_bar"
 
-    
+.container.smaller-font
 
     .cart-items-wrapper.for_parchase_history
         p
             span.title-with-underline YOUR PARCHASE HISTORY ▼
         
-        = render partial: "item_colors/item_cards_c", locals: { repeat_number: 4}
+        -@sales.each do |sale|
+            = render partial: "items/item_cards_c", locals: { cart_item: sale, editable: false}
 
 
     .cart-btn-wrapper
-        .btn.go-payment ▶︎ TOPに戻る
+        =link_to root_url do
+            .btn.go-payment ▶︎ TOPに戻る
