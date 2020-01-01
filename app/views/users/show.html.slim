@@ -17,8 +17,9 @@
                 .label-part 名前
                 .input-part
                     p #{current_user.family_name} #{current_user.first_name}
-                    =link_to edit_user_path(data_key:"name") do
-                        button.btn.btn-sm.blue-btn 変更
+                    p.button-box
+                        =link_to edit_user_path(data_key:"name") do
+                            button.btn.btn-sm.blue-btn 変更
 
                         
             .info-record
@@ -29,22 +30,25 @@
                             #{current_user.postal_code}<br>
                             #{current_user.adress}<br>
                             #{current_user.cond_n_room}
-                    =link_to edit_user_path(data_key:"adress") do
-                        button.btn.btn-sm.blue-btn 変更
+                    p.button-box
+                        =link_to edit_user_path(data_key:"adress") do
+                            button.btn.btn-sm.blue-btn 変更
                         
             .info-record
                 .label-part メール
                 .input-part
                     p =current_user.email
-                    =link_to edit_user_path(data_key:"email") do
-                        button.btn.btn-sm.blue-btn 変更
+                    p.button-box
+                        =link_to edit_user_path(data_key:"email") do
+                            button.btn.btn-sm.blue-btn 変更
 
             .info-record
                 .label-part 電話番号
                 .input-part
                     p =current_user.phonenumber
-                    =link_to edit_user_path(data_key:"phonenumber") do
-                        button.btn.btn-sm.blue-btn 変更
+                    p.button-box
+                        =link_to edit_user_path(data_key:"phonenumber") do
+                            button.btn.btn-sm.blue-btn 変更
 
             .info-record
                 .label-part メルマガ
@@ -53,8 +57,9 @@
                         p 受け取る
                     -else
                         p 受け取らない
-                    =link_to edit_user_path(data_key:"mail_magazine") do
-                        button.btn.btn-sm.blue-btn 変更
+                    p.button-box
+                        =link_to edit_user_path(data_key:"mail_magazine") do
+                            button.btn.btn-sm.blue-btn 変更
     
     
     .go-next-button

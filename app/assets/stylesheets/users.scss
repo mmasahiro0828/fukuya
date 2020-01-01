@@ -35,10 +35,9 @@
 
 .info-input-box.for-confirmation3 {
     font-size: 1em;
-    margin-top: 2em;
+    margin-top: 6em;
     
     .main-box .info-record {   
-    
         .input-part {
             display: flex;
             align-items: center;
@@ -47,13 +46,18 @@
             p {
                 width: 80%;
                 max-width: 80%;
-                margin: 1em 2em;
+                margin: 1em 0 1em 2em;
                 padding: 0;
             }
 
-            button {
+            .button-box {
                 width: 20%;
-                margin: 0;
+                margin:0;
+                text-align: center;
+
+                button {
+                    margin: 0;
+                }
             }
         }
     }
@@ -69,9 +73,8 @@
 
 //====================================[購入履歴]========================================
 
-.for_parchase_history {
-
-.delete-btn {
-    display: none;
-    }
+p.box-under-line {
+    width: 100%;
+    height: 2px;
+    background: $main-color2;
 }

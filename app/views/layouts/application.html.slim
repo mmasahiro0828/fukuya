@@ -20,7 +20,6 @@ html
     p style="margin-left: 3em"
       -if current_cart
         p ="cart_id:#{session[:cart_id]}のカートを保持中"
-        p =link_to "カートを消す", carts_destroy_path
       -else
         'having no cart
     p =session[:cart_id]

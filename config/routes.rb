@@ -1,14 +1,8 @@
 Rails.application.routes.draw do
-  
+
+  #フロント画面用↓
   root to: 'home#top'
 
-  #テスト用↓
-  
-  
-  get "/carts/destroy", to: "carts#destroy"
-
-
-  #テスト用2↓
   resources :brands, only: :show
 
   resources :items, only: [:index, :show]

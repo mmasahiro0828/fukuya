@@ -2,12 +2,17 @@
 
 .container.smaller-font
 
-    .cart-items-wrapper.for_parchase_history
+    .cart-items-wrapper.for_parchase_history.mt-5
         p
             span.title-with-underline YOUR PARCHASE HISTORY ▼
         
-        -@sales.each do |sale|
-            = render partial: "items/item_cards_c", locals: { cart_item: sale, editable: false}
+        -if @sales.present?
+            -@sales.each do |sale|
+                = render partial: "items/item_cards_c", locals: { cart_item: sale, editable: false}
+        
+            p.box-under-line
+        -else
+            p 購入履歴はありません
 
 
     .cart-btn-wrapper

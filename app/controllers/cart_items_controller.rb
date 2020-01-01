@@ -105,6 +105,27 @@ class CartItemsController < ApplicationController
         redirect_to cart_items_url
     end
 
+
+    /自動で行いたい処理/
+
+    def automatic_deletion
+        Cart_items.all.each do |cart_item|
+            if Time.now.to_i - cart_item.updated_at.to_i > 24 * 60 * 60
+
+                cart_item.sku.stock.update(
+                    quantity_in_cart: cart_item.sku.stock.quantity_in_cart - cart_item.quantity,
+                    quantity_on_display: cart_item.sku.stock.quantity_on_display + cart_item.quantity
+                )
+
+                cart_item.destroy
+
+                unless cart_item.cart.cart_items.present?
+                    cart_item.cart.destroy
+                end
+            end
+        end         
+    end
+
 end
 
 
