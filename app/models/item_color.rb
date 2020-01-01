@@ -10,5 +10,6 @@ class ItemColor < ApplicationRecord
     has_many :cart_items, through: :skus
 
   has_many :likes, dependent: :destroy
+    has_many :users, through: :likes
   has_many :item_images, dependent: :destroy
 end

@@ -24,6 +24,17 @@
 .item-name-wrapper
     h2.item-and-brand-name #{@item.brand.name} "#{@item.name}"
     p.item-price #{@item.price} +tax
+    -if current_user
+        -if current_user.likes&.find_by(item_color_id: @item_color.id) 
+            =link_to like_path(id: @item.id, color_name: @item_color.color_name), method: :delete do
+                .like-button.mt-3
+                    'YOU LIKED
+                    span.fas.fa-heart.like-mark-colored.pl-1
+        -else
+            =link_to likes_path(id: @item.id, color_name: @item_color.color_name), method: :post do
+                .like-button.like-button-sober.mt-3
+                    'LIKE THIS ?
+                    span.fas.fa-heart.pl-1
 
 .color-select-wrapper
     .color-select-inner

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   #テスト用↓
   
-  get "/users/purchase_history", to: "users#purchase_history"
+  
   get "/carts/destroy", to: "carts#destroy"
 
 
@@ -12,8 +12,6 @@ Rails.application.routes.draw do
   resources :brands, only: :show
 
   resources :items, only: [:index, :show]
-  
-  resources :stocks
 
   resources :topics, only: :show
 
@@ -22,18 +20,20 @@ Rails.application.routes.draw do
   post "/users/login_during_shopping", to: "users#login_during_shopping"
   post "/users/create_during_shopping", to: "users#create_during_shopping"
   get "/users/logout", to: "users#logout"
+  get "/users/purchase_history", to: "users#purchase_history"
   resources :users
 
 
   post "/cart_items/create", to: "cart_items#create" #これresourcesのままcreateでとばせない、、
   post "/cart_items/delete_1", to: "cart_items#delete_1"
-  resources :cart_items
+  resources :cart_items, only: [:index, :create, :destroy]
 
   post "/orders/new_for_payment", to: "orders#new_for_payment"
   post "/orders/confirmation", to: "orders#confirmation"
   get "/orders/thank_you", to: "orders#thank_you"
-  resources :orders
-  resources :sales, only: [:new, :index, :create]
+  resources :orders, only: [:create, :new]
+
+  resources :likes
 
 
   #管理者用↓

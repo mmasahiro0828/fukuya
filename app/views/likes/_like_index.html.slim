@@ -1,0 +1,9 @@
+p.type-of-cards
+    span.title-with-underline
+        =link_to "ALL ITEMS", items_path(searched_by: "ALL")
+        ' > お気に入り ▼
+
+.container.pick-up-items
+    .row
+        -@item_colors.each do |item_color|
+            = render partial: "items/item_cards_a", locals: {item: item_color.item, representative_item_color: item_color}

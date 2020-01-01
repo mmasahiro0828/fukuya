@@ -9,7 +9,7 @@
                 li.navi-item =link_to "カート", cart_items_path
 
                 -if current_user
-                    li.navi-item お気に入り
+                    li.navi-item =link_to "お気に入り", likes_path
                     li.navi-item
                         i class="fas fa-user-circle fa-2x"
                     li.navi-item =link_to "登録情報確認", user_path(current_user)
