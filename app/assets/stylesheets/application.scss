@@ -6,6 +6,7 @@
 @import url('https://fonts.googleapis.com/css?family=Sacramento&display=swap');
 
 $gold_gradation: linear-gradient(135deg, rgba(229,193,103,1) 0%,rgba(229,212,169,1) 44%,rgba(200,154,16,1) 100%);
+$gold_gradation_clear: linear-gradient(135deg, rgba(229,193,103,0.9) 0%,rgba(229,212,169,0.7) 44%,rgba(200,154,16,0.9) 100%);
 $main-color1: rgb(223, 191, 111);
 $main-color2: rgb(143, 111, 31);
 $main-color3: rgb(57, 104, 143);
@@ -89,6 +90,23 @@ a:hover {
 
 
 //=========================[navigation_bar]===============================
+.navi-wrapper {
+    position: absolute;
+    width: 100%;
+}
+
+.navi-wrapper.sticky {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+        .navi-bar {
+            background: $gold_gradation_clear;
+        }
+
+        .navi-bar:after {
+            background: linear-gradient(135deg,rgba(203,169,83,0.7) 0%,rgba(144,111,12,0.9) 100%);
+        }
+}
 
 .navi-bar {
     background: $gold_gradation;
@@ -99,7 +117,7 @@ a:hover {
     content:"";
     display: block;
     height: 0.35em;
-    background: linear-gradient(135deg,rgba(203,169,83,1) 0%,rgba(144,111,12,1) 100%); //color-pattern 2
+    background: linear-gradient(135deg,rgba(203,169,83,1) 0%,rgba(144,111,12,1) 100%); 
 }
 
 .navi-list {
