@@ -152,48 +152,6 @@
     text-align: center;
 }
 
-//======================[index]==================================
-.item-group-information {
-    text-align: center;
-}
-
-.item-group-information .image-part {
-    width: 100%;
-    margin: 2em 0;
-    
-    img {
-        width: 20%;
-        min-width: 150px;
-        height: auto;
-    }
-}
-        
-.item-group-information .description-part {
-    background-image: url(./default_images/water_screen.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    margin-top: 1.5em;
-
-    .description-part-inner {
-        width: 30%;
-        min-width: 450px;
-        margin: 0 auto;
-        padding: 2em 0;
-
-        .description-box {
-            width: 100%;
-            padding: 1em 1.5em;
-            color: white;
-            background: radial-gradient(ellipse at center, rgba(0,0,0,0.6) 0%,rgba(100,110,112,0.6) 100%);
-        }
-
-    }
-    
-    
-}
-
-
 
 //======================[item_page]==================================
 
@@ -479,6 +437,50 @@ tbody td:first-child {
     display: flex;
     flex-flow: row;
     overflow: scroll;
+}
+
+
+
+//======================[brand/show, topic/show用]==================================
+.item-group-information {
+    text-align: center;
+    margin-top: 6em;
+}
+
+.item-group-information .image-part {
+    width: 100%;
+    margin: 2em 0;
+    
+    img {
+        width: 20%;
+        min-width: 150px;
+        height: auto;
+    }
+}
+        
+.item-group-information .description-part {
+    background-image: url(./default_images/water_screen.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    margin-top: 1.5em;
+
+    .description-part-inner {
+        width: 30%;
+        min-width: 360px;
+        margin: 0 auto;
+        padding: 2em 0;
+
+        .description-box {
+            width: 100%;
+            padding: 1em 1.5em;
+            color: white;
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.6) 0%,rgba(100,110,112,0.6) 100%);
+        }
+
+    }
+    
+    
 }
 
 

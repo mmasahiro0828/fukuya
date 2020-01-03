@@ -6,9 +6,9 @@
         ul.error_explanation
             -@user.errors.full_messages.each do |message|
                 li =message
-                
-    -if flash.notice.present?
-        .alert.alert-success =flash.notice
+    .alert-box           
+        -if flash.notice.present?
+            .alert.alert-success =flash.notice
 
     .info-input-box.for-confirmation3
         p.title 登録情報

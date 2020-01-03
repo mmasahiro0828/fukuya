@@ -113,6 +113,7 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
+        @brands = Brand.all
     end
     
 
@@ -142,6 +143,7 @@ class UsersController < ApplicationController
 
 
     def purchase_history
+        @brands = Brand.all
         @sales = current_user.sales.order(created_at: "DESC")
     end
 

@@ -1,37 +1,119 @@
 .navi-wrapper
+
+
+
+
+
     .navi-bar.navi-for-pc
         .container
             ul.navi-list
-                li.navi-item.logo-mark =link_to "Fukuya.", root_path
-                li.navi-item ※検索窓※
-                li.navi-item カテゴリー一覧
-                li.navi-item ブランド一覧
-                li.navi-item =link_to "カート", cart_items_path
+                li.navi-item.logo-mark
+                    =link_to root_path do
+                        .inner Fukuya.
+                li.navi-item
+                    .inner ※検索窓※
+                li.navi-item
+                    .inner.nest カテゴリー一覧
+                    .navi-items-list
+                        ul
+                            li.category =link_to "アウター", items_path(searched_by: "アウター")
+                            li.category =link_to "トップス", items_path(searched_by: "トップス")
+                            li.category =link_to "ボトムス", items_path(searched_by: "ボトムス")
+                            li.category =link_to "シューズ", items_path(searched_by: "シューズ")
+                            li.category =link_to "バッグ", items_path(searched_by: "バッグ")
+                            li.category =link_to "アクセサリー", items_path(searched_by: "アクセサリー")
+                            li.category =link_to "その他", items_path(searched_by: "その他")
+                        p.close-navi-items-list ▲ CLOSE　
+
+                li.navi-item
+                    .inner.nest ブランド一覧
+                    .navi-items-list
+                        ul
+                            -@brands.each do |brand|
+                                li.brand 
+                                    =link_to brand do
+                                        =brand.name
+                        p.close-navi-items-list ▲ CLOSE　
+                li.navi-item
+                    =link_to cart_items_path do
+                        .inner カート
 
                 -if current_user
-                    li.navi-item =link_to "お気に入り", likes_path
                     li.navi-item
-                        i class="fas fa-user-circle fa-2x"
-                    li.navi-item =link_to "登録情報確認", user_path(current_user)
-                    li.navi-item =link_to "購入履歴", users_purchase_history_path
-                    li.navi-item =link_to "ログアウト", users_logout_path, data: { confirm: "ログアウトしてもよろしいですか？"}
+                        =link_to likes_path do
+                            .inner お気に入り
+                    li.navi-item
+                        .inner.nest
+                            i class="fas fa-user-circle fa-lg"
+                        .navi-items-list.last
+                            ul
+                                li =link_to "登録情報確認", user_path(current_user)
+                                li =link_to "購入履歴", users_purchase_history_path
+                                li =link_to "ログアウト", users_logout_path, data: { confirm: "ログアウトしてもよろしいですか？"}
+                            p.close-navi-items-list ▲ CLOSE　
                 -else
-                    li.navi-item =link_to "ログイン/新規登録", users_login_form_path
+                    li.navi-item
+                        =link_to users_login_form_path do
+                            .inner ログイン/新規登録
+
+
+
 
     .navi-bar.navi-for-mobile
         .container
             ul.navi-list
-                li.navi-item.logo-mark =link_to "Fukuya.", root_path
+                li.navi-item.logo-mark
+                    =link_to root_path do
+                        .inner Fukuya.
                 li.navi-item
-                    i class="fas fa-search fa-lg"
-                li.navi-item =link_to cart_items_path do
-                    i class="fas fa-shopping-cart fa-lg"
+                    .inner.nest
+                        i class="fas fa-search fa-lg"
+                    .navi-items-list
+                        ul
+                            li ※検索窓※
+                            li.more-nest
+                                .more-nest-list-title カテゴリー一覧
+                                .more-nest-list
+                                    ul
+                                        li.category =link_to "アウター", items_path(searched_by: "アウター")
+                                        li.category =link_to "トップス", items_path(searched_by: "トップス")
+                                        li.category =link_to "ボトムス", items_path(searched_by: "ボトムス")
+                                        li.category =link_to "シューズ", items_path(searched_by: "シューズ")
+                                        li.category =link_to "バッグ", items_path(searched_by: "バッグ")
+                                        li.category =link_to "アクセサリー", items_path(searched_by: "アクセサリー")
+                                        li.category =link_to "その他", items_path(searched_by: "その他")
+                                    p.close-more-nest-list ▲ CLOSE　
+                            li.more-nest
+                                .more-nest-list-title ブランド一覧
+                                .more-nest-list
+                                    ul
+                                        -@brands.each do |brand|
+                                            li.brand 
+                                                =link_to brand do
+                                                    =brand.name
+                                    p.close-more-nest-list ▲ CLOSE　
+
+                        p.close-navi-items-list ▲ CLOSE　
+                li.navi-item
+                    =link_to cart_items_path do
+                        .inner
+                            i class="fas fa-shopping-cart fa-lg"
 
                 -if current_user
                     li.navi-item
-                        i class="fas fa-heart fa-lg"
+                        =link_to likes_path do
+                            .inner
+                                i class="fas fa-heart fa-lg"
                     li.navi-item
-                        i class="fas fa-user-circle fa-2x"
-                    li.navi-item =link_to "ログアウト", users_logout_path, data: { confirm: "ログアウトしてもよろしいですか？"}
+                        .inner.nest
+                            i class="fas fa-user-circle fa-lg"
+                        .navi-items-list.last
+                            ul
+                                li =link_to "登録情報確認", user_path(current_user)
+                                li =link_to "購入履歴", users_purchase_history_path
+                                li =link_to "ログアウト", users_logout_path, data: { confirm: "ログアウトしてもよろしいですか？"}
+                            p.close-navi-items-list ▲ CLOSE　
                 -else
-                    li.navi-item =link_to "ログイン/新規登録", users_login_form_path
+                    li.navi-item
+                        =link_to users_login_form_path do
+                            .inner ログイン/新規登録

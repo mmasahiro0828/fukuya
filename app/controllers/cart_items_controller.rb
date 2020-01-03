@@ -1,6 +1,7 @@
 class CartItemsController < ApplicationController
     
     def index
+        @brands = Brand.all
         @cart_items = current_cart&.cart_items
         @total_price_of_cart_items = @cart_items&.sum(:price_w_tax)
     end
