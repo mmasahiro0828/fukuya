@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
-  belongs_to :user, optional: true, dependent: :nullify
-  has_many :sales, dependent: :nullify
+  belongs_to :user, optional: true
+  has_many :sales
 
   validates :user_email, confirmation: true
   validates :user_email_confirmation, presence: true
