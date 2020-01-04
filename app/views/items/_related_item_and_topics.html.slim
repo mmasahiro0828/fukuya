@@ -1,0 +1,24 @@
+    .related-items-and-topics-wrapper
+        -if @related_topics.present?
+            p
+                span.title-with-underline　RELATED TOPICS ▼
+            .related-topics-cards-wrapper
+                -@related_topics.each do |topic|
+                    .topics-card-b
+                        =link_to topic do
+                            img src="/assets/default_images/no_image.jpg"
+                            p.topics-name =topic.name
+                            p.topics-date =topic.created_at
+            
+
+        p.mt-5
+            span.title-with-underline　OTHER #{@item.brand.name} ITEMS ▼
+        .related-item-cards-wrapper
+            -@same_brand_items.each do |item|
+                = render partial: "item_cards_b", locals: { item: item}
+        
+        p.mt-5
+            span.title-with-underline　OTHER #{@item.category} ▼
+        .related-item-cards-wrapper
+            -@same_category_items.each do |item|
+                = render partial: "item_cards_b", locals: { item: item}

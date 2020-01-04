@@ -4,7 +4,7 @@ p.type-of-cards
 .container.pick-up-items
     .row
         -@pickup_items.each do |item|
-            = render partial: "items/item_cards_a", locals: {item: item, representative_item_color: item.item_colors.order(:color_id).first}
+            = render partial: "items/item_cards_a", locals: {item: item, color_name_to_send: nil}
         
             
 p.type-of-cards
@@ -12,7 +12,7 @@ p.type-of-cards
 .container.new-arrival-items
     .row
         -@new_arrival_items.each do |item|
-            = render partial: "items/item_cards_a", locals: {item: item, representative_item_color: item.item_colors.order(:color_id).first}
+            = render partial: "items/item_cards_a", locals: {item: item, color_name_to_send: nil}
             
 p.type-of-cards.appear990
     span.title-with-underline ALL ITEMS ▼

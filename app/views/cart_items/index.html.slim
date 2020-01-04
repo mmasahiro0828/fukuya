@@ -31,7 +31,7 @@
         
         -if @total_price_of_cart_items 
             -@cart_items.each do |cart_item|
-                =render partial: "items/item_cards_c", locals: { cart_item: cart_item, editable: true}
+                =render partial: "items/item_cards_c", locals: { cart_item: cart_item, color_name_to_send: cart_item.sku.item_color.color_name, editable: true}
 
             .price-box
                 .price-record

@@ -1,7 +1,9 @@
 
 .item-card-c
+    
     .image-part
-        img src="/assets/default_images/no_image.jpg"
+        =link_to item_path(cart_item.sku.item, color_name: color_name_to_send) do
+            img src="/assets/default_images/no_image.jpg"
     
     .info-part
         .info-record

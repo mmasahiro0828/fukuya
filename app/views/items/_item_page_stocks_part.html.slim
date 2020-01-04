@@ -1,0 +1,26 @@
+
+p 在庫状況 (#{@item_color.color_name})
+.table-wrapper
+    table.table
+        thead
+            tr
+                th サイズ
+                th　在庫
+                th　カートに入れる
+        tbody
+            -@skus.each do |sku|
+                tr
+                    td =sku.size_name
+                    td
+                        -if sku.stock.quantity_on_display > 2
+                            '在庫あり
+                        -elsif sku.stock.quantity_on_display > 0
+                            span style="color: red" ="残り#{sku.stock.quantity_on_display}点"
+                        -else
+                            span style="color: gray" sold out
+                    td
+                        -if sku.stock.quantity_on_display > 0
+                            =link_to cart_items_create_path(sku), method: :post do
+                                button.btn.btn-sm.btn-outline-dark add to cart
+                        -else
+                            '-

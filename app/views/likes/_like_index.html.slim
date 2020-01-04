@@ -7,6 +7,6 @@ p.type-of-cards
     .row
         -if @item_colors.present?
             -@item_colors.each do |item_color|
-                = render partial: "items/item_cards_a", locals: {item: item_color.item, representative_item_color: item_color}
+                = render partial: "items/item_cards_a", locals: {item: item_color.item, color_name_to_send: item_color.color_name}
         -else
             p お気に入りした商品がありません

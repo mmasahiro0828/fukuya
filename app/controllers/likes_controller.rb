@@ -8,8 +8,6 @@ class LikesController < ApplicationController
             item_color_id: @item_color.id
         )
         like.save
-
-        redirect_to item_path(id: @item.id, color_name: @item_color.color_name)
     end
 
 
@@ -20,10 +18,7 @@ class LikesController < ApplicationController
         like = current_user.likes.find_by(
             item_color_id: @item_color.id
         )
-
         like.destroy
-
-        redirect_to item_path(id: @item.id, color_name: @item_color.color_name)
     end
 
     def index

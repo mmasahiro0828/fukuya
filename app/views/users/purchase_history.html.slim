@@ -8,7 +8,7 @@
         
         -if @sales.present?
             -@sales.each do |sale|
-                = render partial: "items/item_cards_c", locals: { cart_item: sale, editable: false}
+                = render partial: "items/item_cards_c", locals: { cart_item: sale, color_name_to_send: sale.sku.item_color.color_name, editable: false}
         
             p.box-under-line
         -else
