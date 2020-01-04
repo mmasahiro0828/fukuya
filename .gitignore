@@ -25,3 +25,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# deviceを使おうとしたときに追加したカラムの削除用のmigrationファイル。本番でのデータベースには反映しないファイルのためignore
+20191219162823_remove_devise_column_from_users.rb

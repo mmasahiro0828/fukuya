@@ -12,7 +12,7 @@ class Item < ApplicationRecord
       has_many :sales, through: :skus
       has_many :cart_items, through: :skus
 
-  has_many :topic_items
+  has_many :topic_items, dependent: :destroy
     has_many :topics, through: :topic_items
     
 
