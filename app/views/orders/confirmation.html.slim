@@ -41,10 +41,7 @@
 
     .payment-box.for-confirmation2
         p.title 決済方法
-        -if @order.method_of_payment == "credit_card"
-            .main-box クレジットカード
-        -else
-            .main-box 代引き
+        .main-box =@order.method_of_payment
 
     .shipping-box.for-confirmation2
         p.title 配送希望日
@@ -54,20 +51,41 @@
         p.title アイテム
         .main-box
             -@cart_items.each do |cart_item|
-                =render partial: "items/item_cards_c", locals: { cart_item: cart_item}
+                =render partial: "items/item_cards_c", locals: { cart_item: cart_item, editable: false }
         .price-box
             .price-record
                 .title-part 商品合計
-                .price-part 24,000
+                .price-part =@order.total_item_price
             .price-record
                 .title-part 手数料
-                .price-part 380
+                .price-part =@order.fee 
             .price-record
                 .title-part 割引
-                .price-part 0
+                .price-part =@order.discount
             .price-record
                 .title-part 支払い合計
-                .price-part 24,380
+                .price-part =@order.final_price
 
-    .go-next-button                    
-        button.btn.btn-sm.blue-btn 注文を確定する
+    =form_with model: @order, local: true do |f|
+        .hidden-box
+            =f.hidden_field :id
+            =f.hidden_field :user_id
+            =f.hidden_field :total_item_price
+            =f.hidden_field :discount
+            =f.hidden_field :fee
+            =f.hidden_field :final_price
+            =f.hidden_field :method_of_payment
+            =f.hidden_field :user_name
+            =f.hidden_field :user_email
+            =f.hidden_field :user_email_confirmation
+            =f.hidden_field :shipping_postal_code
+            =f.hidden_field :shipping_adress
+            =f.hidden_field :shipping_cond_n_room
+            =f.hidden_field :user_phonenumber
+            =f.hidden_field :shipping_date
+        .go-next-button                    
+            =f.submit "注文を確定する", class:"btn btn-sm blue-btn"
+    
+    .go-next-button
+        =link_to cart_items_path do
+            button.btn.btn-sm.dark-btn 初めから入力し直す

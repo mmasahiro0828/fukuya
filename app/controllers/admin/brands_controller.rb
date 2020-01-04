@@ -33,18 +33,12 @@ class Admin::BrandsController < ApplicationController
     #テスト用メソッド↓
 
     def create_sample_data
-        if Brand.all.empty?
-            last_brand_id = 0
-        else
-            last_brand_id = Brand.last.id
-        end
-
+        
         random1 = rand(4..6)
 
         @sample_brand = Brand.new(
-            id: last_brand_id + 1,
-            name: "sample brand #{last_brand_id + 1}",
-            kana_name: "サンプルブランド#{last_brand_id + 1}",
+            name: "yet",
+            kana_name: "yet",
             description: "こんなブランドです。",
             image_name: "img_for_sample_brand.jpg",
             rate_of_retail_price: random1 * 10,
@@ -53,6 +47,13 @@ class Admin::BrandsController < ApplicationController
         )
 
         @sample_brand.save
+
+        @sample_brand.update(
+            name: "sample brand #{@sample_brand.id}",
+            kana_name: "サンプルブランド#{@sample_brand.id}"
+        )
+
+        
     end
 
 end

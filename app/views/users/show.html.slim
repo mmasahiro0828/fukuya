@@ -1,0 +1,72 @@
+= render partial: "/home/navigation_bar"
+
+.container
+
+    -if @user.errors.present?
+        ul.error_explanation
+            -@user.errors.full_messages.each do |message|
+                li =message
+    .alert-box           
+        -if flash.notice.present?
+            .alert.alert-success =flash.notice
+
+    .info-input-box.for-confirmation3
+        p.title 登録情報
+        .main-box
+            .info-record
+                .label-part 名前
+                .input-part
+                    p #{current_user.family_name} #{current_user.first_name}
+                    p.button-box
+                        =link_to edit_user_path(data_key:"name") do
+                            button.btn.btn-sm.blue-btn 変更
+
+                        
+            .info-record
+                .label-part 住所
+                .input-part
+                    p
+                        | 
+                            #{current_user.postal_code}<br>
+                            #{current_user.adress}<br>
+                            #{current_user.cond_n_room}
+                    p.button-box
+                        =link_to edit_user_path(data_key:"adress") do
+                            button.btn.btn-sm.blue-btn 変更
+                        
+            .info-record
+                .label-part メール
+                .input-part
+                    p =current_user.email
+                    p.button-box
+                        =link_to edit_user_path(data_key:"email") do
+                            button.btn.btn-sm.blue-btn 変更
+
+            .info-record
+                .label-part 電話番号
+                .input-part
+                    p =current_user.phonenumber
+                    p.button-box
+                        =link_to edit_user_path(data_key:"phonenumber") do
+                            button.btn.btn-sm.blue-btn 変更
+
+            .info-record
+                .label-part メルマガ
+                .input-part
+                    -if current_user.mail_magazine == true
+                        p 受け取る
+                    -else
+                        p 受け取らない
+                    p.button-box
+                        =link_to edit_user_path(data_key:"mail_magazine") do
+                            button.btn.btn-sm.blue-btn 変更
+    
+    
+    .go-next-button
+        =link_to user_path, method: :delete, data: { confirm: "退会すると、購入履歴やお気に入り登録などのユーザー情報が全て削除されます。退会してもよろしいですか？"} do            
+            button.btn.btn-sm.dark-btn 退会する
+
+
+    .cart-btn-wrapper
+        =link_to root_path do
+            .btn.go-payment ▶︎ TOPに戻る

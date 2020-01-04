@@ -1,43 +1,8 @@
 
-.item-images-wrapper
-    .wrapper-to-fix-aspect
-        .main-image-part
-            img src="/assets/default_images/no_image.jpg"
-        .sub-images-part
-            .images-box
-                img src="/assets/default_images/no_image.jpg"
-                img src="/assets/default_images/no_image.jpg"
-                img src="/assets/default_images/no_image.jpg"
-                img src="/assets/default_images/no_image.jpg"
-                img src="/assets/default_images/no_image.jpg"
-                img src="/assets/default_images/no_image.jpg"
-                img src="/assets/default_images/no_image.jpg"
-                img src="/assets/default_images/no_image.jpg"
-                img src="/assets/default_images/no_image.jpg"
-                img src="/assets/default_images/no_image.jpg"
-                img src="/assets/default_images/no_image.jpg"
-                img src="/assets/default_images/no_image.jpg"
-                img src="/assets/default_images/no_image.jpg"
-                img src="/assets/default_images/no_image.jpg"
-                img src="/assets/default_images/no_image.jpg"
-
-.item-name-wrapper
-    h2.item-and-brand-name #{@item.brand.name} "#{@item.name}"
-    p.item-price #{@item.price} +tax
-
-.color-select-wrapper
-    .color-select-inner
-        ul.color-blocks
-            -@item_colors.each do |i_color|
-                -if i_color.color_name == @item_color.color_name
-                    li.color-block.picked-block
-                        .inner =i_color.color_name
-                        
-                -else
-                    li.color-block
-                        =link_to item_path(@item, color_name: i_color.color_name) do
-                            .inner =i_color.color_name
-
+/AJAXで書き換えるところ/
+.item-page-images-part
+    =render partial: "item_page_images_part"
+                    
 .item-detail-wrapper
     p.size-patterns サイズ展開:
     a
@@ -71,54 +36,8 @@
                                 td = @measuring_values.where(sku_id: sku.id).find_by(measuring_item_id: mi.id).value
 
 
+/AJAXで書き換えるところ/
 .stock-detail-wrapper
-    p 在庫状況
-    .table-wrapper
-        table.table
-            thead
-                tr
-                    th サイズ
-                    th　在庫
-                    th　カートに入れる
-            tbody
-                -@skus.each do |sku|
-                    tr
-                        td =sku.size_name
-                        td
-                            -if sku.stock.quantity_on_display > 2
-                                '在庫あり
-                            -elsif sku.stock.quantity_on_display > 0
-                                span style="color: red" ="残り#{sku.stock.quantity_on_display}点"
-                            -else
-                                span style="color: gray" sold out
-                        td
-                            -if sku.stock.quantity_on_display > 0
-                                =link_to cart_items_create_path(sku), method: :post do
-                                    button.btn.btn-sm.btn-outline-dark add to cart
-                            -else
-                                '-
-.related-items-and-topics-wrapper
-    -if @related_topics.present?
-        p
-            span.title-with-underline　RELATED TOPICS ▼
-        .related-topics-cards-wrapper
-            -@related_topics.each do |topic|
-                .topics-card-b
-                    =link_to topic do
-                        img src="/assets/default_images/no_image.jpg"
-                        p.topics-name =topic.name
-                        p.topics-date =topic.created_at
-        
+    =render partial: "item_page_stocks_part"
 
-    p.mt-5
-        span.title-with-underline　OTHER #{@item.brand.name} ITEMS ▼
-    .related-item-cards-wrapper
-        -@same_brand_items.each do |item|
-            = render partial: "item_cards_b", locals: { item: item, representative_item_color: item.item_colors.order(:color_id).first}
-    
-    p.mt-5
-        span.title-with-underline　OTHER #{@item.category} ▼
-    .related-item-cards-wrapper
-        -@same_category_items.each do |item|
-            = render partial: "item_cards_b", locals: { item: item, representative_item_color: item.item_colors.order(:color_id).first}
         

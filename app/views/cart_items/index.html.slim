@@ -1,13 +1,14 @@
 = render partial: "home/navigation_bar"
 
--if flash.notice.present?
-    .alert.alert-success =flash.notice
--if flash.alert.present?
-    .alert.alert-danger =flash.alert
+.alert-box
+    -if flash.notice.present?
+        .alert.alert-success =flash.notice
+    -if flash.alert.present?
+        .alert.alert-danger =flash.alert
 
 
 .container
-    .main-title-for-payment
+    .main-title-for-payment.mt-5
         h1.logo Fukuya.
 
     .breadcrumb-for-payment-wrapper.smaller-font
@@ -28,9 +29,9 @@
         p
             span.title-with-underline YOUR CART ▼
         
-        -unless @total_price_of_cart_items == 0
+        -if @total_price_of_cart_items 
             -@cart_items.each do |cart_item|
-                =render partial: "items/item_cards_c", locals: { cart_item: cart_item}
+                =render partial: "items/item_cards_c", locals: { cart_item: cart_item, color_name_to_send: cart_item.sku.item_color.color_name, editable: true}
 
             .price-box
                 .price-record

@@ -1,38 +1,33 @@
 Rails.application.routes.draw do
-  
+
+  #フロント画面用↓
   root to: 'home#top'
 
-  #テスト用↓
-  get "/orders/thank_you", to: "orders#thank_you"
-  get "/users/confirmation", to: "users#confirmation"
-  get "/users/edit", to: "users#edit"
-  get "/users/purchase_history", to: "users#purchase_history"
-  
-
-
-  #テスト用2↓
   resources :brands, only: :show
 
   resources :items, only: [:index, :show]
-  
-  resources :stocks
 
   resources :topics, only: :show
 
   get "/users/login_form", to: "users#login_form"
-  post "/users/login", to: "users#login"
+  post "/users/login_before_shopping", to: "users#login_before_shopping"
+  post "/users/login_during_shopping", to: "users#login_during_shopping"
+  post "/users/create_during_shopping", to: "users#create_during_shopping"
   get "/users/logout", to: "users#logout"
+  get "/users/purchase_history", to: "users#purchase_history"
   resources :users
 
 
   post "/cart_items/create", to: "cart_items#create" #これresourcesのままcreateでとばせない、、
   post "/cart_items/delete_1", to: "cart_items#delete_1"
-  resources :cart_items
+  resources :cart_items, only: [:index, :create, :destroy]
 
   post "/orders/new_for_payment", to: "orders#new_for_payment"
   post "/orders/confirmation", to: "orders#confirmation"
-  resources :orders
-  resources :sales, only: [:new, :index, :create]
+  get "/orders/thank_you", to: "orders#thank_you"
+  resources :orders, only: [:create, :new]
+
+  resources :likes
 
 
   #管理者用↓

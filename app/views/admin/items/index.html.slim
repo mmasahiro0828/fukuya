@@ -38,7 +38,7 @@
                             -if item.number_of_colors == 0
                                 span style="color: red" カラー登録なし
                             -else
-                                -item.item_colors.each_with_index do |ic, i|
+                                -item.item_colors.order(:created_at).each_with_index do |ic, i|
                                     -unless i == item.number_of_colors - 1
                                         ="#{ic.color.code} / "
                                     -else
@@ -48,7 +48,7 @@
                             -if item.number_of_sizes == 0
                                 span style="color: red" サイズ登録なし
                             -else
-                                -item.item_colors.first.skus.each_with_index do |sku, i|
+                                -item.item_colors.first.skus.order(:created_at).each_with_index do |sku, i|
                                     -unless i == item.number_of_sizes - 1
                                         ="#{sku.size.name} / "
                                     -else

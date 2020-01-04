@@ -15,4 +15,7 @@ class Item < ApplicationRecord
   has_many :topic_items
     has_many :topics, through: :topic_items
     
+
+  validates :category, presence: true
+  validates :price, presence: true
 end

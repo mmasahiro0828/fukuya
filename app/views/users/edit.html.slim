@@ -3,74 +3,78 @@
     .main-title-for-payment
         h1.logo Fukuya.
 
-    .info-input-box
-        p.title 編集
-        .main-box
-            .info-record.disapper
-                .label-part 名前
-                .input-part
-                    .row
-                        .form-group.col-6
-                            .label 性:
-                            .input.form-control
-                        .form-group.col-6
-                            .label 名:
-                            .text_field.form-control
-                        
-            .info-record
-                .label-part 郵便番号
-                .input-part
-                    .row
-                        .form-group.col-10
-                            .label 例) 1234567　　　※ハイフンなし
-                            .input.form-control
-            .info-record
-                .label-part 住所
-                .input-part
+    =form_with model: current_user, method: :patch, local: true do |f|
+        .info-input-box
+            p.title 編集
+            .main-box
+                -case params[:data_key]
+                -when "name"
+                    .info-record
+                        .label-part 名前
+                        .input-part
+                            .row
+                                .form-group.col-6
+                                    =f.label :family_name, "性:"
+                                    =f.text_field :family_name, class:"form-control"
+                                .form-group.col-6
+                                    =f.label :first_name, "名:"
+                                    =f.text_field :first_name, class:"form-control"
+                -when "adress"
+                    .info-record
+                        .label-part 郵便番号
+                        .input-part
+                            .row
+                                .form-group.col-10
+                                    '例) 1234567　　　※ハイフンなし
+                                    =f.text_field :postal_code, class:"form-control"
+                    .info-record
+                        .label-part 住所
+                        .input-part
+                            .form-group
+                                '例) 〇〇県〇〇市〇〇1-11-111
+                                =f.text_field :adress, class:"form-control"
+                    .info-record
+                        .label-part 建物名,etc...
+                        .input-part
+                            .form-group
+                                '例) メゾンフクヤ 208
+                                =f.text_field :cond_n_room, class:"form-control"
+                -when "email"
+                    .info-record
+                        .label-part メールアドレス
+                        .input-part
+                            .form-group
+                                =f.label :email, "メールアドレスを入力"
+                                =f.email_field :email, class:"form-control"
+                            .form-group
+                                =f.label :email_confirmation, "※確認用"
+                                =f.email_field :email_confirmation, class:"form-control"
+                -when "phonenumber"
+                    .info-record
+                        .label-part 電話番号
+                        .input-part
+                            .form-group
+                                '例) 02012345678　　※ハイフンなし
+                                =f.text_field :phonenumber, class:"form-control"
+                
+                -unless params[:data_key] == "email"
+                    .hidden-box
+                        =f.hidden_field :email_confirmation, value: current_user.email
+        
+        .for-registration-box
+            .for-resistration-part
+                .inner
+                    -if params[:data_key] == "mail_magazine"
+                        .form-check 
+                            =f.radio_button :mail_magazine, "true"
+                            =f.label :mail_magazine, "メルマガ配信を希望する", class:"ml-2"
+                            br
+                            =f.radio_button :mail_magazine, "false"
+                            =f.label :mail_magazine, "メルマガ配信を希望しない", class:"ml-2"
                     .form-group
-                        .label 例) 東京都〇〇区〇〇1-11-111
-                        .input.form-control
-            .info-record
-                .label-part 建物名,etc...
-                .input-part
-                    .form-group
-                        .label 例) メゾンハピネス 103
-                        .input.form-control
-            .info-record.disapper
-                .label-part メールアドレス
-                .input-part
-                    .form-group
-                        .label メールアドレスを入力
-                        .input.form-control
-                    .form-group
-                        .label ※確認用
-                        .input.form-control
-
-            .info-record.disapper
-                .label-part 電話番号
-                .input-part
-                    .form-group
-                            .label 例) 02012345678　　※ハイフンなし
-                            .input.form-control
-
-    
-
-    .for-registration-box.disapper
-        .for-resistration-part
-            .inner
-                .form-group.disapper
-                    .label パスワードを設定
-                    .input.form-control
-                .form-group.disapper
-                    .label パスワードを設定  ※確認用
-                    .input.form-control
-                .form-check.disapper
-                    input.form-check-input.checked type="radio" name="radio1" id="radio1a"
-                    label.form-check-label for="radio1a" メルマガ配信を希望する
+                        =f.label :password, "パスワード"
+                        =f.password_field :password, class:"form-control", checked: true
                     
-                .form-check.disapper
-                    input.form-check-input type="radio" name="radio1" id="radio1b"
-                    label.form-check-label for="radio1b" メルマガ配信を希望しない
-                    
-    .go-next-button                    
-        button.btn.btn-sm.blue-btn 情報を変更する
+                            
+        .go-next-button                    
+            =f.submit "情報を変更する", class:"btn btn-sm blue-btn"

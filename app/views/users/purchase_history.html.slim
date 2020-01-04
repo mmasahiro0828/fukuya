@@ -1,15 +1,20 @@
+= render partial: "/home/navigation_bar"
+
 .container.smaller-font
-    .main-title-for-payment
-        h1.logo Fukuya.
-
-    
-
-    .cart-items-wrapper.for_parchase_history
+    div.pt-4
+    .cart-items-wrapper.for_parchase_history.mt-5
         p
             span.title-with-underline YOUR PARCHASE HISTORY ▼
         
-        = render partial: "item_colors/item_cards_c", locals: { repeat_number: 4}
+        -if @sales.present?
+            -@sales.each do |sale|
+                = render partial: "items/item_cards_c", locals: { cart_item: sale, color_name_to_send: sale.sku.item_color.color_name, editable: false}
+        
+            p.box-under-line
+        -else
+            p 購入履歴はありません
 
 
     .cart-btn-wrapper
-        .btn.go-payment ▶︎ TOPに戻る
+        =link_to root_url do
+            .btn.go-payment ▶︎ TOPに戻る

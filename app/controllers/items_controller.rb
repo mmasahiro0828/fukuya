@@ -6,7 +6,13 @@ class ItemsController < ApplicationController
 
         @item = Item.find(params[:id])
         @item_colors = @item.item_colors.order(:color_id)
-        @item_color = @item.item_colors.find_by(color_name: params[:color_name])
+
+        if params[:color_name]
+            @item_color = @item.item_colors.find_by(color_name: params[:color_name])
+        else
+            @item_color = @item.item_colors.order(:color_id).first
+        end
+        
         @skus = @item_color.skus.order(:created_at)
 
 
