@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     has_many :cart_items, through: :carts
-    has_many :sales
-    has_many :orders
+    has_many :sales, dependent: :nullify
+    has_many :orders, dependent: :nullify
     has_many :likes, dependent: :destroy
         has_many :item_colors, through: :likes
             has_many :items, through: :item_colors
