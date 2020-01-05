@@ -41,6 +41,23 @@ class ItemsController < ApplicationController
         
     end
 
+    def searched_item_index
+        @brands = Brand.all
+        @topics = Topic.where.not(category:["PICK UP", "NEW ARRIVALS"])
+
+        @q = params[:searched_by] 
+
+        if @q == nil
+            @group_title = "ALL"
+            @group_items = Item.all
+        else
+            @group_title = "searched by「#{@q}」"
+            @group_items = Item.where(['name LIKE ? OR description_1 LIKE ? OR description_2 LIKE ? OR category LIKE ?', "%#{@q}%", "%#{@q}%", "%#{@q}%", "%#{@q}%"])
+            /@group_items = Brand.where(['name LIKE ?', "%#{@q}%"])/
+        end
+
+    end
+
 
 end
 

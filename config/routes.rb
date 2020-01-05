@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :brands, only: :show
 
+  get "/items/searched_item_index", to: "items#searched_item_index"
   resources :items, only: [:index, :show]
 
   resources :topics, only: :show
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
   resources :users
 
 
-  post "/cart_items/create", to: "cart_items#create" #これresourcesのままcreateでとばせない、、
+  
   post "/cart_items/delete_1", to: "cart_items#delete_1"
   resources :cart_items, only: [:index, :create, :destroy]
 
@@ -33,9 +34,9 @@ Rails.application.routes.draw do
   #管理者用↓
   namespace :admin do
 
-    root to: 'home#back_office_top'
-
     get "home/back_office", to: "home#back_office_top"
+    get "home/login_form", to: "home#login_form"
+    post "home/login_to_bo", to: "home#login_to_bo"
 
     get "brands/create_10_data", to: "brands#create_10_data"
     get "brands/delete_all", to: "brands#destroy_all"

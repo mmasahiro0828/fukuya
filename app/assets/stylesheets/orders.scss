@@ -107,6 +107,10 @@
             text-align: center;
         }
     }
+
+    #acordion1 {
+        display: none;
+    }
 }
 
 
@@ -152,6 +156,10 @@
         font-size: 0.8em;
         padding: 0 0 2em 3em;
     }
+}
+
+#acordion2 {
+    display: none;
 }
 
 //--------------------[配送希望選択パート]------------------------
