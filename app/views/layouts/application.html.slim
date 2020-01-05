@@ -10,25 +10,44 @@ html
     link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
     meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
   body
-    =link_to "フロント画面　", root_path
-    =link_to "管理者画面(仮)", admin_root_path 
-    p style="margin-left: 3em"
-      -if current_user
-        ="user_id:#{session[:user_id]}でログイン中"
-      -else
-        'no one logged in
-    p style="margin-left: 3em"
-      -if current_cart
-        p ="cart_id:#{session[:cart_id]}のカートを保持中"
-      -else
-        'having no cart
-    p =session[:cart_id]
-
-
+    .top-message
+      .container
+        p 現在、管理者用のバックオフィスを作成中
+    
     = yield
   
     footer
-      | footer
+      h4 footer
+      
+      .footer-wrapper
+        .inner
+          .footer-menu.group1
+            h5 □今後の製作予定
+            ol
+              li PAY.JPでのカード決済機能の実装
+              li 管理者画面内、ブランド登録・編集ページの作成
+              li 管理者画面内、アイテム登録・編集ページの作成
+              li 管理者画面内、トピックス登録・編集ページの作成
+              li 管理者画面内、売上分析ページの作成
+          .footer-menu.group2
+            h5 □リンク
+            ul
+              li =link_to "管理者画面(仮)", admin_home_login_form_path
+          .footer-menu.group3
+            h5 □session情報
+            p
+              -if current_user
+                ="user_id:#{session[:user_id]}でログイン中"
+              -else
+                'no one logged in
+            p
+              -if current_cart
+                ="cart_id:#{session[:cart_id]}のカートを保持中"
+              -else
+                'having no cart
+              
+      
+      
       
       
 

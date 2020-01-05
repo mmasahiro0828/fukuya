@@ -17,21 +17,24 @@
             li
                 p 完了
 
-    -if @order.errors.present?
+    -if @order&.errors.present?
         ul.error_explanation
             -@order.errors.full_messages.each do |message|
                 li =message
     
-    -if @user.errors.present?
+    -if @user&.errors.present?
         ul.error_explanation
-            -@order.errors.full_messages.each do |message|
+            -@user.errors.full_messages.each do |message|
                 li =message
                 
     -if flash.notice.present?
         .alert.alert-success =flash.notice
 
+    -if flash.alert.present?
+        .alert.alert-danger =flash.alert
+
     -unless current_user
-        .login-box
+        .login-box#login-form-during-shopping
             p.title 会員の方
             .main-box
                 p ログインすると、お客様情報が自動で入力されます。
@@ -47,7 +50,7 @@
                     =f.submit "LOGIN", class:"btn btn-sm blue-btn"
 
 
-    =form_with model: @order, url: "/orders/new_for_payment", method: :post, local: true do |f|
+    =form_with model: @order, url: "/orders/new_for_payment", id:"editable-form", method: :post, local: true do |f|
         .info-input-box
             p.title お客様情報入力
             .main-box
@@ -66,14 +69,20 @@
                                 =f.text_field :first_name, class:"form-control", value: current_user&.first_name
                                 
                 .info-record
-                    .label-part 郵便番号
+                    .label-part
+                        郵便番号
+                        br
+                        span style="color:red" ※必須
                     .input-part
                         .row
                             .form-group.col-10
                                 '例) 1234567　　　※ハイフンなし
                                 =f.text_field :postal_code, class:"form-control", value: current_user&.postal_code
                 .info-record
-                    .label-part 住所
+                    .label-part
+                        住所
+                        br
+                        span style="color:red" ※必須
                     .input-part
                         .form-group
                             '例) 〇〇県〇〇市〇〇1-11-111
@@ -111,14 +120,14 @@
             .cart-btn-wrapper
                 =f.submit "▶︎ 次に進む", class:"btn go-payment smaller-font-more"
         -else
-            .cart-btn-wrapper
-                .btn.still-shop.smaller-font-more 会員登録して進む ◀︎
+            .cart-btn-wrapper#sign-up-or-not
+                .btn.still-shop.smaller-font-more#sign-in-during-shopping 会員登録して進む ◀︎
                 =f.submit "▶︎ 会員登録せず進む", class:"btn go-payment smaller-font-more"
 
-/JQでボタンで開くようにし、さらに、飛ばす先をusers_create_guring_shoppingに変える
+
             .for-registration-box
                 p ※ 会員登録のメリット。会員登録のメリット。会員登録のメリット。会員登録のメリット。会員登録のメリット。会員登録のメリット。
-                .for-resistration-part
+                .for-resistration-part#acordion1
                     .inner
                         .form-group
                             =f.label :password, "パスワードを設定"
@@ -126,13 +135,12 @@
                         .form-group
                             =f.label :password_confirmation, "パスワードを設定  ※確認用"
                             =f.password_field :password_confirmation, class:"form-control"
-                        .form-check 
-                            =f.radio_button :mail_magazine, "true"
+                        .form-check
+                            =f.radio_button :mail_magazine, "true", {checked:true}
                             =f.label :mail_magazine, "メルマガ配信を希望する", class:"ml-2"
                             br
                             =f.radio_button :mail_magazine, "false"
                             =f.label :mail_magazine, "メルマガ配信を希望しない", class:"ml-2"
-                
 
                     .go-next-button                    
                         =f.submit "入力した情報で会員登録する", class:"btn btn-sm blue-btn"

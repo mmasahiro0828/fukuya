@@ -4,7 +4,7 @@ class Admin::ItemsController < ApplicationController
 
     def brand_exist?
         if Brand.all.empty?
-            redirect_to admin_root_url, notice: "brandを登録してください。"
+            redirect_to "/admin/home/back_office", notice: "brandを登録してください。"
         end
     end
 

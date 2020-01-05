@@ -1,11 +1,5 @@
 $(document).on('turbolinks:load', function() {
-    /======================動作テスト===================================/
-
-
-    $(".test").text("jQuery稼働テスト(稼働中)");
-
-
-
+    
     /======================sticky header==============================/
 
     $(".navi-wrapper").each(function() {
@@ -85,6 +79,24 @@ $(document).on('turbolinks:load', function() {
         $(this).parent().slideUp().removeClass("opened-nest");
     });
 
+    /======================オーダー画面中の会員登録===========================/
+    
+    $('#sign-in-during-shopping').click(function() {
+        $('#acordion1').slideDown();
+        $('#sign-up-or-not').slideUp();
+        $('#login-form-during-shopping').slideUp();
+        $('#editable-form').attr('action', '/users/create_during_shopping');
+    });
 
+
+    /==================how to pay のアコーディオン========================/
+
+    $('[name="order[method_of_payment]"]:radio').change( function() {
+        if($('[id=order_method_of_payment_クレジットカード]').prop('checked')){
+          $('#acordion2').slideDown();
+        } else if ($('[id=order_method_of_payment_代引き]').prop('checked')) {
+          $('#acordion2').slideUp();
+        } 
+      });
 
 });

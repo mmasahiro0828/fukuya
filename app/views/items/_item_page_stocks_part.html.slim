@@ -20,7 +20,7 @@ p 在庫状況 (#{@item_color.color_name})
                             span style="color: gray" sold out
                     td
                         -if sku.stock.quantity_on_display > 0
-                            =link_to cart_items_create_path(sku), method: :post do
+                            =link_to cart_items_path(sku), method: :post do
                                 button.btn.btn-sm.btn-outline-dark add to cart
                         -else
                             '-

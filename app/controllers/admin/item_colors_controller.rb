@@ -4,7 +4,7 @@ class Admin::ItemColorsController < ApplicationController
     def register_colors_to_each_sample_item
 
         if Color.count < 10
-            redirect_to admin_root_url, notice: "カラーを登録してください。"
+            redirect_to "/admin/home/back_office", notice: "カラーを登録してください。"
         else
             items_without_colors = Item.where(number_of_colors: 0)
             

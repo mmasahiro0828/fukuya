@@ -3,10 +3,10 @@
     =link_to item_path(item, color_name: color_name_to_send) do
         -if color_name_to_send == nil
             /デフォルトカラーを表示item.item_colors.order(:color_id).first/
-            img src="assets/default_images/no_image.jpg"
+            img src="/assets/default_images/no_image.jpg"
         -else
             /color_name_to_sendのカラーを表示/
-            img src="assets/default_images/no_image.jpg" 
+            img src="/assets/default_images/no_image.jpg" 
         p.brand-name = item.brand.name
         p.item-name = item.name
         p.price 価格 = item.price

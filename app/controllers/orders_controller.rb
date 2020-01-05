@@ -7,9 +7,8 @@ class OrdersController < ApplicationController
 
 
     def new_for_payment
-        
         cart = current_cart
-        /ゲストユーザーで変更する/
+        
 
         @order = Order.new(
             user_id: cart.user_id,
@@ -178,7 +177,7 @@ class OrdersController < ApplicationController
 
 
     def date_for_display(date)
-        "#{date.month}月#{date.day}"
+        "#{date.month}月#{date.day}日"
     end
     
 

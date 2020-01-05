@@ -1,0 +1,12 @@
+
+.container
+    div style="width: 300px"
+        =form_with model: @user, url: admin_home_login_to_bo_path , local: true do |f|
+            .form-group.mt-5
+                =f.label :password, "パスワード:"
+                =f.password_field :password, class:"form-control"
+            =f.submit "LOGIN", class:"btn btn-sm blue-btn"
+    div.mt-5
+        =link_to "フロント画面へ戻る", root_path
+
+    div style="margin-bottom: 500px"

@@ -17,6 +17,8 @@ class UsersController < ApplicationController
 
                 add_current_cart_to_users_cart(@user)
 
+                @notice_sentence = "ログインしました"
+
             elsif @user.cart.present?
                 users_cart = @user.cart
                 session[:cart_id] = users_cart.id
@@ -48,7 +50,7 @@ class UsersController < ApplicationController
 
             add_current_cart_to_users_cart(@user)
 
-            redirect_to new_order_path, notice: @notice_sentence
+            redirect_to new_order_path, notice: "ログインしました"
         else
             if @user == nil
                 flash[:alert] = "登録されていないメールアドレスです"
@@ -78,7 +80,7 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-
+        
         if @user.save
             session[:user_id] = @user.id
             if current_cart

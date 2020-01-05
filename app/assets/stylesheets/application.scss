@@ -5,12 +5,17 @@
 @import "bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Sacramento&display=swap');
 
+
 $gold_gradation: linear-gradient(135deg, rgba(229,193,103,1) 0%,rgba(229,212,169,1) 44%,rgba(200,154,16,1) 100%);
 $gold_gradation_clear: linear-gradient(135deg, rgba(229,193,103,1) 0%,rgba(229,212,169,0.9) 44%,rgba(200,154,16,1) 100%);
 $main-color1: rgb(223, 191, 111);
 $main-color2: rgb(143, 111, 31);
 $main-color3: rgb(57, 104, 143);
 
+.top-message {
+    width: 100%;
+    background: pink;
+}
 .container {
     font-size: 15px;
     word-break: break-all;
@@ -140,6 +145,7 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    max-width: 1200px;
 }
 
 .navi-item {
@@ -161,8 +167,14 @@ a:hover {
         z-index: 10;
         background: rgba(49, 49, 49, 0.85);
         color: white;
-        width: 200%;
+        width: 210%;
         display: none;
+
+        .login_user {
+            padding: 0.5em 0.7em;
+            font-size: 0.8em;
+            background: $main-color2;
+        }
 
 
         li {
@@ -195,7 +207,7 @@ a:hover {
     }
 
     .navi-items-list.last {
-        left: -100%;
+        left: -110%;
     }
     //
 }
@@ -226,8 +238,53 @@ a:hover {
     }
 }
 
+//検索form//
+.search-box {
+    width: 240px;
+    .inner:hover {
+        background: none;
+    }
+}
 
+.search-form {
+    position:relative;
+}
+.search-text-field {
+    height: 28px;
+    position:absolute; 
+    left:0;
+    top: 4px; 
+    border-radius:25px;
+    background: linear-gradient(135deg, rgba(229,193,103,0.5) 0%,rgba(229,212,169,0.2) 44%,rgba(200,154,16,0.8) 100%);
+    width: 210px;
+    padding-left: 0.5em;
+    padding-right: 3.5em;
+    font-size: 0.8em;
+}
+.search-btn {
+    height: 24px;
+    width: 24px;	
+    position:absolute; 
+    left: 184px; 
+    top: 5.5px;
+    background:$main-color2;
+    color:#fff;
+    border:none;
+    border-radius:0 25px 25px 0;
 
+    .fa-search{
+        font-size:13px;	
+        position:absolute;
+        top:25%;
+        left:20%;	
+    }
+}
+ 
+.search-btn:hover{
+    color:#888;
+}
+
+//
 
 .navi-for-mobile {
     display: none;
@@ -240,6 +297,12 @@ a:hover {
     .logo-mark {
         margin: 0;
     }
+
+    .navi-item {
+        .inner {
+            padding: 0 0.3em;
+        }
+    }
 }
 
 //clickで出るメニュー//
@@ -249,6 +312,7 @@ a:hover {
         top: 100%;
         left: -120%;
         width: 220%;
+        font-size: 0.9em;
 
         li:hover {
             transition: background 0.3s, color 0.3s;
@@ -273,8 +337,25 @@ a:hover {
                 display: none;
             }
 
+
+
         }
     } 
+
+    .search-form {
+        position:relative;
+        height: 36px;
+    }
+
+    .search-text-field {
+        width: 160px;
+        background: none;
+        color: $main-color1;
+    }
+
+    .search-btn {
+        left: 134px;
+    }
 }
 //
 
@@ -291,6 +372,34 @@ a:hover {
     .logo-mark {
         .inner {
             font-size: 1.3rem;
+        }
+    }
+
+    .search-box {
+        width: 170px;
+
+        .search-text-field {
+            width: 150px;
+            padding-left: 0.2em;
+            padding-right: 3.2em;
+        }
+        .search-btn {
+            height: 24px;
+            width: 24px;	
+            position:absolute; 
+            left: 124px; 
+            top: 5.5px;
+            background:$main-color2;
+            color:#fff;
+            border:none;
+            border-radius:0 25px 25px 0;
+        
+            .fa-search{
+                font-size:13px;	
+                position:absolute;
+                top:25%;
+                left:20%;	
+            }
         }
     }
 
@@ -353,8 +462,29 @@ a:hover {
 
 
 footer {
-    height: 6em;
     background-color: $main-color3;
+    font-size: 0.8em;
     color: white;
 }
+
+.footer-wrapper {
+    padding: 1em 2em;
+
+    .inner {
+        display: flex;
+        flex-wrap:wrap;
+    }
+}
+
+.footer-menu {
+    width: 200px;
+    margin: 1em;
+}
+
+.group1 {
+    width: 450px;
+}
+
+
+
 

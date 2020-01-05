@@ -43,7 +43,7 @@ class CartItemsController < ApplicationController
             cart_item.update(
                 quantity: cart_item.quantity + 1,
                 total_item_price: cart_item.sku.item.price * (cart_item.quantity + 1),
-                price_w_tax: cart_item.sku.item.price * (cart_item.quantity + 1) * 1.1
+                price_w_tax: (cart_item.sku.item.price * (cart_item.quantity + 1) * 1.10).round
                 )
 
             redirect_to cart_items_url, notice: "「#{sku.item.name}」をカートに入れました。"
@@ -53,7 +53,7 @@ class CartItemsController < ApplicationController
                 quantity: 1,
                 total_item_price: sku.item.price,
                 discount: 0,
-                price_w_tax: sku.item.price * 1.1
+                price_w_tax: (sku.item.price * 1.10).round
             )
             
             if cart_item.save
@@ -100,7 +100,7 @@ class CartItemsController < ApplicationController
         cart_item.update(
             quantity: cart_item.quantity - 1,
             total_item_price: cart_item.sku.item.price * (cart_item.quantity - 1),
-            price_w_tax: cart_item.sku.item.price * (cart_item.quantity - 1) * 1.1
+            price_w_tax: (cart_item.sku.item.price * (cart_item.quantity - 1) * 1.1).round
         )
 
         redirect_to cart_items_url

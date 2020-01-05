@@ -5,115 +5,131 @@
 
 
     .navi-bar.navi-for-pc
-        .container
-            ul.navi-list
-                li.navi-item.logo-mark
-                    =link_to root_path do
-                        .inner Fukuya.
-                li.navi-item
-                    .inner ※検索窓※
-                li.navi-item
-                    .inner.nest カテゴリー一覧
-                    .navi-items-list
-                        ul
-                            li.category =link_to "アウター", items_path(searched_by: "アウター")
-                            li.category =link_to "トップス", items_path(searched_by: "トップス")
-                            li.category =link_to "ボトムス", items_path(searched_by: "ボトムス")
-                            li.category =link_to "シューズ", items_path(searched_by: "シューズ")
-                            li.category =link_to "バッグ", items_path(searched_by: "バッグ")
-                            li.category =link_to "アクセサリー", items_path(searched_by: "アクセサリー")
-                            li.category =link_to "その他", items_path(searched_by: "その他")
-                        p.close-navi-items-list ▲ CLOSE　
+        ul.navi-list
+            li.navi-item.logo-mark
+                =link_to root_path do
+                    .inner Fukuya.
 
-                li.navi-item
-                    .inner.nest ブランド一覧
-                    .navi-items-list
-                        ul
-                            -@brands.each do |brand|
-                                li.brand 
-                                    =link_to brand do
-                                        =brand.name
-                        p.close-navi-items-list ▲ CLOSE　
-                li.navi-item
-                    =link_to cart_items_path do
-                        .inner カート
+            li.navi-item.search-box
+                .inner
+                    =form_tag items_searched_item_index_path, enforce_utf8: false, class:"search-form", method: :get do
+                        =text_field_tag :searched_by, "", {class:"search-text-field"}
+                        =button_tag type:"submit", class:"search-btn" do
+                            i class="fas fa-search"
+                
+            li.navi-item
+                .inner.nest カテゴリー一覧
+                .navi-items-list
+                    ul
+                        li.category =link_to "アウター", items_path(searched_by: "アウター")
+                        li.category =link_to "トップス", items_path(searched_by: "トップス")
+                        li.category =link_to "ボトムス", items_path(searched_by: "ボトムス")
+                        li.category =link_to "シューズ", items_path(searched_by: "シューズ")
+                        li.category =link_to "バッグ", items_path(searched_by: "バッグ")
+                        li.category =link_to "アクセサリー", items_path(searched_by: "アクセサリー")
+                        li.category =link_to "その他", items_path(searched_by: "その他")
+                    p.close-navi-items-list ▲ CLOSE　
 
-                -if current_user
-                    li.navi-item
-                        =link_to likes_path do
-                            .inner お気に入り
-                    li.navi-item
-                        .inner.nest
-                            i class="fas fa-user-circle fa-lg"
-                        .navi-items-list.last
-                            ul
-                                li =link_to "登録情報確認", user_path(current_user)
-                                li =link_to "購入履歴", users_purchase_history_path
-                                li =link_to "ログアウト", users_logout_path, data: { confirm: "ログアウトしてもよろしいですか？"}
-                            p.close-navi-items-list ▲ CLOSE　
-                -else
-                    li.navi-item
-                        =link_to users_login_form_path do
-                            .inner ログイン/新規登録
+            li.navi-item
+                .inner.nest ブランド一覧
+                .navi-items-list
+                    ul
+                        -@brands.each do |brand|
+                            li.brand 
+                                =link_to brand do
+                                    =brand.name
+                    p.close-navi-items-list ▲ CLOSE　
+            li.navi-item
+                =link_to cart_items_path do
+                    .inner カート
+
+            -if current_user
+                li.navi-item
+                    =link_to likes_path do
+                        .inner お気に入り
+                li.navi-item
+                    .inner.nest
+                        i class="fas fa-user-circle fa-lg"
+                    .navi-items-list.last
+                        .login_user 「#{current_user.first_name}」
+                        ul
+                            li =link_to "登録情報確認", user_path(current_user)
+                            li =link_to "購入履歴", users_purchase_history_path
+                            li =link_to "ログアウト", users_logout_path, data: { confirm: "ログアウトしてもよろしいですか？"}
+                        p.close-navi-items-list ▲ CLOSE　
+            -else
+                li.navi-item
+                    =link_to users_login_form_path do
+                        .inner ログイン/新規登録
 
 
 
 
     .navi-bar.navi-for-mobile
-        .container
-            ul.navi-list
-                li.navi-item.logo-mark
-                    =link_to root_path do
-                        .inner Fukuya.
+        ul.navi-list
+            li.navi-item.logo-mark
+                =link_to root_path do
+                    .inner Fukuya.
+            li.navi-item
+                .inner.nest
+                    i class="fas fa-search fa-lg"
+                .navi-items-list
+                    ul
+                        li.more-nest
+                            .more-nest-list-title キーワード検索
+                            .more-nest-list
+                                ul
+                                    li
+                                        =form_tag items_searched_item_index_path, enforce_utf8: false, class:"search-form", method: :get do
+                                            =text_field_tag :searched_by, "", {class:"search-text-field"}
+                                            =button_tag type:"submit", class:"search-btn" do
+                                                i class="fas fa-search"
+                                p.close-more-nest-list ▲ CLOSE
+
+                        li.more-nest
+                            .more-nest-list-title カテゴリー一覧
+                            .more-nest-list
+                                ul
+                                    li.category =link_to "アウター", items_path(searched_by: "アウター")
+                                    li.category =link_to "トップス", items_path(searched_by: "トップス")
+                                    li.category =link_to "ボトムス", items_path(searched_by: "ボトムス")
+                                    li.category =link_to "シューズ", items_path(searched_by: "シューズ")
+                                    li.category =link_to "バッグ", items_path(searched_by: "バッグ")
+                                    li.category =link_to "アクセサリー", items_path(searched_by: "アクセサリー")
+                                    li.category =link_to "その他", items_path(searched_by: "その他")
+                                p.close-more-nest-list ▲ CLOSE　
+                        li.more-nest
+                            .more-nest-list-title ブランド一覧
+                            .more-nest-list
+                                ul
+                                    -@brands.each do |brand|
+                                        li.brand 
+                                            =link_to brand do
+                                                =brand.name
+                                p.close-more-nest-list ▲ CLOSE　
+
+                    p.close-navi-items-list ▲ CLOSE　
+            li.navi-item
+                =link_to cart_items_path do
+                    .inner
+                        i class="fas fa-shopping-cart fa-lg"
+
+            -if current_user
+                li.navi-item
+                    =link_to likes_path do
+                        .inner
+                            i class="fas fa-heart fa-lg"
                 li.navi-item
                     .inner.nest
-                        i class="fas fa-search fa-lg"
-                    .navi-items-list
+                        i class="fas fa-user-circle fa-lg"
+                    .navi-items-list.last
+                        .login_user 「#{current_user.first_name}」
                         ul
-                            li ※検索窓※
-                            li.more-nest
-                                .more-nest-list-title カテゴリー一覧
-                                .more-nest-list
-                                    ul
-                                        li.category =link_to "アウター", items_path(searched_by: "アウター")
-                                        li.category =link_to "トップス", items_path(searched_by: "トップス")
-                                        li.category =link_to "ボトムス", items_path(searched_by: "ボトムス")
-                                        li.category =link_to "シューズ", items_path(searched_by: "シューズ")
-                                        li.category =link_to "バッグ", items_path(searched_by: "バッグ")
-                                        li.category =link_to "アクセサリー", items_path(searched_by: "アクセサリー")
-                                        li.category =link_to "その他", items_path(searched_by: "その他")
-                                    p.close-more-nest-list ▲ CLOSE　
-                            li.more-nest
-                                .more-nest-list-title ブランド一覧
-                                .more-nest-list
-                                    ul
-                                        -@brands.each do |brand|
-                                            li.brand 
-                                                =link_to brand do
-                                                    =brand.name
-                                    p.close-more-nest-list ▲ CLOSE　
-
+                            li =link_to "登録情報確認", user_path(current_user)
+                            li =link_to "購入履歴", users_purchase_history_path
+                            li =link_to "ログアウト", users_logout_path, data: { confirm: "ログアウトしてもよろしいですか？"}
                         p.close-navi-items-list ▲ CLOSE　
+            -else
                 li.navi-item
-                    =link_to cart_items_path do
-                        .inner
-                            i class="fas fa-shopping-cart fa-lg"
-
-                -if current_user
-                    li.navi-item
-                        =link_to likes_path do
-                            .inner
-                                i class="fas fa-heart fa-lg"
-                    li.navi-item
-                        .inner.nest
-                            i class="fas fa-user-circle fa-lg"
-                        .navi-items-list.last
-                            ul
-                                li =link_to "登録情報確認", user_path(current_user)
-                                li =link_to "購入履歴", users_purchase_history_path
-                                li =link_to "ログアウト", users_logout_path, data: { confirm: "ログアウトしてもよろしいですか？"}
-                            p.close-navi-items-list ▲ CLOSE　
-                -else
-                    li.navi-item
-                        =link_to users_login_form_path do
-                            .inner ログイン/新規登録
+                    =link_to users_login_form_path do
+                        .inner ログイン/新規登録
