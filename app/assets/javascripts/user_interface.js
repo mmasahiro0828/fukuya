@@ -97,6 +97,9 @@ $(document).on('turbolinks:load', function() {
         } else if ($('[id=order_method_of_payment_代引き]').prop('checked')) {
           $('#acordion2').slideUp();
         } 
-      });
+    });
 
 });
+
+
+

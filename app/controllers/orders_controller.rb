@@ -4,8 +4,6 @@ class OrdersController < ApplicationController
         @user = User.new
     end
 
-
-
     def new_for_payment
         cart = current_cart
         
