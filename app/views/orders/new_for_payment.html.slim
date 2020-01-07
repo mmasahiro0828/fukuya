@@ -22,7 +22,7 @@
             -@order.errors.full_messages.each do |message|
                 li =message
 
-    =form_with model: @order, url: "/orders/confirmation", method: :post, local: true do |f|
+    =form_with model: @order, url: "/orders/confirmation", id: "main-form", method: :post, local: true do |f|
     
         .payment-box
             p.title 決済方法
@@ -33,8 +33,7 @@
 
                 .card-info-input-part#acordion2
                     .inner
-                        p PAY.JP導入予定
-
+                        p.mt-5.mb-5 pay.jp実装予定
                 .form-check 
                         =f.radio_button :method_of_payment, "代引き"
                         =f.label :method_of_payment, "代引き", class:"ml-2"

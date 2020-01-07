@@ -144,12 +144,6 @@
     .card-info-input-part {
         background: white;
         border: 1.5px solid $main-color1;
-
-        .inner {
-            width: 80%;
-            margin: 1em auto;
-            height: 6em;
-        }
     }
 
     p.attention {
@@ -317,4 +311,21 @@
     .main-box {
         padding: 0.8em 2em;
     }
+}
+
+
+//=====================================[カード情報入力パート]=============================================
+
+.card-info-input {
+    padding: 1em;
+
+    p.card-info-title {
+        border-bottom: 2px solid $main-color1;
+    }
+
+    .input-box {
+        padding: 1em;
+    }
+
+
 }

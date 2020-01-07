@@ -1,0 +1,20 @@
+.card-info-input
+    p.card-info-title カード情報入力
+    .input-box
+        =form_with url: "#", method: :post, class:"card-info-form" do |f|
+            .form-group
+                =f.label :カード番号, class: "label"
+                br
+                =f.text_field :card_number, type: "text", class: "input-number", placeholder: "半角数字のみ", maxlength: "16"
+            .form-group
+                =f.label :有効期限, class: "label pt-3"
+                br
+                =f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: 'input-expire'
+                span 月
+                br
+                =f.select :exp_year, [["19",2019],["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{} , class: 'input-expire'
+                span 年
+            .form-group
+                =f.label :セキュリティコード, class: "label pt-3"
+                br
+                =f.text_field :cvc, type: "text", class: "input-number", maxlength: "4"
