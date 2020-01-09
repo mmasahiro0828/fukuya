@@ -24,21 +24,6 @@
 
     =form_with model: @order, url: "/orders/confirmation", id: "main-form", method: :post, local: true do |f|
     
-        .payment-box
-            p.title 決済方法
-            .main-box
-                .form-check 
-                        =f.radio_button :method_of_payment, "クレジットカード"
-                        =f.label :method_of_payment, "クレジットカード", class:"ml-2"
-
-                .card-info-input-part#acordion2
-                    .inner
-                        p.mt-5.mb-5 pay.jp実装予定
-                .form-check 
-                        =f.radio_button :method_of_payment, "代引き"
-                        =f.label :method_of_payment, "代引き", class:"ml-2"
-                
-                p.attention ※ 代引き手数料380円がかかります。
 
         .shipping-box
             p.title 配送希望日
@@ -67,13 +52,39 @@
                         =f.label :coupon_code, "クーポンコードをお持ちの方はこちらに入力してください"
                         =f.text_field :coupon_code, class:"form-control"
 
+
+
+        .payment-box
+            p.title 決済方法
+            .main-box
+                .form-check 
+                        =f.radio_button :method_of_payment, "クレジットカード"
+                        =f.label :method_of_payment, "クレジットカード", class:"ml-2"
+
+                .card-info-input-part#acordion2
+                    .inner
+                        p.mt-3
+                            |
+                                下記の「カードを支払う」ボタンを押し、
+                                <br>
+                                カード情報を入力後、
+                                <br>
+                                再度「カードを支払う」ボタンを押してください。
+                                <br>
+                                <br>
+                                カード情報に問題がなければ確認画面へ進みます。
+                                <br>
+                                <span style="color: red" >(この時点では、決済は確定されません。)</span>
+
+                        script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_9f0aa0f7e2794d20962aa160"
+                        
+                .form-check 
+                        =f.radio_button :method_of_payment, "代引き"
+                        =f.label :method_of_payment, "代引き", class:"ml-2"
+                
+                p.attention ※ 代引き手数料380円がかかります。
+
         .hidden-box
-            =f.hidden_field :id
-            =f.hidden_field :user_id
-            =f.hidden_field :total_item_price
-            =f.hidden_field :discount
-            =f.hidden_field :fee
-            =f.hidden_field :final_price
             =f.hidden_field :user_name
             =f.hidden_field :user_email
             =f.hidden_field :user_email_confirmation
@@ -81,7 +92,8 @@
             =f.hidden_field :shipping_adress
             =f.hidden_field :shipping_cond_n_room
             =f.hidden_field :user_phonenumber
+            =f.hidden_field :shipping_date, value: "yet"
 
 
         .go-next-button                    
-            =f.submit "確認画面へ進む", class:"btn btn-sm blue-btn"
+            =f.submit "確認画面へ進む", class:"btn btn-sm blue-btn", id:"go-confirmation-btn"

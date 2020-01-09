@@ -68,13 +68,6 @@
 
     =form_with model: @order, local: true do |f|
         .hidden-box
-            =f.hidden_field :id
-            =f.hidden_field :user_id
-            =f.hidden_field :total_item_price
-            =f.hidden_field :discount
-            =f.hidden_field :fee
-            =f.hidden_field :final_price
-            =f.hidden_field :method_of_payment
             =f.hidden_field :user_name
             =f.hidden_field :user_email
             =f.hidden_field :user_email_confirmation
@@ -82,7 +75,9 @@
             =f.hidden_field :shipping_adress
             =f.hidden_field :shipping_cond_n_room
             =f.hidden_field :user_phonenumber
+            =f.hidden_field :method_of_payment
             =f.hidden_field :shipping_date
+            =f.hidden_field :payjp_token, value: @token
         .go-next-button                    
             =f.submit "注文を確定する", class:"btn btn-sm blue-btn"
     

@@ -117,45 +117,6 @@
 
 //=====================================[決済方法選択画面]=============================================
 
-//--------------------[決済方法選択パート]------------------------
-
-
-.payment-box {
-    max-width: 500px;
-    background: $main-color1;
-    margin: 5em auto 0 auto;
-
-    .title {
-        background: $main-color2;
-        padding: 0.2em 0;
-        color: white;
-        font-size: 0.8em;
-        text-align: center;
-    }
-    
-}
-
-.payment-box .main-box {
-
-    .form-check {
-        padding: 0.5em 0 0.5em 2.5em;
-    }
-
-    .card-info-input-part {
-        background: white;
-        border: 1.5px solid $main-color1;
-    }
-
-    p.attention {
-        font-size: 0.8em;
-        padding: 0 0 2em 3em;
-    }
-}
-
-#acordion2 {
-    display: none;
-}
-
 //--------------------[配送希望選択パート]------------------------
 
 .shipping-box {
@@ -171,8 +132,10 @@
         text-align: center;
     }
 
+
     .main-box {
         padding: 1.5em 0;
+
     }
     .form-group {
         padding: 0 2.5em 1em 2.5em;
@@ -203,11 +166,66 @@
     }
 }
 
+
+
+//--------------------[決済方法選択パート]------------------------
+
+
+.payment-box {
+    max-width: 500px;
+    background: $main-color1;
+    margin: 5em auto 0 auto;
+
+    .title {
+        background: $main-color2;
+        padding: 0.2em 0;
+        color: white;
+        font-size: 0.8em;
+        text-align: center;
+    }
+    
+}
+
+.payment-box .main-box {
+
+    .form-check {
+        padding: 0.5em 0 0.5em 2.5em;
+    }
+
+    .card-info-input-part {
+        background: white;
+        border: 1.5px solid $main-color1;
+        text-align: center;
+
+        .inner {
+            width: 80%;
+            margin: 2em auto;
+                p {
+                    margin:1.5em auto;
+                }
+        }
+    }
+
+    p.attention {
+        font-size: 0.8em;
+        padding: 0 0 2em 3em;
+    }
+}
+
+#acordion2 {
+    display: none;
+}
+
+
 //--------------------[ボタンパート]------------------------
 
 .go-next-button {
     margin: 6em auto 8em auto;
     text-align: center;
+}
+
+#go-confirmation-btn {
+    display: none;
 }
 
 
