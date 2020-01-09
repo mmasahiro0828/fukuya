@@ -86,12 +86,6 @@
                 p.attention ※ 代引き手数料380円がかかります。
 
         .hidden-box
-            =f.hidden_field :id
-            =f.hidden_field :user_id
-            =f.hidden_field :total_item_price
-            =f.hidden_field :discount
-            =f.hidden_field :fee
-            =f.hidden_field :final_price
             =f.hidden_field :user_name
             =f.hidden_field :user_email
             =f.hidden_field :user_email_confirmation
@@ -99,6 +93,7 @@
             =f.hidden_field :shipping_adress
             =f.hidden_field :shipping_cond_n_room
             =f.hidden_field :user_phonenumber
+            =f.hidden_field :shipping_date, value: "yet"
 
 
         .go-next-button                    
