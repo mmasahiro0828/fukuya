@@ -8,17 +8,7 @@ class OrdersController < ApplicationController
 
         cart = current_cart
 
-        if order_params_1[:password]
-            @user = User.new(order_params_1)
-
-            if @user.save
-                session[:user_id] = @user.id
-                cart.update(user_id: @user.id)
-                flash[:notice] = "ユーザー「#{@user.first_name}」を登録しました"
-            else
-                render "orders/new"
-            end
-        end
+        
         
         @order = Order.new(
             method_of_payment: "yet",
@@ -37,7 +27,17 @@ class OrdersController < ApplicationController
         
         @date_selection = date_selection
 
-        
+        if params[:commit] == "入力した情報で会員登録する"
+            @user = User.new(order_params_for_user_create)
+
+            if @user.save
+                session[:user_id] = @user.id
+                cart.update(user_id: @user.id)
+                flash[:notice] = "ユーザー「#{@user.first_name}」を登録しました"
+            else
+                render "orders/new"
+            end
+        end
     end
 
 
@@ -129,6 +129,22 @@ class OrdersController < ApplicationController
 
     private
 
+    def order_params_for_user_create
+        params.require(:order).permit(
+            :password,
+            :password_confirmation,
+            :mail_magazine,
+            :family_name,
+            :first_name,
+            :postal_code,
+            :adress,
+            :cond_n_room,
+            :email,
+            :email_confirmation,
+            :phonenumber
+        )
+    end
+    
     def order_params_1
         params.require(:order).permit(
             :family_name,
@@ -138,10 +154,7 @@ class OrdersController < ApplicationController
             :cond_n_room,
             :email,
             :email_confirmation,
-            :phonenumber,
-            :password,
-            :password_confirmation,
-            :mail_magazine
+            :phonenumber
         )
     end
 
