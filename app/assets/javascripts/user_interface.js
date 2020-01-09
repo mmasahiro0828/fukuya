@@ -94,8 +94,10 @@ $(document).on('turbolinks:load', function() {
     $('[name="order[method_of_payment]"]:radio').change( function() {
         if($('[id=order_method_of_payment_クレジットカード]').prop('checked')){
           $('#acordion2').slideDown();
+          $('#go-confirmation-btn').slideUp();
         } else if ($('[id=order_method_of_payment_代引き]').prop('checked')) {
           $('#acordion2').slideUp();
+          $('#go-confirmation-btn').slideDown();
         } 
       });
 
