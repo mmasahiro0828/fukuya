@@ -189,24 +189,6 @@ class UsersController < ApplicationController
 
 
 
-    def order_params
-        params.require(:order).permit(
-            :family_name,
-            :first_name,
-            :postal_code,
-            :adress,
-            :cond_n_room,
-            :email,
-            :email_confirmation,
-            :phonenumber,
-            :password,
-            :password_confirmation,
-            :mail_magazine
-        )
-    end
-
-
-
     def add_current_cart_to_users_cart(user)
 
         /current_cart有、users_cart有だった時の、item合体後の空のcartを削除するための変数/

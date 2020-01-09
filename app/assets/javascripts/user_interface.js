@@ -85,7 +85,6 @@ $(document).on('turbolinks:load', function() {
         $('#acordion1').slideDown();
         $('#sign-up-or-not').slideUp();
         $('#login-form-during-shopping').slideUp();
-        $('#editable-form').attr('action', '/users/create_during_shopping');
     });
 
 

@@ -5,7 +5,20 @@ class OrdersController < ApplicationController
     end
 
     def new_for_payment
+
         cart = current_cart
+
+        if order_params_1[:password]
+            @user = User.new(order_params_1)
+
+            if @user.save
+                session[:user_id] = @user.id
+                cart.update(user_id: @user.id)
+                flash[:notice] = "ユーザー「#{@user.first_name}」を登録しました"
+            else
+                render "orders/new"
+            end
+        end
         
         @order = Order.new(
             method_of_payment: "yet",
@@ -23,6 +36,7 @@ class OrdersController < ApplicationController
         end
         
         @date_selection = date_selection
+
         
     end
 
@@ -125,6 +139,9 @@ class OrdersController < ApplicationController
             :email,
             :email_confirmation,
             :phonenumber,
+            :password,
+            :password_confirmation,
+            :mail_magazine
         )
     end
 
@@ -152,7 +169,6 @@ class OrdersController < ApplicationController
             :coupon_code,
         )
     end
-
 
 
     def date_selection

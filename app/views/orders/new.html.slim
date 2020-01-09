@@ -50,7 +50,7 @@
                     =f.submit "LOGIN", class:"btn btn-sm blue-btn"
 
 
-    =form_with model: @order, url: "/orders/new_for_payment", id:"editable-form", method: :post, local: true do |f|
+    =form_with model: @order, url: "/orders/new_for_payment", method: :post, local: true do |f|
         .info-input-box
             p.title お客様情報入力
             .main-box
