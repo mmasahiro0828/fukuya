@@ -132,8 +132,10 @@
         text-align: center;
     }
 
+
     .main-box {
         padding: 1.5em 0;
+
     }
     .form-group {
         padding: 0 2.5em 1em 2.5em;
@@ -327,4 +329,21 @@
     .main-box {
         padding: 0.8em 2em;
     }
+}
+
+
+//=====================================[カード情報入力パート]=============================================
+
+.card-info-input {
+    padding: 1em;
+
+    p.card-info-title {
+        border-bottom: 2px solid $main-color1;
+    }
+
+    .input-box {
+        padding: 1em;
+    }
+
+
 }

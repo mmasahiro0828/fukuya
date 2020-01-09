@@ -22,9 +22,8 @@
             -@order.errors.full_messages.each do |message|
                 li =message
 
-    =form_with model: @order, url: "/orders/confirmation", method: :post, local: true do |f|
+    =form_with model: @order, url: "/orders/confirmation", id: "main-form", method: :post, local: true do |f|
     
-        
 
         .shipping-box
             p.title 配送希望日

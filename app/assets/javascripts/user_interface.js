@@ -99,6 +99,9 @@ $(document).on('turbolinks:load', function() {
           $('#acordion2').slideUp();
           $('#go-confirmation-btn').slideDown();
         } 
-      });
+    });
 
 });
+
+
+

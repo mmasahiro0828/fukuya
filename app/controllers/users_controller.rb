@@ -50,7 +50,7 @@ class UsersController < ApplicationController
 
             add_current_cart_to_users_cart(@user)
 
-            redirect_to new_order_path, notice: "ログインしました"
+            redirect_to new_order_path, notice: @notice_sentence
         else
             if @user == nil
                 flash[:alert] = "登録されていないメールアドレスです"

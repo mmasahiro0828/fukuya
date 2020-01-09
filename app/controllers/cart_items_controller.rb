@@ -23,6 +23,12 @@ class CartItemsController < ApplicationController
             render "items/show", alert: "希望した商品の在庫がございません。"
         end
 
+        /カートが削除されている場合、session[:cart_id]をreset/
+        unless Cart.find_by_id(session[:cart_id])
+            session[:cart_id] = nil
+        end
+    
+
         /すでにcartを持っているかcheck/
         if session[:cart_id]
             cart = Cart.find(session[:cart_id])
