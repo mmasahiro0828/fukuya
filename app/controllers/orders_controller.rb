@@ -40,6 +40,9 @@ class OrdersController < ApplicationController
     def confirmation
         @order = Order.new(order_params_2)
         @date_selection = date_selection
+        @token ||= params['payjp-token']
+    
+        
 
         unless @order.valid?
             render :new_for_payment
@@ -62,6 +65,10 @@ class OrdersController < ApplicationController
     def create
         order = Order.new(order_params_4)
         order.save
+
+        if order.method_of_payment == "クレジットカード"
+            pay(order.final_price)
+        end
 
         cart_items = current_cart.cart_items
         
@@ -178,6 +185,16 @@ class OrdersController < ApplicationController
 
     def date_for_display(date)
         "#{date.month}月#{date.day}日"
+    end
+
+
+    def pay(amount)
+        Payjp.api_key = "sk_test_c9d7b53a525c03c07cc9dec4"
+        Payjp::Charge.create(
+          :amount => amount,
+          :card => params[:order][:payjp_token],
+          :currency => 'jpy'
+        )
     end
     
 

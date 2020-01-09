@@ -83,6 +83,7 @@
             =f.hidden_field :shipping_cond_n_room
             =f.hidden_field :user_phonenumber
             =f.hidden_field :shipping_date
+            =f.hidden_field :payjp_token, value: @token
         .go-next-button                    
             =f.submit "注文を確定する", class:"btn btn-sm blue-btn"
     
