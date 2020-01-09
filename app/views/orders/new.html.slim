@@ -50,7 +50,7 @@
                     =f.submit "LOGIN", class:"btn btn-sm blue-btn"
 
 
-    =form_with model: @order, url: "/orders/new_for_payment", id:"editable-form", method: :post, local: true do |f|
+    =form_with model: @order, url: "/orders/new_for_payment", method: :post, local: true do |f|
         .info-input-box
             p.title お客様情報入力
             .main-box
@@ -131,7 +131,7 @@
                     .inner
                         .form-group
                             =f.label :password, "パスワードを設定"
-                            =f.password_field :password, class:"form-control", checked: true
+                            =f.password_field :password, class:"form-control"
                         .form-group
                             =f.label :password_confirmation, "パスワードを設定  ※確認用"
                             =f.password_field :password_confirmation, class:"form-control"

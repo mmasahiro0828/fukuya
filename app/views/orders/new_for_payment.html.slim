@@ -21,6 +21,9 @@
         ul.error_explanation
             -@order.errors.full_messages.each do |message|
                 li =message
+                
+    -if flash.notice.present?
+        .alert.alert-success =flash.notice
 
     =form_with model: @order, url: "/orders/confirmation", id: "main-form", method: :post, local: true do |f|
     
