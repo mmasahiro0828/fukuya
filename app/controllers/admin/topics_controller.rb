@@ -1,5 +1,7 @@
 class Admin::TopicsController < ApplicationController
 
+    before_action :admin_user_required
+
     def index
         @topics = Topic.all
     end

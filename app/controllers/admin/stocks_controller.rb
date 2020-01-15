@@ -1,5 +1,7 @@
 class Admin::StocksController < ApplicationController
 
+    before_action :admin_user_required
+
     def index
         @skus = Sku.all.order(:created_at)
     end

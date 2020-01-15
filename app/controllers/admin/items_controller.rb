@@ -1,6 +1,10 @@
 class Admin::ItemsController < ApplicationController
 
+    before_action :admin_user_required
+
     before_action :brand_exist?, only: [:new, :create_10_data_for_each_brand]
+
+    
 
     /action内に入れる/
     def brand_exist?

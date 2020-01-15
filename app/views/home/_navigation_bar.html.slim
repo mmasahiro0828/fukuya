@@ -55,6 +55,8 @@
                         ul
                             li =link_to "登録情報確認", user_path(current_user)
                             li =link_to "購入履歴", users_purchase_history_path
+                            -if admin_user
+                                li =link_to "管理者ページ", admin_root_path
                             li =link_to "ログアウト", users_logout_path, data: { confirm: "ログアウトしてもよろしいですか？"}
                         p.close-navi-items-list ▲ CLOSE　
             -else
@@ -127,6 +129,8 @@
                         ul
                             li =link_to "登録情報確認", user_path(current_user)
                             li =link_to "購入履歴", users_purchase_history_path
+                            -if admin_user
+                                li =link_to "管理者ページ", admin_root_path
                             li =link_to "ログアウト", users_logout_path, data: { confirm: "ログアウトしてもよろしいですか？"}
                         p.close-navi-items-list ▲ CLOSE　
             -else
