@@ -1,3 +1,40 @@
 // Place all the styles related to the admin::items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+//==============================index=======================================
+
+.items-index .table {
+
+    overflow: scroll;
+    height: 10em;
+
+    thead th {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+    
+}
+
+.create-item-form {
+    .form-part {
+        background: rgb(247, 222, 222);
+        margin-top: 2em;
+        padding: 2em 3em; 
+        border-radius: 8px;
+
+        h6 {
+            font-weight: bold;
+        }
+
+        .inner {
+            display: flex;
+        }
+    }
+
+    #additional-form {
+        background: green;
+    }
+}

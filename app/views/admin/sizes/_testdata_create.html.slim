@@ -1,0 +1,6 @@
+ul
+    li.pt-2 = link_to admin_sizes_create_size_map_path do
+        button.btn.btn-sm.blue-btn デフォルトのサイズマップを登録する
+
+    li.pt-2 = link_to admin_sizes_delete_all_path, data: { confirm: "データをリセットすると、関連する商品情報も全てリセットします。よろしいですか？"} do
+        button.btn.btn-sm.dark-btn サイズマップをリセットする

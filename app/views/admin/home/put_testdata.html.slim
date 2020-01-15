@@ -1,0 +1,29 @@
+.bo-body
+
+    .side-navi
+         =render partial: "admin/home/side_navigation"
+        
+    .main-part
+
+        -if flash.notice.present?
+            .alert.alert-success =flash.notice
+
+        .main-contents.
+
+            p style="color: gold" BRANDS
+            =render partial: "admin/brands/testdata_create"
+
+            p style="color: gold" COLORS
+            =render partial: "admin/colors/testdata_create"
+
+            p style="color: gold" SIZES
+            =render partial: "admin/sizes/testdata_create"
+
+            p style="color: gold" MEASURING ITEMS
+            =render partial: "admin/measuring_items/testdata_create"
+
+            p style="color: gold" IETMS
+            =render partial: "admin/items/testdata_create"
+
+            p style="color: gold" USERS
+            =render partial: "admin/users/testdata_create"

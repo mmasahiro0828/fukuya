@@ -1,0 +1,75 @@
+.bo-body
+
+    .side-navi
+         =render partial: "admin/home/side_navigation"
+        
+    .main-part
+
+        -if flash.notice.present?
+            .alert.alert-success =flash.notice
+
+        .main-contents.create-item-form
+            h4.mb-4 新規登録
+            =form_with model: @item, local: true do |f|
+
+                .form-part
+                    h6 基本情報
+
+                    .form-group.mt-4
+                        =f.label :brand_id, "ブランド"
+                        <br>
+                        =f.select :brand_id, class:"form-control"
+                            -@brands.each do |brand|
+                                option value="#{brand.id}" label="#{brand.name}"
+
+                    .form-group.mt-4
+                        =f.label :name, "アイテム名"
+                        =f.text_field :name, class:"form-control"
+
+                    .form-group.mt-4
+                        =f.label :description_1, "商品説明①"
+                        =f.text_area :description_1, size: "10x5", class:"form-control"
+                    
+                    .form-group.mt-4
+                        =f.label :description_2, "商品説明②"
+                        =f.text_area :description_2, size: "10x5", class:"form-control"
+
+                    .form-group.mt-4
+                        =f.label :category, "カテゴリー"
+                        <br>
+                        =f.select :category, class:"form-control"
+                            option = "アウター"
+                            option = "トップス"
+                            option = "ボトムス"
+                            option = "シューズ"
+                            option = "バッグ"
+                            option = "アクセサリー"
+                            option = "その他"
+
+                    .form-group.mt-4
+                        =f.label :price, "上代 (販売価格)"
+                        =f.text_field :price, class:"form-control"
+
+                    .form-group.mt-4
+                        =f.label :wholesale_price, "下代"
+                        =f.text_field :wholesale_price, class:"form-control", value:"###"
+            
+                .form-part#here
+                    h6 カラー展開
+                    .inner
+                        .form-group.mt-4#additional-form
+                            =f.label :category, "カラー選択　"
+                            =f.select :category, class:"form-control"
+                                -@colors.each do |color|
+                                    option value="#{color.id}" label="#{color.id}. #{color.name}"
+                        .add-color-btn-wrapper
+                            .simple-btn#add-color-select + カラー追加
+
+
+
+                .form-part
+                    h6 サイズ展開
+
+                .form-part
+                    h6 サイズ詳細
+

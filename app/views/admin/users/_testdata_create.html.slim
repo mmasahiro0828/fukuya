@@ -1,0 +1,9 @@
+ul  
+        -unless @users.present?
+            li.pt-2
+                = link_to admin_users_create_10_sample_users_path do
+                    button.btn.btn-sm.blue-btn サンプルユーザー作成
+
+        -else
+            li.pt-2 = link_to admin_users_delete_all_path, data: { confirm: "データをリセットしてもよろしいですか？"} do
+                button.btn.btn-sm.dark-btn usersデータをリセットする

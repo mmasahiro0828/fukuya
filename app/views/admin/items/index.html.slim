@@ -1,107 +1,68 @@
-.container
 
-    - if flash.notice.present?
-      .alert.alert-success =flash.notice
+.bo-body
 
-    h1.mt-2.mb-2 アイテム(品番単位)一覧
+    .side-navi
+         =render partial: "admin/home/side_navigation"
+        
+    .main-part
 
-    table.table.table-sm.table-hover.smaller-font-for-table.mb-5
-        thead.thead-dark
-            tr
-                th style="width: 5%" id
-                th アイテム名
-                th ブランドid
-                th ブランド名
-                th カラー数
-                th カラー展開
-                th サイズ数
-                th サイズ展開
-                th 説明①
-                th 説明②
-                th カテゴリ
-                th 上代
-                th 下代
-                th セール価格
-                th 公開
-                th
+        -if flash.notice.present?
+            .alert.alert-success =flash.notice
 
-            - if @items.present?
-                - @items.each do |item|
-
+        .main-contents.items-index
+            table.table.table-sm.smaller-font-for-table
+                thead.thead-dark
                     tr
-                        td =item.id
-                        td =item.name
-                        td =item.brand_id
-                        td =item.brand.name
-                        td =item.number_of_colors
-                        td
-                            -if item.number_of_colors == 0
-                                span style="color: red" カラー登録なし
-                            -else
-                                -item.item_colors.order(:created_at).each_with_index do |ic, i|
-                                    -unless i == item.number_of_colors - 1
-                                        ="#{ic.color.code} / "
+                        th style="width: 6em" id
+                        th アイテム名
+                        th ブランドid
+                        th ブランド名
+                        th カラー展開
+                        th サイズ展開
+                        th カテゴリ
+                        th 上代
+                        th 下代
+                        th セール価格
+                        th 公開
+                        th 
+                tbody
+                    - if @items.present?
+                        - @items.each do |item|
+
+                            tr
+                                td =item.id
+                                td =item.name
+                                td =item.brand_id
+                                td =item.brand.name
+                                td
+                                    -if item.number_of_colors == 0
+                                        span style="color: red" カラー登録なし
                                     -else
-                                        =ic.color.code
-                        td =item.number_of_sizes
-                        td
-                            -if item.number_of_sizes == 0
-                                span style="color: red" サイズ登録なし
-                            -else
-                                -item.item_colors.first.skus.order(:created_at).each_with_index do |sku, i|
-                                    -unless i == item.number_of_sizes - 1
-                                        ="#{sku.size.name} / "
+                                        -item.item_colors.order(:created_at).each_with_index do |ic, i|
+                                            -unless i == item.number_of_colors - 1
+                                                ="#{ic.color.code} / "
+                                            -else
+                                                =ic.color.code
+                                td
+                                    -if item.number_of_sizes == 0
+                                        span style="color: red" サイズ登録なし
                                     -else
-                                        =sku.size.name
-                        td =item.description_1
-                        td =item.description_2
-                        td =item.category
-                        td =item.price 
-                        td =item.wholesale_price
-                        td =item.sale_price
-                        td =item.public
-                        td
-                            = link_to item, method: :delete do
-                                button.btn.btn-sm.dark-btn 削除
+                                        -item.item_colors.first.skus.order(:created_at).each_with_index do |sku, i|
+                                            -unless i == item.number_of_sizes - 1
+                                                ="#{sku.size.name} / "
+                                            -else
+                                                =sku.size.name
+                                td =item.category
+                                td =item.price 
+                                td =item.wholesale_price
+                                td =item.sale_price
+                                td =item.public
+                                td
+                                    = link_to admin_item_path(item) do
+                                        .simple-btn 詳細
 
-            - else
-                tr
-                    td colspan="17" アイテムが登録されていません。
+                    - else
+                        tr
+                            td colspan="12" アイテムが登録されていません。
 
-    ul
-        li.pt-2 = link_to new_admin_item_path do
-            button.btn.btn-sm.blue-btn サンプル品番を登録する
-            a.ml-2 ※ブランドをランダムに選択し、そのブランドに対して登録
-
-        li.pt-2
-            = link_to admin_items_create_10_data_for_each_brand_path do
-                button.btn.btn-sm.blue-btn 全ブランドに対して、サンプル品番10型を登録する
-
-        li.pt-2 = link_to admin_items_delete_all_path, data: { confirm: "データをリセットすると、関連する商品情報も全てリセットします。よろしいですか？"} do
-            button.btn.btn-sm.dark-btn itemデータをリセットする
-
-
-
-
-    h1.mt-5.mb-2 カラー登録
-
-    ul
-        li.pt-2 = link_to admin_item_colors_register_colors_to_each_sample_item_path do
-            button.btn.btn-sm.blue-btn 各サンプル品番にカラーを登録する
-            a.ml-2 ※カラー・カラー数はランダムに決定、すでにカラー登録済みの品番は無視
-
-        li.pt-2 = link_to admin_item_colors_delete_all_path, data: { confirm: "データをリセットすると、関連する商品情報も全てリセットします。よろしいですか？"} do
-            button.btn.btn-sm.dark-btn 各アイテムの登録カラーをリセットする
-
-
-
-
-    h1.mt-5.mb-2 サイズ登録
-
-    ul
-        li.pt-2 = link_to admin_skus_register_sizes_to_each_sample_item_path do
-            button.btn.btn-sm.blue-btn 各サンプル品番にサイズを登録する
-            a.ml-2 ※すでにサイズ登録済みの品番は無視
-
-        li.pt-2 = link_to admin_skus_delete_all_path, data: { confirm: "データをリセットすると、関連する商品情報も全てリセットします。よろしいですか？"} do
-            button.btn.btn-sm.dark-btn 各アイテムの登録サイズをリセットする
+    

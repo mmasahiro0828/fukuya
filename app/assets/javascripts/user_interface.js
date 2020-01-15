@@ -31,7 +31,7 @@ $(document).on('turbolinks:load', function() {
         
         } else {
 
-            if ($(".navi-wrapper").find(".opened")) {
+            if ($(".navi-wrapper").find(".opened").length) {
                 $(".opened").parent().children(".nest").removeClass("picked");
                 $(".opened").slideUp().removeClass("opened");
             }
@@ -63,7 +63,7 @@ $(document).on('turbolinks:load', function() {
 
         } else {
 
-            if ($(".navi-items-list").find(".opened-nest")) {
+            if ($(".navi-items-list").find(".opened-nest").length) {
                 $(".opened-nest").parent().removeClass("picked");
                 $(".opened-nest").slideUp().removeClass("opened-nest");
             }

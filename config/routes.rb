@@ -34,9 +34,12 @@ Rails.application.routes.draw do
   #管理者用↓
   namespace :admin do
 
+    root to: 'home#top'
+
     get "home/back_office", to: "home#back_office_top"
     get "home/login_form", to: "home#login_form"
     post "home/login_to_bo", to: "home#login_to_bo"
+    get "home/put_testdata", to: "home#put_testdata"
 
     get "brands/create_10_data", to: "brands#create_10_data"
     get "brands/delete_all", to: "brands#destroy_all"

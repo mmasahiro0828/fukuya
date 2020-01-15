@@ -1,31 +1,33 @@
 
-.container
+.bo-body
 
-    - if flash.notice.present?
-      .alert.alert-success =flash.notice
+    .side-navi
+         =render partial: "admin/home/side_navigation"
+        
+    .main-part
 
-    h1.mt-2.mb-2 サイズ一覧
+        -if flash.notice.present?
+            .alert.alert-success =flash.notice
 
-    table.table.table-sm.table-hover.smaller-font-for-table.mb-5 style = " width: 300px"
-        thead.thead-dark
-            tr
-                th id
-                th サイズ名
-                
-            - if @sizes.present?
-                - @sizes.each do |size|
+        .main-contents.
 
+            h1.mt-2.mb-2 サイズ一覧
+
+            table.table.table-sm.table-hover.smaller-font-for-table.mb-5 style = " width: 300px"
+                thead.thead-dark
                     tr
-                        td =size.id
-                        td =size.name
+                        th id
+                        th サイズ名
                         
-            - else
-                tr
-                    td colspan="2" サイズが登録されていません。
+                    - if @sizes.present?
+                        - @sizes.each do |size|
 
-    ul
-        li.pt-2 = link_to admin_sizes_create_size_map_path do
-            button.btn.btn-sm.blue-btn デフォルトのサイズマップを登録する
+                            tr
+                                td =size.id
+                                td =size.name
+                                
+                    - else
+                        tr
+                            td colspan="2" サイズが登録されていません。
 
-        li.pt-2 = link_to admin_sizes_delete_all_path, data: { confirm: "データをリセットすると、関連する商品情報も全てリセットします。よろしいですか？"} do
-            button.btn.btn-sm.dark-btn サイズマップをリセットする
+            

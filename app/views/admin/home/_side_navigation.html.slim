@@ -1,0 +1,54 @@
+
+ul
+    =link_to admin_root_path do
+        li.main.first-child トップ
+
+    li.group-a.main ブランド　▼
+    =link_to admin_brands_path do
+        li.group-a.sub 一覧
+    =link_to "#" do
+        li.group-a.sub 新規登録
+
+    li.group-b.main 商品　▼
+    =link_to admin_items_path do
+        li.group-b.sub 一覧
+    =link_to new_admin_item_path do
+        li.group-b.sub 新規登録
+    =link_to admin_stocks_path do
+        li.group-b.sub 在庫表
+    =link_to "#" do
+        li.group-b.sub ランキング
+
+    li.group-c.main トピックス　▼
+    =link_to "#" do
+        li.group-c.sub PICK UP
+    =link_to "#" do
+        li.group-c.sub NEW ARRIVALS
+    =link_to "#" do
+        li.group-c.sub 記事一覧
+    =link_to "#" do
+        li.group-c.sub FEATURE一覧
+    =link_to "#" do
+        li.group-c.sub 新規作成
+
+    li.group-d.main 売上　▼
+    =link_to "#" do
+        li.group-d.sub 売上情報
+    =link_to "#" do
+        li.group-d.sub 売上一覧
+    =link_to "#" do
+        li.group-d.sub 注文一覧
+
+    li.group-e.main ショップ　▼
+    =link_to admin_users_path do
+        li.group-e.sub ユーザー一覧
+    =link_to "#" do
+        li.group-e.sub 管理者登録
+    =link_to admin_colors_path do
+        li.group-e.sub カラーマップ
+    =link_to admin_sizes_path do
+        li.group-e.sub サイズマップ
+    =link_to admin_measuring_items_path do
+        li.group-e.sub 採寸項目
+    =link_to admin_home_put_testdata_path do
+        li.group-e.sub テストデータ登録

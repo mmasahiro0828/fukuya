@@ -1,5 +1,11 @@
 class Admin::HomeController < ApplicationController
 
+    def top
+    end
+
+    def put_testdata
+    end
+
     def login_form
         @user = User.new
     end
