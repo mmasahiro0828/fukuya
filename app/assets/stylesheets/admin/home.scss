@@ -1,3 +1,63 @@
 // Place all the styles related to the admin::home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.bo-body {
+    display: flex;
+    font-size: 0.8em;
+
+    .side-navi {
+        width: 190px;
+        margin: 1.5rem 0;
+    }
+
+    .main-part {
+        margin: 1.5rem 0;
+        border-left: 1px solid rgb(199, 180, 180);
+        min-height: 500px;
+        width: 100%;
+    }
+}
+
+.side-navi {
+
+    ul {
+        padding: 0.5rem 0.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+
+    }
+
+    li {
+        padding: 0.2rem 0 0.2rem 0.5rem;
+        line-height: 1.4rem;
+    }
+
+    li.main {
+        border-top: 1px solid rgb(199, 180, 180);
+    }
+
+    li.main.first-child {
+        border-top: none;
+    }
+
+    li.sub {
+        display: none;
+        padding-left: 1.5em;
+    }
+
+    li:hover {
+        background: rgb(73, 69, 69);
+        color: white;
+    }
+
+    li.picked {
+        background: rgb(236, 136, 136);
+    }
+
+}
+
+.main-part .main-contents {
+    margin: 0 1rem;
+}

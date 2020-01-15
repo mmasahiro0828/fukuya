@@ -1,5 +1,7 @@
 class LikesController < ApplicationController
 
+    before_action :authenticated_user_required
+
     def create
         @item = Item.find(params[:id])
         @item_color = @item.item_colors.find_by(color_name: params[:color_name])

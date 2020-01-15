@@ -1,4 +1,8 @@
 class Admin::BrandsController < ApplicationController
+    
+    before_action :admin_user_required
+
+    
     def index
         @brands = Brand.all
     end

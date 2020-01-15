@@ -1,33 +1,34 @@
-.container
+.bo-body
 
-    - if flash.notice.present?
-      .alert.alert-success =flash.notice
+    .side-navi
+         =render partial: "admin/home/side_navigation"
+        
+    .main-part
 
-    h1.mt-2.mb-2 カラー一覧
+        -if flash.notice.present?
+            .alert.alert-success =flash.notice
 
-    table.table.table-sm.table-hover.smaller-font-for-table.mb-5 style = " width: 400px"
-        thead.thead-dark
-            tr
-                th style="width: 10%" id
-                th カラー名
-                th カラーコード
+        .main-contents.
+            h1.mt-2.mb-2 カラー一覧
 
-            - if @colors.present?
-                - @colors.each do |color|
-
+            table.table.table-sm.table-hover.smaller-font-for-table.mb-5 style = " width: 400px"
+                thead.thead-dark
                     tr
-                        td =color.id
-                        td =color.name
-                        td =color.code
-                        
-            - else
-                tr
-                    td colspan="3" カラーが登録されていません。
+                        th style="width: 10%" id
+                        th カラー名
+                        th カラーコード
 
-    ul
-        li.pt-2 = link_to admin_colors_create_color_map_path do
-            button.btn.btn-sm.blue-btn デフォルトのカラーマップを登録する
+                    - if @colors.present?
+                        - @colors.each do |color|
 
-        li.pt-2 = link_to admin_colors_delete_all_path, data: { confirm: "データをリセットすると、関連する商品情報も全てリセットします。よろしいですか？"} do
-            button.btn.btn-sm.dark-btn カラーマップをリセットする
+                            tr
+                                td =color.id
+                                td =color.name
+                                td =color.code
+                                
+                    - else
+                        tr
+                            td colspan="3" カラーが登録されていません。
+
+            
 

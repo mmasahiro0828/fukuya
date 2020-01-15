@@ -1,5 +1,7 @@
 class Admin::ColorsController < ApplicationController
 
+    before_action :admin_user_required
+
     def index
         @colors = Color.all
     end

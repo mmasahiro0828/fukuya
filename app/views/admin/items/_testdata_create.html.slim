@@ -1,0 +1,44 @@
+.container
+
+    - if flash.notice.present?
+      .alert.alert-success =flash.notice
+
+    
+
+    ul
+        li.pt-2 = link_to new_admin_item_path do
+            button.btn.btn-sm.blue-btn サンプル品番を登録する
+            a.ml-2 ※ブランドをランダムに選択し、そのブランドに対して登録
+
+        li.pt-2
+            = link_to admin_items_create_10_data_for_each_brand_path do
+                button.btn.btn-sm.blue-btn 全ブランドに対して、サンプル品番10型を登録する
+
+        li.pt-2 = link_to admin_items_delete_all_path, data: { confirm: "データをリセットすると、関連する商品情報も全てリセットします。よろしいですか？"} do
+            button.btn.btn-sm.dark-btn itemデータをリセットする
+
+
+
+
+    h1.mt-5.mb-2 カラー登録
+
+    ul
+        li.pt-2 = link_to admin_item_colors_register_colors_to_each_sample_item_path do
+            button.btn.btn-sm.blue-btn 各サンプル品番にカラーを登録する
+            a.ml-2 ※カラー・カラー数はランダムに決定、すでにカラー登録済みの品番は無視
+
+        li.pt-2 = link_to admin_item_colors_delete_all_path, data: { confirm: "データをリセットすると、関連する商品情報も全てリセットします。よろしいですか？"} do
+            button.btn.btn-sm.dark-btn 各アイテムの登録カラーをリセットする
+
+
+
+
+    h1.mt-5.mb-2 サイズ登録
+
+    ul
+        li.pt-2 = link_to admin_skus_register_sizes_to_each_sample_item_path do
+            button.btn.btn-sm.blue-btn 各サンプル品番にサイズを登録する
+            a.ml-2 ※すでにサイズ登録済みの品番は無視
+
+        li.pt-2 = link_to admin_skus_delete_all_path, data: { confirm: "データをリセットすると、関連する商品情報も全てリセットします。よろしいですか？"} do
+            button.btn.btn-sm.dark-btn 各アイテムの登録サイズをリセットする

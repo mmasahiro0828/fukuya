@@ -1,5 +1,7 @@
 class Admin::SkusController < ApplicationController
 
+    before_action :admin_user_required
+
     def register_sizes_to_each_sample_item
         items_without_sizes = Item.where(number_of_sizes: 0).order(:id)
         

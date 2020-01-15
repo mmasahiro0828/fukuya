@@ -1,18 +1,19 @@
 class Admin::ItemsController < ApplicationController
 
+    before_action :admin_user_required
+
     before_action :brand_exist?, only: [:new, :create_10_data_for_each_brand]
 
+    
+
+    /action内に入れる/
     def brand_exist?
         if Brand.all.empty?
             redirect_to "/admin/home/back_office", notice: "brandを登録してください。"
         end
     end
 
-    def new_test
-    end
 
-    def new_test2
-    end
 
 
     def index
@@ -20,8 +21,22 @@ class Admin::ItemsController < ApplicationController
     end
 
 
+    def show
+        @item = Item.find(params[:id])
+        @item_colors = @item.item_colors.order(:color_id)
+        @skus = @item_color.skus.order(:created_at)
+        @measuring_items = @skus.first.measuring_items.order(:id)
+        @measuring_values = @item.measuring_values
+    end
 
     def new
+        @item = Item.new
+        @brands = Brand.all
+        @colors = Color.all
+    end
+
+
+    def new_for_test
         brand = Brand.all.sample
         create_sample_data(brand)
         redirect_to admin_items_url, notice: "「#{@sample_item.name}」を作成しました。"

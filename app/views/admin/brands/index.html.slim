@@ -1,54 +1,51 @@
 
+.bo-body
 
-.container
+    .side-navi
+         =render partial: "admin/home/side_navigation"
+        
+    .main-part
 
-    - if flash.notice.present?
-      .alert.alert-success =flash.notice
+        -if flash.notice.present?
+            .alert.alert-success =flash.notice
 
-    h1.mt-2.mb-2 ブランド一覧
+        .main-contents
 
-    table.table.table-sm.table-hover.smaller-font-for-table.mb-5
-        thead.thead-dark
-            tr
-                th style="width: 5%" id
-                th ブランド名
-                th カナ
-                th ブランド説明
-                th イメージ画像
-                th 掛け率
-                th website
-                th 公開
-                th
 
-            - unless @brands.empty?
-                - @brands.each do |brand|
+            h1.mt-2.mb-2 ブランド一覧
 
+            table.table.table-sm.table-hover.smaller-font-for-table.mb-5
+                thead.thead-dark
                     tr
-                        td = brand.id
-                        td = brand.name
-                        td = brand.kana_name
-                        td = brand.description
-                        td = brand.image_name
-                        td = brand.rate_of_retail_price
-                        td = brand.website
-                        td = brand.public
-                        td
-                            = link_to brand, method: :delete do
-                                button.btn.btn-sm.dark-btn 削除
+                        th style="width: 5%" id
+                        th ブランド名
+                        th カナ
+                        th ブランド説明
+                        th イメージ画像
+                        th 掛け率
+                        th website
+                        th 公開
+                        th
 
-            - else
-                tr
-                    td colspan="9" ブランドが登録されていません。
+                    - unless @brands.empty?
+                        - @brands.each do |brand|
 
-    ul
+                            tr
+                                td = brand.id
+                                td = brand.name
+                                td = brand.kana_name
+                                td = brand.description
+                                td = brand.image_name
+                                td = brand.rate_of_retail_price
+                                td = brand.website
+                                td = brand.public
+                                td
+                                    = link_to brand, method: :delete do
+                                        button.btn.btn-sm.dark-btn 削除
 
-        li.pt-2 = link_to new_admin_brand_path do
-            button.btn.btn-sm.blue-btn サンプルブランドを作る
+                    - else
+                        tr
+                            td colspan="9" ブランドが登録されていません。
 
-        li.pt-2 = link_to admin_brands_create_10_data_path do
-            button.btn.btn-sm.blue-btn サンプルブランドを10個作る
-
-        li.pt-2 = link_to admin_brands_delete_all_path, data: { confirm: "ブランドデータをリセットすると、関連する商品情報も全てリセットします。よろしいですか？"} do
-            button.btn.btn-sm.dark-btn ブランドデータをリセットする
-
+            
 

@@ -1,0 +1,10 @@
+ul
+
+    li.pt-2 = link_to new_admin_brand_path do
+        button.btn.btn-sm.blue-btn サンプルブランドを作る
+
+    li.pt-2 = link_to admin_brands_create_10_data_path do
+        button.btn.btn-sm.blue-btn サンプルブランドを10個作る
+
+    li.pt-2 = link_to admin_brands_delete_all_path, data: { confirm: "ブランドデータをリセットすると、関連する商品情報も全てリセットします。よろしいですか？"} do
+        button.btn.btn-sm.dark-btn ブランドデータをリセットする

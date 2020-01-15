@@ -1,5 +1,7 @@
 class Admin::MeasuringItemsController < ApplicationController
 
+    before_action :admin_user_required
+
     def index
         @measuring_items = MeasuringItem.all
     end

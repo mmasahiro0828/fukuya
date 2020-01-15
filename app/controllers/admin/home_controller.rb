@@ -1,4 +1,12 @@
 class Admin::HomeController < ApplicationController
+    
+    before_action :admin_user_required
+
+    def top
+    end
+
+    def put_testdata
+    end
 
     def login_form
         @user = User.new

@@ -488,3 +488,32 @@ footer {
 
 
 
+
+//====================管理者ページ====================================================
+//--------------基本設定--------------------------------
+
+
+.simple-btn {
+    width: 6em;
+    text-align: center;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: #67c5ff;
+    border: solid 1px #67c5ff;
+    border-radius: 3px;
+    transition: .4s;
+}
+
+.simple-btn:hover {
+    background: #67c5ff;
+    color: white;
+}
+
+
+//====================トップ===========================================
+
+@import "admin/home";
+
+//====================アイテム=======================================================
+
+@import "admin/items";

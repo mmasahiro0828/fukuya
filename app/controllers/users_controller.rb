@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+    before_action :authenticated_user_required, only: [:show, :edit, :update, :destroy, :purchase_history]
+    before_action :guest_user_required, only: [:login_form, :login_before_shopping, :login_during_shopping, :new, :create, :create_during_shopping]
+
     def login_form
         @user = User.new  
     end
