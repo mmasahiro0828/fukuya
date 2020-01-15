@@ -33,6 +33,8 @@ class Admin::ItemsController < ApplicationController
         @item = Item.new
         @brands = Brand.all
         @colors = Color.all
+        @sizes = Size.all
+        @measuring_items = MeasuringItem.all
     end
 
 

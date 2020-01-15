@@ -18,6 +18,7 @@
     
 }
 
+//================================new======================================
 .create-item-form {
     .form-part {
         background: rgb(247, 222, 222);
@@ -29,12 +30,27 @@
             font-weight: bold;
         }
 
-        .inner {
-            display: flex;
+    }
+
+    //---------------color展開、サイズ展開----------------
+
+    .add-select-btn-wrapper {
+        display: flex;
+        font-size: 0.8em;
+
+        .simple-btn {
+            height: 1.5rem;
+            width: 150px;
         }
     }
 
-    #additional-form {
-        background: green;
+    //------------------次へボタン---------------------
+    .next-btn-wrapper {
+        margin-top: 2em;
+
+        .go-next-btn {
+            margin: 0 auto;
+        }
+        
     }
 }
