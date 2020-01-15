@@ -21,6 +21,7 @@
                         th TEL
                         th pass
                         th メルマガ
+                        th admin
 
                     - if @users.present?
                         - @users.each do |user|
@@ -33,6 +34,10 @@
                                 td =user.phonenumber
                                 td =user.password_digest
                                 td =user.mail_magazine
+                                td
+                                    -if user.admin == true
+                                        span style="color:red" 管理者
+                                
                                 
 
                     - else
