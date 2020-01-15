@@ -490,6 +490,7 @@ footer {
 
 
 //====================管理者ページ====================================================
+
 //--------------基本設定--------------------------------
 
 
@@ -498,17 +499,20 @@ footer {
     text-align: center;
     padding: 0.3em 1em;
     text-decoration: none;
-    color: #67c5ff;
-    border: solid 1px #67c5ff;
+    color: #121e25;
+    border: solid 1px #121e25;
     border-radius: 3px;
     transition: .4s;
 }
 
 .simple-btn:hover {
-    background: #67c5ff;
+    background: #121e25;
     color: white;
 }
 
+.hide-block {
+    display: none;
+}
 
 //====================トップ===========================================
 

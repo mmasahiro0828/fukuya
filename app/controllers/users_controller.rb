@@ -15,12 +15,11 @@ class UsersController < ApplicationController
     
         if @user&.authenticate(session_params[:password])
             session[:user_id] = @user.id
-
+            @notice_sentence = "ログインしました"
+            
             if current_cart
 
                 add_current_cart_to_users_cart(@user)
-
-                @notice_sentence = "ログインしました"
 
             elsif @user.cart.present?
                 users_cart = @user.cart
