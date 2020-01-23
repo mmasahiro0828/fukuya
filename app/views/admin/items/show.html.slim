@@ -1,0 +1,120 @@
+.bo-body
+
+    .side-navi
+         =render partial: "admin/home/side_navigation"
+        
+    .main-part
+
+        -if flash.notice.present?
+            .alert.alert-success =flash.notice
+        
+        .main-contents.items-show-wrapper
+
+            h4.mb-4 アイテム詳細
+
+            .item-confirmation-wrapper
+                h4 基本情報
+                ul.register_item_details_1
+                    li.detail
+                        .d-title ブランド:
+                        .d-value =Brand.find(@item.brand_id).name
+                    
+                    li.detail
+                        .d-title アイテム名:
+                        .d-value =@item.name
+
+                    li.detail
+                        .d-title 説明①:
+                        .d-value =@item.description_1
+
+                    li.detail
+                        .d-title 説明②:
+                        .d-value =@item.description_2
+
+                    li.detail
+                        .d-title カテゴリー:
+                        .d-value =@item.category
+
+                    li.detail
+                        .d-title 上代:
+                        .d-value =@item.price
+
+                    li.detail
+                        .d-title 下代:
+                        .d-value =@item.wholesale_price
+
+                    li.detail
+                        .d-title カラー展開:
+                        .d-value
+                            -@item_colors.order(:created_at).each_with_index do |ic, i|
+                                -unless i == @item.number_of_colors - 1
+                                    ="#{ic.color.code} / "
+                                -else
+                                    =ic.color.code
+
+                    li.detail
+                        .d-title サイズ展開:
+                        .d-value 
+                            -@item_colors.first.skus.order(:created_at).each_with_index do |sku, i|
+                                -unless i == @item.number_of_sizes - 1
+                                    ="#{sku.size.name} / "
+                                -else
+                                    =sku.size.name
+
+                    li.detail
+                        .d-title サイズ詳細:
+                        .d-value
+                            -if @category_pattern == 1
+                                table.table.table-sm
+                                    thead
+                                        tr
+                                            th サイズ
+                                            -@measuring_items.each do |mi|   
+                                                th =mi.name
+                                    tbody
+                                        -@item_colors.first.skus.order(:created_at).each do |sku|
+                                            tr
+                                                td =sku.size_name
+                                                -@measuring_items.each do |mi|
+                                                    td = @measuring_values.where(sku_id: sku.id).find_by(measuring_item_id: mi.id).value
+                            -else
+                                '(サイズ詳細なし)
+            
+            
+            .item-confirmation-wrapper
+                h4 在庫詳細/登録
+                ul.register_item_details_1
+                    -@item_colors.each do |item_color|
+                        li.detail
+                            .d-title #{item_color.color_name}:
+                            .d-value
+                                table.table.table-sm
+                                    thead
+                                        tr
+                                            th サイズ
+                                            th BY在庫数
+                                            th 矢印
+                                            th 販売可能数
+                                            th 表示数/カート内数
+
+                                    tbody
+                                        -item_color.skus.order(:created_at).each do |sku|
+                                            tr
+                                                td =sku.size_name   
+                                                td
+                                                td
+                                                td
+                                                td
+
+            .item-confirmation-wrapper
+                h4 画像登録/編集
+                ul.register_item_details_1
+                    -@item_colors.each do |item_color|
+                        li.detail
+                            .d-title #{item_color.color_name}:
+                            .d-value
+                                p 登録枚数 〇〇枚　　　<登録/編集ボタン>
+                                p 登録済み画像を表示
+                                
+                                
+                                

@@ -59,6 +59,8 @@ Rails.application.routes.draw do
 
     get "items/create_10_data_for_each_brand", to: "items#create_10_data_for_each_brand"
     get "items/delete_all", to: "items#destroy_all"
+    post "items/details_form", to: "items#details_form"
+    post "items/confirmation", to: "items#confirmation"
     resources :items
 
     get "item_colors/register_colors_to_each_sample_item", to: "item_colors#register_colors_to_each_sample_item"
