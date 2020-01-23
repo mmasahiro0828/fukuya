@@ -8,9 +8,14 @@
         -if flash.notice.present?
             .alert.alert-success =flash.notice
 
+        -if @item.errors.present?
+            ul.error_explanation
+                -@item.errors.full_messages.each do |message|
+                    li =message
+
         .main-contents.create-item-form
             h4.mb-4 新規登録
-            =form_with model: @item, local: true do |f|
+            =form_with model: @item, url: "/admin/items/details_form", local: true do |f|
 
                 .form-part
                     h6 基本情報
@@ -54,49 +59,23 @@
                         =f.label :wholesale_price, "下代"
                         =f.text_field :wholesale_price, class:"form-control", value:"###"
             
-                .form-part
-                    h6 カラー展開
-                    .inner#additional-form-wrapper
-                        .form-group.additional-form#last-additional-form
-                            =f.label :colors, "カラー選択　"
-                            =f.select :colors, class:"form-control"
-                                -@colors.each do |color|
-                                    option value="#{color.id}" label="#{color.id}. #{color.name}"
-                    .add-select-btn-wrapper
-                        .simple-btn.mr-3#add-color-select + カラー展開数を追加
-                        .simple-btn.hide-block#remove-color-select - カラー展開数を1つ削除
+                    .form-group.mt-4
+                            =f.label :number_of_colors, "カラー展開数"
+                            <br>
+                            =f.select :number_of_colors, class:"form-control"
+                                -6.times do |index|
+                                    option value=index+1 label=index+1
 
-
-
-                .form-part
-                    h6 サイズ展開
-                    .inner#additional-form-wrapper-2
-                        .form-group.additional-form-2#last-additional-form-2
-                            =f.label :sizes, "サイズ選択　"
-                            =f.select :sizes, class:"form-control"
-                                -@sizes.each do |size|
-                                    option value="#{size.id}" label="#{size.id}. #{size.name}"
-                    .add-select-btn-wrapper
-                        .simple-btn.mr-3#add-size-select + サイズ展開数を追加
-                        .simple-btn.hide-block#remove-size-select - サイズ展開数を1つ削除
-
-                .form-part
-                    h6 サイズ詳細 - 採寸項目
-                    .inner#additional-form-wrapper-3
-                        .form-group.additional-form-3#last-additional-form-3
-                            =f.label :measuring_items, "採寸項目を選択　"
-                            =f.select :measuring_items, class:"form-control"
-                                -@measuring_items.each do |mi|
-                                    option value="#{mi.id}" label="#{mi.id}. #{mi.name}"
-                    .add-select-btn-wrapper
-                        .simple-btn.mr-3#add-mi-select + 採寸項目を追加
-                        .simple-btn.hide-block#remove-mi-select - 採寸項目を1つ削除
+                    .form-group.mt-4
+                            =f.label :number_of_sizes, "サイズ展開数"
+                            <br>
+                            =f.select :number_of_sizes, class:"form-control"
+                                -9.times do |index|
+                                    option value=index+1 label=index+1
 
                 .next-btn-wrapper
-                    .simple-btn.go-next-btn 次へ
+                    =f.submit "次へ", class:"simple-btn go-next-btn"
 
-                .form-part
-                    h6 サイズ詳細 - 採寸値
-
-                    
+            
+                                
 

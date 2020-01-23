@@ -1,0 +1,77 @@
+.bo-body
+
+    .side-navi
+         =render partial: "admin/home/side_navigation"
+        
+    .main-part
+
+        -if flash.notice.present?
+            .alert.alert-success =flash.notice
+        
+        -if @error_message&.present?
+            ul.error_explanation
+                li =@error_message
+
+        
+        .main-contents.create-item-form
+            h4.mb-4 新規登録(カラー、サイズ詳細)
+            
+            =form_with model: @item, url:"/admin/items/confirmation", local: true do |f|
+
+                .form-part
+                    h6 カラー展開
+                    -@item.number_of_colors.times do |index|
+                        .form-group
+                            =f.label "color_#{index+1}", "カラー選択 #{index+1}　"
+                            =f.select "color_#{index+1}", class:"form-control"
+                                -@colors.each do |color|
+                                    option value="#{color.id}" label="#{color.id}. #{color.name}"
+
+                -if @category_pattern == 1
+                    .form-part
+                        h6 サイズ展開とサイズ詳細
+                        .form-group
+                            .table-wrapper
+                                table.table.table-sm
+                                    thead
+                                        tr
+                                            th サイズ
+                                            -@register_measuring_items_ids.each do |mi_id|
+                                                th =MeasuringItem.find(mi_id).name
+
+                                    tbody
+                                        -@item.number_of_sizes.times do |index|
+                                            tr
+                                                th 
+                                                    =f.select "size_#{index+1}_name", class:"form-control"
+                                                        -@sizes.each do |size|
+                                                            option value="#{size.id}" label="#{size.name}"
+                                                -@register_measuring_items_ids.each do |mi_id|
+                                                    th =f.text_field "size_#{index+1}_detail_#{mi_id}", class:"form-control"
+
+                -else
+                    .form-part
+                        h6 サイズ展開
+                        -@item.number_of_sizes.times do |index|
+                            .form-group
+                                =f.label "size_#{index+1}_name", "サイズ選択 #{index+1}　"
+                                =f.select "size_#{index+1}_name", class:"form-control"
+                                    -@sizes.each do |size|
+                                        option value="#{size.id}" label="#{size.name}"
+
+                
+                .hidden-box
+                    =f.hidden_field :brand_id
+                    =f.hidden_field :name
+                    =f.hidden_field :description_1
+                    =f.hidden_field :description_2
+                    =f.hidden_field :category
+                    =f.hidden_field :price
+                    =f.hidden_field :wholesale_price
+                    =f.hidden_field :number_of_colors
+                    =f.hidden_field :number_of_sizes
+                
+                .next-btn-wrapper
+                    =f.submit "確認", class:"simple-btn go-next-btn"
+                
+        

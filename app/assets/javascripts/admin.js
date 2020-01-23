@@ -88,5 +88,14 @@ $(document).on('turbolinks:load', function() {
         }
     });
 
+    //========================商品登録の採寸項目登録フォームの表示=============================
+    
+    $('[name="item[measuring_items_existance]"]:radio').change( function() {
+        if($('[id=item_measuring_items_existance_true]').prop('checked')){
+          $('#admin-acordion1').slideDown();
+        } else if ($('[id=item_measuring_items_existance_false]').prop('checked')) {
+          $('#admin-acordion1').slideUp();
+        } 
+    });
 
 });
