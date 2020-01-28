@@ -69,6 +69,10 @@ Rails.application.routes.draw do
     get "skus/register_sizes_to_each_sample_item", to: "skus#register_sizes_to_each_sample_item"
     get "skus/delete_all", to: "skus#destroy_all"
 
+    post "stocks/plus_1_to_by", to: "stocks#plus_1_to_by"
+    post "stocks/minus_1_from_by", to: "stocks#minus_1_from_by"
+    post "stocks/move_1_to_display", to: "stocks#move_1_to_display"
+    post "stocks/move_1_to_by", to: "stocks#move_1_to_by"
     resources :stocks
 
     get "topics/create_topic_with_random_items", to: "topics#create_topic_with_random_items"

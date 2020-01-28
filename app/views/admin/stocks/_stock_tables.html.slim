@@ -1,0 +1,38 @@
+-item_colors.order(:created_at).each do |item_color|
+    li.detail
+        .d-title #{item_color.color_name}:
+        .d-value
+            table.table.table-sm
+                thead
+                    tr
+                        th サイズ
+                        th BY在庫数
+                        th 
+                        th 販売可能数
+                        th 表示数/カート内数
+            
+                tbody
+                    -item_color.skus.order(:created_at).each do |sku|
+                        tr
+                            td =sku.size_name   
+                            td.cel-for-backyard-stock
+                                p.number =sku.stock.quantity_in_by
+                                .btn-wrapper
+                                    =link_to admin_stocks_plus_1_to_by_path(stock_id: sku.stock), method: :post, remote: true do
+                                        p.puls ＋
+                                    -if sku.stock.quantity_in_by > 0
+                                        =link_to admin_stocks_minus_1_from_by_path(stock_id: sku.stock), method: :post, remote: true do
+                                            p.minus ー
+                            td.cel-for-moving-stock
+                                -if sku.stock.quantity_in_by > 0
+                                    =link_to admin_stocks_move_1_to_display_path(stock_id: sku.stock), method: :post, remote: true do
+                                        p.to-display 　➡︎ +1
+                                -if sku.stock.quantity_on_display > 0
+                                    =link_to admin_stocks_move_1_to_by_path(stock_id: sku.stock), method: :post, remote: true do
+                                        p.to-by -1 ⬅︎　
+                            td =sku.stock.quantity_on_display + sku.stock.quantity_in_cart
+                            td
+                                -if sku.stock.quantity_in_cart > 0
+                                    <span style="color:red">#{sku.stock.quantity_on_display} / #{sku.stock.quantity_in_cart}</span>
+                                -else 
+                                    '#{sku.stock.quantity_on_display} / #{sku.stock.quantity_in_cart}
