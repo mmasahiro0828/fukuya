@@ -83,28 +83,10 @@
             
             .item-confirmation-wrapper
                 h4 在庫詳細/登録
-                ul.register_item_details_1
-                    -@item_colors.each do |item_color|
-                        li.detail
-                            .d-title #{item_color.color_name}:
-                            .d-value
-                                table.table.table-sm
-                                    thead
-                                        tr
-                                            th サイズ
-                                            th BY在庫数
-                                            th 矢印
-                                            th 販売可能数
-                                            th 表示数/カート内数
-
-                                    tbody
-                                        -item_color.skus.order(:created_at).each do |sku|
-                                            tr
-                                                td =sku.size_name   
-                                                td
-                                                td
-                                                td
-                                                td
+                ul.register_item_details_1.ajax-for-stock-tables
+                    =render partial: "admin/stocks/stock_tables", locals: {item_colors: @item_colors}
+                    
+                                            
 
             .item-confirmation-wrapper
                 h4 画像登録/編集

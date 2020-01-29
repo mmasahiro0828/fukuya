@@ -94,3 +94,64 @@
 
 //------------------アイテム詳細---------------------
 
+
+.cel-for-backyard-stock {
+    display: flex;
+    align-items: center;
+    background: pink;
+    border-left: 1px solid white;
+
+    .number {
+        text-align: center;
+        width: 65%;
+    }
+
+    .btn-wrapper {
+        width: 20%;
+
+        .puls {
+            background: gray;
+            border-radius: 4px;
+            margin-bottom: 1px;
+        }
+
+        .minus {
+            background: black;
+            color: gray;
+            border-radius: 4px;
+        }
+
+        p:hover {
+            background: yellow;
+            color: black;
+            transition: .3s;
+            cursor: pointer;
+        }
+
+        
+        
+    }
+
+}
+
+.cel-for-moving-stock {
+
+    .to-display {
+        background: gray;
+        border-radius: 4px;
+        margin-bottom: 1px;
+    }
+
+    .to-by {
+        background: black;
+        color: gray;
+        border-radius: 4px;
+    }
+
+    p:hover {
+        background: yellow;
+        color: black;
+        transition: .3s;
+        cursor: pointer
+    }
+}
